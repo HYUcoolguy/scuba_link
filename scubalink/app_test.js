@@ -90,14 +90,14 @@ app.get('/', function(req, res) {
    //     if( req.session.type == 1 ) {
      req.session.type='1';
            // req.body.insId = req.session.snsId;
-req.body.insId = '773582231';
+req.body.insId = '955480178';
             dbTour.findTours(db, req.body, function(result) {
             
                 result.result.type    = req.session.type;
                 result.result.name    = req.session.name;
                 result.result.group   = req.session.group;
                 result.result.image   = req.session.image;
-             
+             console.log(result.result);
                 res.render('home_ins', result.result);
             });
      //   }
@@ -233,7 +233,7 @@ app.get('/home_search', function(req, res) {
 app.get('/profile_ins', function(req, res) {
    //if( req.session && req.session.snsId != undefined && req.session.type != undefined ) {
    //     req.body.id = req.session.snsId;
-   req.body.id = '773582231';
+   req.body.id = '955480178';
         dbAccount.findAccountAllInfo(db, req.body, function(result) {
             res.render('profile_ins', result.result);
         }, function(result) {
@@ -265,7 +265,7 @@ app.get('/profile_bgn', function(req, res) {
 app.get('/profile_edit', function(req, res) {
    // if( req.session && req.session.snsId != undefined && req.session.type != undefined ) {
    //     req.body.id = req.session.snsId;
-    req.body.id = '773582231';
+    req.body.id = '955480178';
         dbAccount.findAccountAllInfo(db, req.body, function(result) {
             res.render('profile_edit', result.result);
         }, function(result) {
@@ -280,7 +280,7 @@ app.get('/profile_edit', function(req, res) {
 app.get('/mybgn', function(req, res) {
     //if( req.session && req.session.snsId != undefined && req.session.type != undefined ) {
     //    req.body.id = req.session.snsId;
- req.body.id = '773582231';
+ req.body.id = '955480178';
         dbFollow.findFollowers(db, req.body, function(result) {
             res.render('menu_my_bgn', {
                 id            : req.session.snsId,
@@ -297,7 +297,7 @@ app.get('/profile/:no', function(req, res){
     //if( req.session && req.session.snsId != undefined && req.session.type != undefined ) {
         req.body.id     = req.params.no;
      //   req.body.userId = req.session.snsId;
- req.body.id = '773582231';
+ req.body.id = '955480178';
         dbAccount.findAccountAllInsInfo(db, req.body, function(result) {
             req.body.insId     = req.params.no;
             dbTour.findTours(db, req.body, function(result02) {
@@ -317,7 +317,7 @@ app.get('/profile/:no', function(req, res){
 app.get('/license', function(req, res) {
    // if( req.session && req.session.snsId != undefined && req.session.type != undefined ) {
    //     req.body.id = req.session.snsId;
- req.body.id = '773582231';
+ req.body.id = '955480178';
         dbCertification.findCertifications(db, req.body, function(result) {
             res.render('menu_license', result.result);
         });
@@ -330,7 +330,7 @@ app.get('/license', function(req, res) {
 app.get('/license_detail/:no', function(req, res) {
    // if( req.session && req.session.snsId != undefined && req.session.type != undefined ) {
         req.body.id     = req.params.no;
- req.body.id = '773582231';
+ req.body.id = '955480178';
         dbCertification.findCertificationDetail(db, req.body, function(result) {
             res.render('menu_license_detail', result.result);
         }, function(result) {
@@ -345,7 +345,7 @@ app.get('/license_detail/:no', function(req, res) {
 app.get('/license_edit/:no', function(req, res) {
     //if( req.session && req.session.snsId != undefined && req.session.type != undefined ) {
         req.body.id     = req.params.no;
- req.body.id = '773582231';
+ req.body.id = '955480178';
         dbCertification.findCertificationDetail(db, req.body, function(result) {
             res.render('menu_license_edit', result.result);
         }, function(result) {
@@ -390,7 +390,7 @@ app.get('/notice', function(req, res) {
 app.get('/notice/:no', function(req, res) {
     //if( req.session && req.session.snsId != undefined && req.session.type != undefined ) {
         req.body.id     = req.params.no;
- req.body.id = '773582231';
+ req.body.id = '955480178';
         dbNotice.findNoticeDetail(db, req.body, function(result) {
             res.render('menu_notice_detail', result.result);
         }, function(result) {
@@ -416,7 +416,7 @@ app.get('/tour/:no', function(req, res){
         req.body.id     = req.params.no;
 
         dbTour.findTourDetail(db, req.body, function(result) {
-            result.result.userId = '773582231';
+            result.result.userId = '955480178';
             result.result.userType = '1';
 
             req.body.tourId     = req.params.no;
@@ -438,7 +438,7 @@ app.get('/tour_edit/:no', function(req, res) {
       req.body.id     = req.params.no;
 
       dbTour.findTourDetail(db, req.body, function(result) {
-          result.result.userId = '773582231';
+          result.result.userId = '955480178';
           result.result.userType = '1';
 
           res.render('tour_edit', result.result);
@@ -631,7 +631,7 @@ app.post('/profile/update', upload.single('userImage'), function(req, res) {
 app.post('/profile/select', function(req, res) {
     
     //req.body.id = req.session.snsId;
-     req.body.id = '773582231';
+     req.body.id = '955480178';
     dbAccount.findAccountAllInfo(db, req.body, function(result) {
         res.writeHead(200);
         res.end(JSON.stringify(result));
@@ -656,7 +656,7 @@ app.post('/logout', function(req, res) {
 
 app.post('/search/ins', function(req, res) {
     //req.body.id = req.session.snsId;
-     req.body.id = '773582231';
+     req.body.id = '955480178';
     dbAccount.insertSearchHistory(db, req.body, function(result) {
         dbAccount.findAccountByEmail(db, req.body, function(result) {
             res.writeHead(200);
@@ -667,7 +667,7 @@ app.post('/search/ins', function(req, res) {
 
 app.post('/search/ins/remove', function(req, res) {
    // req.body.id = req.session.snsId;
-    req.body.id = '773582231';
+    req.body.id = '955480178';
     dbAccount.removeSearchHistory(db, req.body, function(result) {
         res.writeHead(200);
         res.end(JSON.stringify(result));
@@ -706,7 +706,7 @@ app.post('/follow/update', function(req, res){
 
 app.post('/certification/add', upload.single('certImage'), function(req, res) {
 //    req.body.id = req.session.snsId;
- req.body.id = '773582231';
+ req.body.id = '955480178';
     if( req.file != undefined )
         req.body.image  = req.file.location;
     else
@@ -723,7 +723,7 @@ app.post('/certification/add', upload.single('certImage'), function(req, res) {
 
 app.post('/certification/select', function(req, res){
  //   req.body.id = req.session.snsId;
- req.body.id = '773582231';
+ req.body.id = '955480178';
     dbCertification.findCertifications(db, req.body, function(result) {
         res.writeHead(200);
         res.end(JSON.stringify(result));
@@ -781,8 +781,8 @@ app.post('/email/send', function(req, res){
 app.post('/tour/add', upload.single('tourImage'), function(req, res) {
    // req.body.insId    = req.session.snsId;
  //   req.body.insName  = req.session.name;
- req.body.insId = '773582231';
-req.body.insName='카카오강사';
+ req.body.insId = '955480178';
+req.body.insName='박형진';
 
     if( req.file != undefined )
         req.body.image  = req.file.location;
@@ -790,7 +790,7 @@ req.body.insName='카카오강사';
         req.body.image  = undefined;
 
     dbTour.addTour(db, req.body, function(result) {
-        req.body.id       = req.session.snsId;
+        req.body.id       = '955480178';
         req.body.tourId   = result.result.tourId;
         req.body.type     = 1;
 
@@ -809,7 +809,7 @@ req.body.insName='카카오강사';
 
 app.post('/tour/select', function(req, res){
     //req.body.insId = req.session.snsId;
- req.body.id = '773582231';
+ req.body.id = '955480178';
     dbTour.findTours(db, req.body, function(result) {
         res.writeHead(200);
         res.end(JSON.stringify(result));
@@ -851,7 +851,7 @@ app.post('/tour/remove', function(req, res){
 
 app.post('/tour/participate', function(req, res){
     //req.body.id = req.session.snsId;
-     req.body.id = '773582231';
+     req.body.id = '955480178';
     req.body.type = 1;
 
     dbTour.changeTourMember(db, req.body, function(result) {
@@ -869,7 +869,7 @@ app.post('/tour/participate', function(req, res){
 });
 
 app.post('/tour/interest', function(req, res){
-     req.body.id = '773582231';
+     req.body.id = '955480178';
      //req.body.id = req.session.snsId;
     req.body.type = 2;
 
@@ -888,7 +888,7 @@ app.post('/tour/interest', function(req, res){
 });
 
 app.post('/tour/wait', function(req, res){
-    req.body.id = '773582231';
+    req.body.id = '955480178';
     // req.body.id = req.session.snsId;
     req.body.type = 3;
 
@@ -917,7 +917,7 @@ app.post('/tour/select/bgn', function(req, res){
 
 app.post('/tour/cost/update', function(req, res){
     //req.body.id = req.session.snsId;
- req.body.id = '773582231';
+ req.body.id = '955480178';
     dbTour.updateTourCost(db, req.body, function(result) {
         res.writeHead(200);
         res.end(JSON.stringify(result));
