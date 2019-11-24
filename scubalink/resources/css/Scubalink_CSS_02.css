@@ -4034,7 +4034,7 @@ input[type="radio"]:checked + label span{
 
 
 #step2 .s2_p_cost,
-#step2 .s2_sum_cost{
+#step2 #s2_sum_cost{
   padding-left:16px;
   padding-right:16px;
   padding-top:24px;
@@ -4044,13 +4044,13 @@ input[type="radio"]:checked + label span{
 }
 
 #step2 .s2_p_cost div:first-child,
-#step2 .s2_sum_cost div:first-child{
+#step2 #s2_sum_cost div:first-child{
   font-size:14px;
   color:#000000;
   font-weight:bold;
 }
 #step2 .s2_p_cost div:last-child,
-#step2 .s2_sum_cost div:last-child{
+#step2 #s2_sum_cost div:last-child{
   color:#000000;
 }
 

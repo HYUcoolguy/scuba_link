@@ -446,24 +446,51 @@ document.getElementById('FOC_ul').innerHTML=FOC_list_sum;
 
 
 
-
-/**Step1 :  2. 환율 체크 시, 3. 기본 통화 리스트 추가 **/
+var cur_arr=new Array();
+/**Step1 :  2. 환율 체크 시, 3. 기본 통화 select에 option 추가 **/
 $(document).on("change","#step1 #check_currency input",function(){
-      var c_cur=$('#step1 #check_currency .cost_checkbox_container').children('input').get().map(function(el) { 
-          if(el.checked==true){
-            return el.labels[0].innerText;}
-          });
+  
 
-      var text='';
+  var c_cur=$('#step1 #check_currency .cost_checkbox_container').children('input').get().map(function(el) { 
+          if(el.checked==true){
+            return el.value;}});
+
+
       for(i=0;i<c_cur.length;i++){
         if(c_cur[i]){
-          text+="<option>";
-          text+=c_cur[i];
-          text+="</option>"
+          $("#step1 #c_main_cur option").eq(i).removeClass("hide");
+        }else{
+          $("#step1 #c_main_cur option").eq(i).addClass("hide");
         }
       }
-      $("#c_main_cur select").html(text);
+
+
+ var c_val=$('#step1 .custom input[type="number"]').get().map(function(el) {return el.value});
+//Step2 환율 계산을 위해 배열 생성
+  cur_arr.splice(0,cur_arr.length);
+
+  for(i=1;i<5;i++){
+    cur_arr.push({
+      name:c_cur[i],
+      currrency:c_val[i-1]
+    })
+  }
+ console.log(cur_arr);
+//Step2의 select option에 선택된 통화 추가
+var text='';
+for(i=0;i<c_cur.length;i++){
+  if(c_cur[i]){
+  text+=`<option value="`;
+  text+=c_cur[i];
+  text+=`">`
+  text+=c_cur[i];
+  text+=`</option>`
+}
+}
+$('#step2 .cost_p1 select').html(text);
     });
+
+
 
 
 
@@ -519,7 +546,7 @@ $(document).on("change","#step2 input",function(){
   }
 
 
-
+//cost_arr의 값 계산식에 반영
 var e="#ex_cost_";
 var cur2=document.getElementsByClassName("currency2");
 
@@ -541,34 +568,124 @@ for(i=0;i<cost_arr.length;i++){
 
   cost=parseInt(cost_arr[i].p1)*parseInt(cost_arr[i].p2);
 
-
-
  $('#step2 .cost').eq(i).text(cost);
  $('#step2 .cost2').eq(i).text(cost);
- 
 }
-console.log(cost_name[0]);
+
+//Step2 : 교육생 1인 비용, 예상 총 수입
+
 $('#s2_p_name text:first-child').text(cost_arr[0].name);
 
+var c_name='';
+var c_per_cost='';
+var c_p_sum=0;
 
-for(i=1;i<cost_arr.length;i++){
-  $('#s2_p_name').append('<text> + </text><text>');
-  $('#s2_p_name').append(cost_arr[i].name);
-  $('#s2_p_name').append('</text>');
+for(i=0;i<cost_arr.length;i++){
+  c_name+=`<text> + </text><text>`;
+  c_name+=cost_arr[i].name;
+  c_name+=`</text>`;
 
+  c_per_cost+=`<text> + </text><text>`;
+  c_per_cost+=document.getElementsByClassName("cost2")[i].innerText;
+  c_per_cost+=`</text><text>`;
+  c_per_cost+=cost_arr[i].currency;
+  c_per_cost+=`</text>`
 
-
+  c_p_sum+=parseInt(document.getElementsByClassName("cost2")[i].innerText);
 }
 
+  var c_krw=0;
+  var c_usd=0;
+  var c_jpy=0;
+  var c_php=0;
+  var c_eur=0;
+
+  for(i=0;i<cost_arr.length;i++){
+    if(cost_arr[i].currency=="원"){
+      c_krw+=parseInt(document.getElementsByClassName("cost2")[i].innerText);
+    }else if(cost_arr[i].currency=="달러"){
+      c_usd+=parseInt(document.getElementsByClassName("cost2")[i].innerText);
+    }else if(cost_arr[i].currency=="엔"){
+      c_jpy+=parseInt(document.getElementsByClassName("cost2")[i].innerText);
+    }else if(cost_arr[i].currency=="페소"){
+      c_php+=parseInt(document.getElementsByClassName("cost2")[i].innerText);
+    }else if(cost_arr[i].currency=="유로"){
+      c_eur+=parseInt(document.getElementsByClassName("cost2")[i].innerText);
+    }
+  }
+  var text='= ';
+
+    if(c_krw!=0){
+      text+=c_krw;
+      text+='원';
+    }
+    if(c_usd!=0){
+      text+=` + `;
+      text+=c_usd;
+      text+='달러'
+
+      c_usd=c_usd*parseInt(cur_arr[0].currency);
+    }
+    if(c_jpy!=0){
+      text+=` + `;
+      text+=c_jpy;
+      text+="엔"
+
+      c_jpy=c_jpy*parseInt(cur_arr[1].currency)/100;
+    }
+    if(c_php!=0){
+      text+=` + `;
+      text+=c_php;
+      text+='페소';
+
+      c_php=c_php*parseInt(cur_arr[2].currency);
+    }
+    if(c_eur!=0){
+      text+=` + `;
+      text+=c_eur;
+      text+='유로'
+
+      c_eur=c_eur*parseInt(cur_arr[3].currency)
+    }
+    $("#step2 #s2_p_sum").html(text);
+
+
+var t_cost=0;
+t_cost=c_krw+c_usd+c_jpy+c_php+c_eur;
+ //19.11.24 환율 조정 필요 
+
+console.log(cur_arr);
 
 
 
+
+
+
+
+
+
+
+
+$('#s2_p_name').html(c_name);
+$('#s2_p_name text:first-child').html('= ');
+
+$('#s2_p_cal').html(c_per_cost)
+$('#s2_p_cal text:first-child').html('= ');
+
+$('#s2_p_sum text:eq(1)').html(c_p_sum);
+$('#step2 #p_cost').html(c_p_sum);
+var bgn_n=$('#step1 #cost_member input').get().map(function(el) {return el.value});
+  $('#step2 .bgn_n').text(cost_ins_n[1]);
+  $('#step2 .ins_n').text(cost_ins_n[0]);
+var total_cost=c_p_sum*parseInt(bgn_n[1]);
+
+$('#step2 #total_c text:first-child').html(total_cost);
 
 });
 
 
 
-
+console.log(cur_arr);
 
 
 
@@ -981,7 +1098,7 @@ var e="#ex_cost_"
 
 var cost_ins_n=$('#step1 #cost_member input').get().map(function(el) {return el.value});
 
-  console.log(cost_arr);
+
 
   for(i=0;i<=cost_n.length;i++){
 
@@ -1041,7 +1158,6 @@ var cost_ins_n=$('#step1 #cost_member input').get().map(function(el) {return el.
     $('#step2 .cost').eq(i).text(cost);
     $('#step2 .cost2').eq(i).text(cost);
     cost_arr[i].per_cost=cost;
-    console.log(cost_arr[i].per_cost);
   }
 
 })

@@ -86,7 +86,7 @@
           <ul>
           	<li>
           		<label class="cost_checkbox_container">대한민국 원 KRW
-          			<input type="checkbox" checked>
+          			<input type="checkbox" value="원" checked >
           			<span class="cost_checkmark"></span>
            	 	</label>
           </li>
@@ -95,7 +95,7 @@
 
 
           <li>
-          	<label class="cost_checkbox_container">미국 달러 USD<input type="checkbox">
+          	<label class="cost_checkbox_container">미국 달러 USD<input type="checkbox" value="달러">
           	<span class="cost_checkmark"></span></label>
             
             <div class="custom hide">
@@ -109,45 +109,45 @@
 
           <li>
           		<label class="cost_checkbox_container">일본 엔 JPY
-          			<input type="checkbox">
+          			<input type="checkbox" value="엔">
           			<span class="cost_checkmark"></span>
            	 	</label>
             
             <div class="custom hide">
               <input type="number" placeholder="1,108">
               <span class="c_text">원</span>
-              <span class="cur_text">= 1달러</span>
-              <div>약 1,200원 = 1달러 (2019/10/01 19:43 기준)</div>
+              <span class="cur_text">= 100엔</span>
+              <div>약 1,108원 = 100 엔 (2019/10/01 19:43 기준)</div>
           	</div>
           </li>
 
 
           <li>
           		<label class="cost_checkbox_container">필리핀 페소 PHP
-          			<input type="checkbox">
+          			<input type="checkbox" value="페소">
           			<span class="cost_checkmark"></span>
            	 	</label>
             
             <div class="custom hide">
               <input type="number" placeholder="1,200">
-              <span class="c_text">페소</span>
-              <span class="cur_text">= 1달러</span>
-              <div>약 1,200원 = 1달러 (2019/10/01 19:43 기준)</div>
+              <span class="c_text">원</span>
+              <span class="cur_text">= 1페소</span>
+              <div>약 230 = 1페소 (2019/10/01 19:43 기준)</div>
           	</div>
           </li>
 
 
           <li>
           		<label class="cost_checkbox_container">유럽연합 유로 EUR
-          			<input type="checkbox">
+          			<input type="checkbox" value="유로">
           			<span class="cost_checkmark"></span>
            	 	</label>
             
             <div class="custom hide">
               <input type="number" placeholder="1,200">
-              <span class="c_text">유로</span>
-              <span class="cur_text">= 1달러</span>
-              <div>약 1,200원 = 1달러 (2019/10/01 19:43 기준)</div>
+              <span class="c_text">원</span>
+              <span class="cur_text">= 1유로</span>
+              <div>약 1,300원 = 1유로 (2019/10/01 19:43 기준)</div>
           	</div>
           </li>
 
@@ -164,7 +164,12 @@
 <div id="c_main_cur">
 <div>3. 기본 통화를 선택하세요.</div>
       <select>
-        <option>대한민국 원 KRW</option>
+        <option value="원" class="">대한민국 원 KRW</option>
+        <option value="달러" class="hide">미국 달러 USD</option>
+        <option value="엔" class="hide">일본 엔 JPY</option>
+        <option value="페소" class="hide">필리핀 페소 PHP</option>
+        <option value="유로" class="hide">유럽연합 유로 EUR</option>
+
       </select>
 </div>
 <div class="tour_division"></div>
@@ -497,7 +502,8 @@
   <div id="s2_p_name">= 
     <text>다이빙</text>
   </div>
-  <div id="s2_p_cal">=
+  <div id="s2_p_cal">
+    <text>=</text>
     <text>9000</text>
     <text>엔</text>
     <text> + </text>
@@ -507,18 +513,19 @@
     <text>1659</text>
     <text>엔</text>
   </div>
-  <div>=
+  <div id=s2_p_sum>
+    <text>=</text>
     <text>51259</text>
     <text>엔</text>
   </div>
-  <div>=
+  <div id="s2_p_total">=
     <text>512590</text>
     <text>원</text>
   </div>
 </div>
 
 
-<div class="s2_sum_cost">
+<div id="s2_sum_cost">
   <div>예상 총 수입</div>
   <div>= 
     <text>교육생 1인 비용</text>
@@ -526,13 +533,13 @@
     <text>교육생 수</text>
   </div>
   <div>=
-    <text>512590</text>
+    <text id="p_cost">512590</text>
     <text>원</text>
     <text> x </text>
-    <text>5</text>
+    <text class="bgn_n"></text>
     <text>명</text>
   </div>
-  <div>=
+  <div id="total_c">=
     <text>512590</text>
     <text>원</text>
   </div>
