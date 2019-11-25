@@ -594,11 +594,14 @@ for(i=0;i<cost_arr.length;i++){
   c_p_sum+=parseInt(document.getElementsByClassName("cost2")[i].innerText);
 }
 
+
+
   var c_krw=0;
   var c_usd=0;
   var c_jpy=0;
   var c_php=0;
   var c_eur=0;
+  
 
   for(i=0;i<cost_arr.length;i++){
     if(cost_arr[i].currency=="원"){
@@ -613,7 +616,9 @@ for(i=0;i<cost_arr.length;i++){
       c_eur+=parseInt(document.getElementsByClassName("cost2")[i].innerText);
     }
   }
+
   var text='= ';
+  var currency=$("#c_main_cur select").val();
 
     if(c_krw!=0){
       text+=c_krw;
@@ -623,38 +628,51 @@ for(i=0;i<cost_arr.length;i++){
       text+=` + `;
       text+=c_usd;
       text+='달러'
-
-      c_usd=c_usd*parseInt(cur_arr[0].currency);
     }
     if(c_jpy!=0){
       text+=` + `;
       text+=c_jpy;
       text+="엔"
-
-      c_jpy=c_jpy*parseInt(cur_arr[1].currency)/100;
     }
     if(c_php!=0){
       text+=` + `;
       text+=c_php;
       text+='페소';
-
-      c_php=c_php*parseInt(cur_arr[2].currency);
     }
     if(c_eur!=0){
       text+=` + `;
       text+=c_eur;
       text+='유로'
-
-      c_eur=c_eur*parseInt(cur_arr[3].currency)
     }
     $("#step2 #s2_p_sum").html(text);
 
 
-var t_cost=0;
-t_cost=c_krw+c_usd+c_jpy+c_php+c_eur;
- //19.11.24 환율 조정 필요 
+  $('#check_currency .custom input').eq(0).val()
+    c_usd*=parseInt($('#check_currency .custom input').eq(0).val());
+    c_jpy*=parseInt($('#check_currency .custom input').eq(1).val())/100 ||0;
+    c_php*=parseInt($('#check_currency .custom input').eq(2).val()) ||0;
+    c_eur*=parseInt($('#check_currency .custom input').eq(3).val()) ||0;
 
-console.log(cur_arr);
+    t_cost=c_krw+c_usd+c_jpy+c_php+c_eur;
+
+if(currency=="달러"){
+  t_cost=parseInt(t_cost)/parseInt($('#check_currency .custom input').eq(0).val());
+}
+if(currency=="엔"){
+  t_cost=parseInt(t_cost)/parseInt($('#check_currency .custom input').eq(1).val())*100;
+}
+if(currency=="페소"){
+  t_cost=parseInt(t_cost)/parseInt($('#check_currency .custom input').eq(2).val());
+}
+if(currency=="유로"){
+  t_cost=parseInt(t_cost)/parseInt($('#check_currency .custom input').eq(3).val());
+}
+
+
+
+t_cost=parseInt(t_cost);
+$("#step2 #s2_p_total text").eq(0).html(t_cost);
+$("#step2 #s2_p_total text").eq(1).html(currency);
 
 
 
@@ -672,12 +690,14 @@ $('#s2_p_name text:first-child').html('= ');
 $('#s2_p_cal').html(c_per_cost)
 $('#s2_p_cal text:first-child').html('= ');
 
-$('#s2_p_sum text:eq(1)').html(c_p_sum);
-$('#step2 #p_cost').html(c_p_sum);
+
+$('#step2 #p_cost').html(t_cost);
+$('#step2 #t_cur').html(currency);
+$('#step2 #total_c text').eq(1).html(currency);
 var bgn_n=$('#step1 #cost_member input').get().map(function(el) {return el.value});
   $('#step2 .bgn_n').text(cost_ins_n[1]);
   $('#step2 .ins_n').text(cost_ins_n[0]);
-var total_cost=c_p_sum*parseInt(bgn_n[1]);
+var total_cost=parseInt(t_cost)*parseInt(bgn_n[1]);
 
 $('#step2 #total_c text:first-child').html(total_cost);
 
