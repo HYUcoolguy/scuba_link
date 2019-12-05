@@ -3833,24 +3833,50 @@ input[type="radio"]:checked + label span{
 }
 #cost_ins,
 #cost_no_s{
+  margin-right:16px;
   margin-left:16px;
   margin-top:44px;
 }
 #check_currency div,
 #cost_ins div,
-#cost_no_s div{
+div{
   font-size:12px;
   color:#333333;
   margin-bottom:4px;
 }
+div.input_cost{
+  background-color:#f4f4f4;
+  border:#f4f4f4;
+  font-size:14px;
+  padding-bottom:32px
+}
+.input_cost .input_cost_name{
+  color:#333333;
+  font-weight:bold;
+  margin-top:12px;
+  margin-bottom:12px
+}
+
+.label{
+  background-color:#145db2;
+  font-weight:normal;
+}
+.label-default{
+  background-color:#aaaaaa
+}
+.cost_p1 span{
+  position: relative;
+  float: right;
+  color: #333333;
+}
 #check_currency ul,
 #cost_ins ul,
-#cost_no_s ul{
+ul{
   margin-top:16px;
 }
 #check_currency ul li,
 #cost_ins ul li,
-#cost_no_s ul li{
+ul li{
   margin-bottom:8px;
 }
 #check_currency ul li span.cur_text{
@@ -3859,10 +3885,18 @@ input[type="radio"]:checked + label span{
 }
 
 #check_currency div.custom,
-#cost_ins div.custom,
-#cost_no_s div.custom{
+div.custom{
   padding-left:35px;
   margin-bottom:12px;
+}
+#cost_ins div.custom{
+  padding-left:35px;
+  margin-bottom:12px;
+  margin-top:-12px;
+}
+#cost_no_s .cost_ins_unit{
+  top:11px;
+  padding-right:10px;
 }
 #check_currency div.custom input,
 #cost_ins div.custom input{
@@ -3882,10 +3916,19 @@ input[type="radio"]:checked + label span{
 }
 #cost_ins div.custom div{
   font-size:14px;
-  color:#777777;
   margin-top:7px;
 }
-#cost_no_s div.custom div{
+
+#cost_ins .custom .label{
+  font-weight:normal;
+  background-color:#145db2;
+  margin-right:4px;
+}
+#cost_ins .custom .label-default{
+  background-color:#aaaaaa;
+}
+
+div.custom div{
   font-size:14px;
   color:#000000;
 }
@@ -3966,6 +4009,7 @@ input[type="radio"]:checked + label span{
   padding:14px 0px 14px 16px;
   font-size:12px;
   line-height:1.5;
+  margin-bottom:0px;
 }
 
 #step4 .header_explain{

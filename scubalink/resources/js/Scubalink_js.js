@@ -541,7 +541,9 @@ $(document).on("change","#step2 input",function(){
       n_check:cost_n[i],
       ins_check:cost_ins[i],
       check:cost_foc[i],
-      per_cost:''
+      per_cost:'',
+      cost_ins:'',
+      cost_no_s:''
     })
   }
 
@@ -867,11 +869,11 @@ if(s1_input!==s2_input){
   div+="<div id='ex_cost_";
   div+=i+1;
   div+="' class='collapse'>";
-  div+=`<div class=""></div><span class="check1 hide">강사비용지원 체크 시</span>
+  div+=`<div><span class="check1 hide">강사비용지원 체크 시</span>
             <span class="check2 hide">공동비용지원 체크 시</span>
-            <span class="check3 hide">공동비용, 강사비용지원 체크 시</span>`
+            <span class="check3 hide">공동비용, 강사비용지원 체크 시</span></div>`
 
-  div+=`<div>1인 비용</div>
+  div+=`<div class="ex_cost_detail"><div>1인 비용</div>
 
             
             <span>= 단가 x 횟수</span>
@@ -930,7 +932,7 @@ if(s1_input!==s2_input){
 
 
 
-        </div>`
+        </div></div>`
   div+='<div class="accordion-toggle" data-toggle="collapse" data-target="#ex_cost_';
   div+=i+1;
   div+='">1인 비용 = <text class="cost2"></text><text class="currency2"></text>';
@@ -1047,13 +1049,134 @@ function remove_div_s2(obj){
 
 
 
-/** Step 2 -> Step 3**/
+// /** Step 2 -> Step 3**/
+// function s2_to_s3(){
+//   var s2_input = $('#step2 .cost_name').get().map(function(el) { return el.value });
+//   /**cost_ins : 강사 할인 비용 입력 **/
+//   /**cost_no_s : 교육생 미지원 강사 활동 비용 **/
+//   var cost_ins="";
+//   var cost_no_s="";
+
+//   /**강사 할인 비용**/
+//   for(i=0;i<s2_input.length;i++){
+//   var li="";
+//   li+=`<li>
+//             <label class="cost_checkbox_container">`
+//   li+=s2_input[i];
+//   li+=`<input type="checkbox">
+//               <span class="cost_checkmark"></span>
+//             </label>
+            
+//             <div class="custom hide">
+//               <input type="number" placeholder="0" value="`
+//   li+=30000;
+//   li+=`"><span class="c_text">`
+//   li+=`엔`;
+//   li+=`</span><div>일반 가격 : 20,300엔</div></div></li>`
+
+//   cost_ins = cost_ins + li;
+// }
+
+//   /**교육생 미지원 강사 활동 비용**/
+//   for(i=0;i<s2_input.length;i++){
+//   li=`<li>
+//   <label class="cost_checkbox_container">`
+//   li+=s2_input[i];
+//   li+=`<input type="checkbox">
+//         <span class="cost_checkmark"></span>
+//         </label>
+//         <div class="custom hide">
+//           <div>2,500엔 x 3박 = 7,500엔</div>
+//         </div>
+//       </li>`
+//   cost_no_s +=li;
+// }
+
+
+// /**Step 3 복사**/
+//   $('#cost_ins ul').html(cost_ins);
+//   $('#cost_no_s ul').html(cost_no_s);
+// }
+
+
+
+// function s2_to_s3(){
+//   var s2_input = $('#step2 .cost_name').get().map(function(el) { return el.value });
+//   var cost_ins="";
+//   var cost_no_s="";
+
+//   /**강사 할인 비용**/
+//   for(i=0;i<s2_input.length;i++){
+//   var li="";
+//   li+=`<li>
+//             <label class="cost_checkbox_container">`
+//   li+=s2_input[i];
+//   li+=`<input type="checkbox">
+//               <span class="cost_checkmark"></span>
+//             </label>
+            
+//             <div class="custom">
+//               <div>
+//               <text>`
+//   li+=cost_arr[i].p1;
+//   li+=`</text>
+//               <text>`
+//               li+=cost_arr[i].currency;
+//               li+=`</text>
+//               <text> x </text>
+//               <text>`
+//               li+=cost_arr[i].p2;
+//               li+=`</text>
+//               <text>`
+//               li+=cost_arr[i].unit;
+//               li+=`</text>
+//               <text> | </text>
+//               <text>1인 비용 : </text>
+//               <text>`
+//               li+=document.getElementsByClassName("cost2")[i].innerText;
+//               li+=cost_arr[i].currency;
+//               li+=`</text>
+
+//             </div>
+//            <div>`
+
+
+// if(cost_arr[i].check=="true"){
+//   li+=`<span class="label label-default hide">FOC 미적용</span>
+//        <span class="label">FOC 적용</span>`
+// }else{
+//   li+=`<span class="label label-default">FOC 미적용</span>
+//        <span class="label hide">FOC 적용</span>`
+// }
+
+// if(cost_arr[i].ins_check){
+//   li+=`<span class="label label-default hide">개인 비용</span>
+//         <span class="label">공동 비용</span>`
+// }else{
+//   li+=`<span class="label label-default">개인 비용</span>
+//         <span class="label hide">공동 비용</span>`
+// }
+
+// if(cost_arr[i].n_check){
+//   li+=`<span class="label label-default hide">강사비용 미포함</span>
+//        <span class="label">강사비용 포함</span>`
+// }else{
+//   li+=`<span class="label label-default">강사비용 미포함</span>
+//        <span class="label hide">강사비용 포함</span>`
+// }
+// li+=`</div>`
+ 
+//   cost_ins = cost_ins + li;
+// }
+
+
+
+
+
+
 function s2_to_s3(){
   var s2_input = $('#step2 .cost_name').get().map(function(el) { return el.value });
-  /**cost_ins : 강사 할인 비용 입력 **/
-  /**cost_no_s : 교육생 미지원 강사 활동 비용 **/
   var cost_ins="";
-  var cost_no_s="";
 
   /**강사 할인 비용**/
   for(i=0;i<s2_input.length;i++){
@@ -1061,40 +1184,160 @@ function s2_to_s3(){
   li+=`<li>
             <label class="cost_checkbox_container">`
   li+=s2_input[i];
-  li+=`<input type="checkbox">
-              <span class="cost_checkmark"></span>
+  li+=`<input type="checkbox"`
+  if(cost_arr[i].cost_ins=="true"){
+    li+=` checked`
+  }
+  li+=`><span class="cost_checkmark"></span>
             </label>
             
-            <div class="custom hide">
-              <input type="number" placeholder="0" value="`
-  li+=30000;
-  li+=`"><span class="c_text">`
-  li+=`엔`;
-  li+=`</span><div>일반 가격 : 20,300엔</div></div></li>`
+            <div class="custom">
+              <div>
+              <text>`
+  li+=cost_arr[i].p1;
+  li+=`</text>
+              <text>`
+              li+=cost_arr[i].currency;
+              li+=`</text>
+              <text> x </text>
+              <text>`
+              li+=cost_arr[i].p2;
+              li+=`</text>
+              <text>`
+              li+=cost_arr[i].unit;
+              li+=`</text>
+              <text> | </text>
+              <text>1인 비용 : </text>
+              <text>`
+              li+=document.getElementsByClassName("cost2")[i].innerText;
+              li+=cost_arr[i].currency;
+              li+=`</text>
 
+            </div>
+           <div class="cost_ins_check">`
+
+
+if(cost_arr[i].check=="true"){
+  li+=`<span class="label label-default hide">FOC 미적용</span>
+       <span class="label">FOC 적용</span>`
+}else{
+  li+=`<span class="label label-default">FOC 미적용</span>
+       <span class="label hide">FOC 적용</span>`
+}
+
+if(cost_arr[i].ins_check){
+  li+=`<span class="label label-default hide">개인 비용</span>
+        <span class="label">공동 비용</span>`
+}else{
+  li+=`<span class="label label-default">개인 비용</span>
+        <span class="label hide">공동 비용</span>`
+}
+
+if(cost_arr[i].n_check){
+  li+=`<span class="label label-default hide">강사비용 미포함</span>
+       <span class="label">강사비용 포함</span>`
+}else{
+  li+=`<span class="label label-default">강사비용 미포함</span>
+       <span class="label hide">강사비용 포함</span>`
+}
+li+=`</div>`
+ 
   cost_ins = cost_ins + li;
 }
 
-  /**교육생 미지원 강사 활동 비용**/
-  for(i=0;i<s2_input.length;i++){
-  li=`<li>
-  <label class="cost_checkbox_container">`
-  li+=s2_input[i];
-  li+=`<input type="checkbox">
-        <span class="cost_checkmark"></span>
-        </label>
-        <div class="custom hide">
-          <div>2,500엔 x 3박 = 7,500엔</div>
-        </div>
-      </li>`
-  cost_no_s +=li;
-}
-
-
 /**Step 3 복사**/
   $('#cost_ins ul').html(cost_ins);
-  $('#cost_no_s ul').html(cost_no_s);
+
 }
+
+
+
+
+
+$(document).on("change","#step3 #cost_ins input",function(){
+  
+var cost_ins=$('#step3 #cost_ins .cost_checkbox_container').children('input').get().map(function(el) { return el.checked })
+var cost_no_s='';
+var s3='#s3_cost_';
+console.log(cost_ins);
+for(i=0;i<cost_ins.length;i++){
+
+  var div='';
+  if(cost_ins[i]){
+    cost_arr[i].cost_ins="true";
+    console.log(cost_arr);
+    div+=`<div class="input_cost">`;
+    div+=document.getElementsByClassName("cost_ins_check")[i].innerHTML;
+    div+=`<div class="input_cost_name">`
+    div+=cost_arr[i].name;
+    div+=`</div>
+
+            <div class="cost_p1">
+              <input type="number" value="`;
+    div+=cost_arr[i].p1;
+    div+=`">
+              <span class="cost_ins_unit">`
+              div+=cost_arr[i].currency;
+              div+=`</span>
+            </div>
+
+            <span>X</span>
+            <text>`
+            div+=cost_arr[i].p2;
+            div+=`</text>
+            <text>`
+            div+=cost_arr[i].unit;
+
+
+          div+=`</text>
+
+          </div><!-- input cost-->
+
+
+
+        <div class="ex_cost">
+          <div id="s3_cost_`
+          div+=i;
+          div+=`" class="collapse">
+            <div>`
+            div+=document.getElementsByClassName("ex_cost_detail")[i].innerHTML;
+            div+=`</div>
+          </div>
+
+          <div class="accordion-toggle" data-toggle="collapse" data-target="#s3_cost_`
+          div+=i;
+          div+=`">1인 실지출 = <text class="p_real_cost">`
+          div+=cost_arr[i].per_cost;
+          div+=`</text>`
+          div+=cost_arr[i].currency;
+          div+=`
+            <text class="cost2"></text>
+            <text class="currency2"></text>
+            <i><img src="../resources/img/ic-arrow-ltr.svg" class="arrow-bottom"></i>
+          </div>
+        </div>`
+
+        cost_no_s+=div;
+  }else{
+    cost_arr[i].cost_ins="false";
+    console.log(cost_arr);
+  }
+  $('#cost_no_s_list').html(cost_no_s);
+}
+
+
+})
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1251,14 +1494,14 @@ function remove_div_s3(obj){
 
 /** Step 3 - radio 체크 시 div on/off **/
 
-$(document).on("change","#step3 .cost_checkbox_container input",function(){
-  var div= $(this).closest("label").next();
-    if($(this).is(":checked")) {
-        div.removeClass("hide");
-    } else {
-        div.addClass("hide");
-    }
-})
+// $(document).on("change","#step3 .cost_checkbox_container input",function(){
+//   var div= $(this).closest("label").next();
+//     if($(this).is(":checked")) {
+//         div.removeClass("hide");
+//     } else {
+//         div.addClass("hide");
+//     }
+// })
 
 
 
