@@ -4078,7 +4078,8 @@ div.custom div{
 
 
 #step2 .s2_p_cost,
-#step2 #s2_sum_cost{
+#step2 #s2_sum_cost,
+#step3 #s3_sum_cost{
   padding-left:16px;
   padding-right:16px;
   padding-top:24px;
@@ -4088,13 +4089,15 @@ div.custom div{
 }
 
 #step2 .s2_p_cost div:first-child,
-#step2 #s2_sum_cost div:first-child{
+#step2 #s2_sum_cost div:first-child,
+#step3 #s3_sum_cost div:first-child{
   font-size:14px;
   color:#000000;
   font-weight:bold;
 }
 #step2 .s2_p_cost div:last-child,
-#step2 #s2_sum_cost div:last-child{
+#step2 #s2_sum_cost div:last-child,
+#step3 #s3_sum_cost div:last-child{
   color:#000000;
 }
 
