@@ -67,6 +67,7 @@ for(i=0;i<cost_arr.length;i++){
 
  $('#step2 .cost').eq(i).text(cost);
  $('#step2 .cost2').eq(i).text(cost);
+
 }
 
 
@@ -81,7 +82,7 @@ $('#s2_p_name text:first-child').text(cost_arr[0].name);
     c_name+=cost_arr[i].name;
     c_name+=`</text>`;
 
-    c_per_cost+=`<text> + </text><text>`;
+    c_per_cost+=`<text> + </text><text class="ex_per_cost">`;
     c_per_cost+=document.getElementsByClassName("cost2")[i].innerText;
     c_per_cost+=`</text><text>`;
     c_per_cost+=cost_arr[i].currency;
@@ -201,21 +202,25 @@ $('#s2_p_cal text:first-child').html('= ');
 
 
 $('#step2 #p_cost').html(t_cost); //예상 총 수입 : 교육생 1인 비용
-$('#step2 #t_cur').html(currency);//예상 총 수입 : 기본 통화
+$('#step2 .t_cur').html(currency);//예상 총 수입 : 기본 통화
+$('#step3 .t_cur').html(currency);//예상 총 수입 : 기본 통화
 $('#step2 #total_c text').eq(1).html(currency);
 var bgn_n=$('#step1 #cost_member input').get().map(function(el) {return el.value});
   $('#step2 .bgn_n').text(cost_ins_n[1]);
+  $('#step3 .bgn_n').text(cost_ins_n[1]);
   $('#step2 .ins_n').text(cost_ins_n[0]);
 var total_cost=parseInt(t_cost)*parseInt(bgn_n[1]);
 
 $('#step2 #total_c text:first-child').html(total_cost);
 
-});
+
+
+
+
 
 
 
 //계산식 변경 : 공동 비용, 강사 포함 비용 
-$(document).on("change","#step2 .cost_check_box_1 input",function(){
   var cost_n=$('.cost_n input').get().map(function(el) { return el.checked});
   var cost_ins=$('.cost_ins input').get().map(function(el) {return el.checked});
   var c_check_1=$('.ex_cost .collapse .check1');
@@ -281,10 +286,85 @@ $(document).on("change","#step2 .cost_check_box_1 input",function(){
 
     $('#step2 .cost').eq(i).text(cost);
     $('#step2 .cost2').eq(i).text(cost);
+    $('#step2 #s2_p_cal .ex_per_cost').eq(i).text(cost);
     cost_arr[i].per_cost=cost;
   }
+});
 
-})
+
+
+// //계산식 변경 : 공동 비용, 강사 포함 비용 
+// $(document).on("change","#step2 input",function(){
+//   var cost_n=$('.cost_n input').get().map(function(el) { return el.checked});
+//   var cost_ins=$('.cost_ins input').get().map(function(el) {return el.checked});
+//   var c_check_1=$('.ex_cost .collapse .check1');
+//   var c_check_2=$('.ex_cost .collapse .check2');
+//   var c_check_3=$('.ex_cost .collapse .check3');
+//   var e="#ex_cost_"
+//   var cost_ins_n=$('#step1 #cost_member input').get().map(function(el) {return el.value});
+  
+//   for(i=0;i<=cost_n.length;i++){
+
+//     var check_1=$(e+(i+1)+' .check_1');
+//     var check_2=$(e+(i+1)+' .check_2');
+//     var check_3=$(e+(i+1)+' .check_3');
+//     var cost=''
+//     /**모두 클릭**/
+//     if((cost_n[i])&&(cost_ins[i])){
+//       c_check_1.eq(i).addClass('hide');
+//       c_check_2.eq(i).addClass('hide');
+//       c_check_3.eq(i).removeClass('hide');
+
+//       check_1.addClass('hide');
+//       check_2.addClass('hide');
+//       check_3.removeClass('hide');
+    
+//       cost=parseInt(parseInt(cost_arr[i].p1)*parseInt(cost_arr[i].p2)/(parseInt(cost_ins_n[0])+parseInt(cost_ins_n[1])));
+      
+
+//     }else if((!cost_n[i])&&(cost_ins[i])){
+//       /**강사비용지원만 체크**/
+//       c_check_1.eq(i).removeClass('hide');
+//       c_check_2.eq(i).addClass('hide');
+//       c_check_3.eq(i).addClass('hide');
+
+//       check_1.removeClass('hide');
+//       check_2.addClass('hide');
+//       check_3.addClass('hide');
+//        cost=parseInt(parseInt(cost_arr[i].p1)*parseInt(cost_arr[i].p2)/parseInt(cost_ins_n[1]));
+//     }else if((cost_n[i])&&(!cost_ins[i])){
+//       /**공동비용지원 체크**/
+//       c_check_1.eq(i).addClass('hide');
+//       c_check_2.eq(i).removeClass('hide');
+//       c_check_3.eq(i).addClass('hide');
+
+
+//       check_1.addClass('hide');
+//       check_2.removeClass('hide');
+//       check_3.addClass('hide');
+//       cost=parseInt(parseInt(cost_arr[i].p1)*parseInt(cost_arr[i].p2)/parseInt(cost_ins_n[1])*(parseInt(cost_ins_n[1])+1));
+//     }
+
+//     else{
+//       /**모두 미 체크시**/
+//       c_check_1.eq(i).addClass('hide');
+//       c_check_2.eq(i).addClass('hide');
+//       c_check_3.eq(i).addClass('hide');
+
+//       check_1.addClass('hide');
+//       check_2.addClass('hide');
+//       check_3.addClass('hide');
+//       cost=parseInt(parseInt(cost_arr[i].p1)*parseInt(cost_arr[i].p2));
+//     }
+
+
+//     $('#step2 .cost').eq(i).text(cost);
+//     $('#step2 .cost2').eq(i).text(cost);
+//     $('#step2 #s2_p_cal .ex_per_cost').eq(i).text(cost);
+//     cost_arr[i].per_cost=cost;
+//   }
+
+// })
 
 
 //Step2 -> Step3 
@@ -365,7 +445,6 @@ function s2_to_s3(){
     $('#step3 #cost_no_s .actual_box').eq(i).html(actual_cost_box);
   }
  
-
 
 }
 
