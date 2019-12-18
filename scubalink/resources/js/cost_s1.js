@@ -91,6 +91,7 @@ $(document).on("change","#step1 #check_currency input",function(){
   }
 }
 $('#step2 .cost_p1 select').html(text);
+$('#step3 .c_select select').html(text);
 });
 
 //강사 수, 교육생 수 입력 시 Step2에 반영

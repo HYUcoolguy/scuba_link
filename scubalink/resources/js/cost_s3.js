@@ -104,13 +104,11 @@ $('#cost_no_s_list').html(cost_no_s);
 
 
 //Step3, 실지출 비용 입력 시 값 조정
-$(document).on("change","#step3 #cost_no_s_list input",function(){
+$(document).on("change","#step3 input",function(){
 var cost_ins_n=$('#step1 #cost_member input').get().map(function(el) {return el.value});
 var real_cost=$('#step3 #cost_no_s_list input').get().map(function(el) {return el.value});
 var actual_check=$('#step3 #cost_ins .cost_checkbox_container').children('input').get().map(function(el) { return el.checked })
 var s3_t_cost=0;//교육생 1인 실지출
-
-
 
 
 //환율 계산 : 각 통화끼리 합산 후, 환율 조정
@@ -224,7 +222,163 @@ var s3_t_cost=0;//교육생 1인 실지출
 
 $("#step3 #actual_t_cost").text(t_cost);
 
+
+
+
+var extra_c_name=$('#step3 .c_list input.cost_name').get().map(function(el) {return el.value});
+	var extra_c_cost=$('#step3 .c_list .c_select input').get().map(function(el) {return el.value});
+	var extra_c_currency=$('#step3 .c_list select').get().map(function(el) {return el.value});
+var cost_ins_n=$('#step1 #cost_member input').get().map(function(el) {return el.value});
+	var c_krw=0;
+  	var c_usd=0;
+  	var c_jpy=0;
+  	var c_php=0;
+  	var c_eur=0;
+  	
+  	var text=''
+	//같은 통화끼리 합산
+  	for(i=0;i<extra_c_name.length;i++){
+  	text+=" + ";
+  	text+=extra_c_cost[i];
+
+
+    switch(extra_c_currency[i]){
+      case("원") :
+      c_krw+=parseInt(extra_c_cost[i]);
+      text+="원";
+      break;
+      case("달러") :
+      c_usd+=parseInt(extra_c_cost[i]);
+      text+="달러";
+      break;
+      case("엔") :
+      c_jpy+=parseInt(extra_c_cost[i]);
+      text+="엔";
+      break;
+      case("페소") :
+      c_php+=parseInt(extra_c_cost[i]);
+      text+="페소";
+      break;
+      case("유로") :
+      c_eur+=parseInt(extra_c_cost[i]);
+      text+="유로";
+      break;
+    }
+  }
+  	$("#step3 #s3_sum_cost #extra_cost").html(text);
+
+
+    c_usd*=parseInt($('#check_currency .custom input').eq(0).val()) || 0;
+    c_jpy*=parseInt($('#check_currency .custom input').eq(1).val())/100  || 0;
+    c_php*=parseInt($('#check_currency .custom input').eq(2).val())  || 0;
+    c_eur*=parseInt($('#check_currency .custom input').eq(3).val())  || 0;
+
+    extra_cost=parseInt(c_krw)+parseInt(c_usd)+parseInt(c_jpy)+parseInt(c_php)+parseInt(c_eur);
+  //최종에 기본 통화로 계산/표시
+  var currency=$("#c_main_cur select").val();
+  $('#step3 #s3_f_cur').html(currency);
+  switch(currency){
+    case("원"):
+      extra_cost=parseInt(extra_cost);
+      break;
+    case("달러"):
+      extra_cost=parseInt(parseInt(extra_cost)/parseInt($('#check_currency .custom input').eq(0).val()));
+      break;
+    case("엔"):
+      extra_cost=parseInt(parseInt(extra_cost)/parseInt($('#check_currency .custom input').eq(1).val())*100);
+      break;
+    case("페소"):
+      extra_cost=parseInt(parseInt(extra_cost)/parseInt($('#check_currency .custom input').eq(2).val()));
+    case("유로"):
+      extra_cost=parseInt(parseInt(extra_cost)/parseInt($('#check_currency .custom input').eq(3).val()));
+      break;
+  }
+  console.log(extra_cost);
+
+  var s3_f_cost=parseInt(t_cost)*parseInt(cost_ins_n[1])+parseInt(extra_cost);
+  $('#step3 #s3_f_cost').html(s3_f_cost);
+
 })
+
+
+
+
+/*
+//추가 지출 처리
+$(document).on("change","#step3 .c_list input",function(){
+	
+	var extra_c_name=$('#step3 .c_list input.cost_name').get().map(function(el) {return el.value});
+	var extra_c_cost=$('#step3 .c_list .c_select input').get().map(function(el) {return el.value});
+	var extra_c_currency=$('#step3 .c_list select').get().map(function(el) {return el.value});
+
+	var c_krw=0;
+  	var c_usd=0;
+  	var c_jpy=0;
+  	var c_php=0;
+  	var c_eur=0;
+  	
+  	var text=''
+	//같은 통화끼리 합산
+  	for(i=0;i<extra_c_name.length;i++){
+  	text+=" + ";
+  	text+=extra_c_cost[i];
+
+
+    switch(extra_c_currency[i]){
+      case("원") :
+      c_krw+=parseInt(extra_c_cost[i]);
+      text+="원";
+      break;
+      case("달러") :
+      c_usd+=parseInt(extra_c_cost[i]);
+      text+="달러";
+      break;
+      case("엔") :
+      c_jpy+=parseInt(extra_c_cost[i]);
+      text+="엔";
+      break;
+      case("페소") :
+      c_php+=parseInt(extra_c_cost[i]);
+      text+="페소";
+      break;
+      case("유로") :
+      c_eur+=parseInt(extra_c_cost[i]);
+      text+="유로";
+      break;
+    }
+  }
+  	$("#step3 #s3_sum_cost #extra_cost").html(text);
+
+
+    c_usd*=parseInt($('#check_currency .custom input').eq(0).val()) || 0;
+    c_jpy*=parseInt($('#check_currency .custom input').eq(1).val())/100  || 0;
+    c_php*=parseInt($('#check_currency .custom input').eq(2).val())  || 0;
+    c_eur*=parseInt($('#check_currency .custom input').eq(3).val())  || 0;
+
+    extra_cost=parseInt(c_krw)+parseInt(c_usd)+parseInt(c_jpy)+parseInt(c_php)+parseInt(c_eur);
+  //최종에 기본 통화로 계산/표시
+  var currency=$("#c_main_cur select").val();
+  switch(currency){
+    case("원"):
+      extra_cost=parseInt(extra_cost);
+      break;
+    case("달러"):
+      extra_cost=parseInt(parseInt(extra_cost)/parseInt($('#check_currency .custom input').eq(0).val()));
+      break;
+    case("엔"):
+      extra_cost=parseInt(parseInt(extra_cost)/parseInt($('#check_currency .custom input').eq(1).val())*100);
+      break;
+    case("페소"):
+      extra_cost=parseInt(parseInt(extra_cost)/parseInt($('#check_currency .custom input').eq(2).val()));
+    case("유로"):
+      extra_cost=parseInt(parseInt(extra_cost)/parseInt($('#check_currency .custom input').eq(3).val()));
+      break;
+  }
+});
+
+*/
+
+
 
 
 /** Step 3 - 비용 추가/삭제 **/

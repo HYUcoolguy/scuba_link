@@ -14,6 +14,38 @@
     <link rel="stylesheet" type="text/css" href="../resources/css/Scubalink_CSS_02.css"/>
 
 
+<style>
+  input[type="range"]::-moz-range-progress {
+  height:10px;
+  border-radius:8px;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    color-stop(1, #A90F00),
+    color-stop(1, #E2E2E2)
+  );
+  background-color: #43e5f7; 
+  outline:none;
+  border:0;
+}
+input[type="range"]::-moz-range-track {  
+  height:10px;
+  border-radius:8px;
+  background-color: #D3D3D3;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    color-stop(1, #D3D3D3),
+    color-stop(1, #D3D3D3)
+  );
+  outline:none;
+  border:0;
+  
+}
+</style>
+
 
    </head>
 
@@ -40,6 +72,9 @@
       <a href="#step4" data-toggle="tab" aria-controls="step4" role="tab" title="Step 4"></a>
     </li>
 
+    <li class="disabled">
+      <a href="#step5" data-toggle="tab" aria-controls="step5" role="tab" title="Step 5"></a>
+    </li>
   </ul>
           
 
@@ -672,12 +707,11 @@
     <text> x </text>
     <text class="bgn_n">2</text>
     <text>명)</text>
-    <text> + </text>
-    <text>원</text>
+    <text id="extra_cost">원</text>
   </div>
   <div>=
-    <text></text>
-    <text>원</text>
+    <text id=s3_f_cost></text>
+    <text id=s3_f_cur>원</text>
   </div>
 </div>
 
@@ -732,6 +766,120 @@
 
        <!--header-->
     <div id="cost_header">
+      <span>수익 조정</span><br>
+      <span class="header_explain">교육생 비용과 수익을 확인하여 조정하세요.</span>
+    </div>
+
+
+     
+ 
+    
+
+      
+        <div class="panel-body">
+    <div>
+      <text style="font-size:14px">1. 교육생 1인 비용과 예상 수익을 확인하세요.</text>
+
+      <div>숙박
+        <span>+ 90,000원</span>
+      </div>
+      
+      <div>다이빙 3회
+        <span>+ 406,000원</span>
+      </div>
+
+      <div>페이팔 수수료
+        <span>+ 16,590원</span>
+      </div>
+
+      <div>할인
+        <span>- 16,200원</span>
+      </div>
+
+      <div>교육생 1인 비용
+        <span>496,390원</span>
+      </div>
+
+    </div>
+
+
+    <div>
+      <div>예상 총 수입
+        <span>2,481,950원</span>
+      </div>
+
+      <div>예상 총 지출
+        <span>- 2,481,950원</span>
+      </div>
+
+      <div>예상 수익
+        <span>0원</span>
+      </div>
+    </div>
+
+
+
+
+
+
+    <div>
+      <text>교육생 1인 비용 또는 예상 수익을 조정하세요.</text>
+
+      <div>교육생 1인 비용</div>
+      <input id="slide-range" type="range" min="0" max="100" step="1" value="100">
+      <div class="input-amount">
+        <input id="input-Amount" name="price" value="100">
+        <span class="unit">$</span>
+      </div>
+
+
+
+
+
+          </div>
+
+
+ </div>
+
+
+
+
+
+
+ 
+
+
+<div class="form_wizard">
+  <button class="col-xs-4 prev-step" type="button">
+    <img src="../resources/img/ic-keyboard-arrow-right-white.svg">
+    이전
+  </button>
+
+  <div class="col-xs-4 mid_cost">
+    총 지출<br>
+    51,000 엔
+  </div>
+
+
+  <button class="col-xs-4 next-step" type="button">
+    다음
+    <img src="../resources/img/ic-keyboard-arrow-right-white.svg">
+  </button>
+</div>  
+
+
+  </div><!-- panel panel-default-->
+
+
+
+
+
+   <!--Step 5-->
+      <div class="tab-pane" role="tabpanel" id="step5">
+
+
+       <!--header-->
+    <div id="cost_header">
       <span>수익계산 : 수입 - 지출 </span><br>
       <span class="header_explain">교육생 1인 비용 조정</span>
     </div>
@@ -744,58 +892,14 @@
     
     <a class="accordion-toggle" data-toggle="collapse" href="#collapseOne">
       <div class="panel-heading">
-      <span>
-        <div style="font-weight:bold">
-        총 수입
-        </div>
-        <div style="font-size:12px">
-        교육생 1인 비용  x 교육생 수
-      </div>
-    </span>
-
-      <span style="float:right;margin-top:-35px">
-        <div style="font-size:14px;color:#145db2;font-weight:bold">
-        256,296엔
-      </div>
-      <div style="font-size:12px">
-          자세한 식<i><img src="../resources/img/ic-arrow-ltr.svg" class="arrow-bottom" style="width:16px"></i>
-        </div>
-      </span>
+   
     </div>
   </a>
     
 
       <div id="collapseOne" class="panel-collapse collapse in">
         <div class="panel-body">
-            교육생 1인 비용 = 51,259 엔
-
-            <ul style="margin-left:16px;margin-top:14px;font-size:12px">
-              <li style="margin-bottom:20px">
-                숙박 = 9,000엔
-                <div style="color:#777777;line-height:1.5;margin-top:5px">
-                  기본비용 = 2,5000엔 x 3박 = 7,500엔<br>
-                  강사포함비용 = 기본비용 + (기본비용/교육생)<br>
-                </div>
-              </li>
-                <li>
-                다이빙 3회 = 40,600엔
-                <div>
-                  기본비용 = 2,5000엔 x 3박 = 7,500엔<br>
-                  강사포함비용 = 기본비용 + (기본비용/교육생)<br>
-                </div>
-              </li>
-
-              <li>
-                다이빙 3회 = 40,600엔
-                <div>
-                  기본비용 = 2,5000엔 x 3박 = 7,500엔<br>
-                  강사포함비용 = 기본비용 + (기본비용/교육생)<br>
-                </div>
-              </li>
-            </ul>
-
-            총 수입 = 교육생 1인 비용  x 교육생 수<br>
-            =51,259엔  x 5명 = 256,296엔
+       
           </div>
 
 
@@ -846,6 +950,20 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
+
+
+<script>
+  $('#slide-range').on('input',function () {
+  
+  var newVal = $(this).val();
+
+  $("#input-Amount").val(newVal);
+});
+$('#input-Amount').on('input', function(){
+  //console.log($(this).val())
+  $('#slide-range').val($(this).val())
+});
+</script>
 <script type="text/javascript" src="../resources/js/Scubalink_js.js"></script>
 <script type="text/javascript" src="../resources/js/cost_s1.js"></script>
 <script type="text/javascript" src="../resources/js/cost_s2.js"></script>
