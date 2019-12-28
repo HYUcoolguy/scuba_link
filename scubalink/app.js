@@ -250,7 +250,7 @@ app.get('/profile_bgn', function(req, res) {
       //  req.body.id = req.session.snsId;
 
       //교육생 id
-      req.body.id = '8524539';
+      req.body.id = '35704899';
         dbAccount.findAccountAllInfo(db, req.body, function(result) {
             res.render('profile_bgn', result.result);
         }, function(result) {

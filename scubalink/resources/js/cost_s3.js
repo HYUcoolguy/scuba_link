@@ -395,3 +395,21 @@ function remove_div_s3(obj){
 $(document).on("change","#step3 input",function(){
 
 });
+
+
+
+function s3_to_s4(){
+  var per_cost='';
+
+  for(i=0;i<cost_arr.length;i++){
+    var text=`<div class="s4_check_cost_arr">`
+    text+=cost_arr[i].name;
+    text+=`<span>+ `
+    text+=cost_arr[i].per_cost;
+    text+=cost_arr[i].currency;
+    text+=`</span></div>`
+
+    per_cost+=text;
+  }
+  $('#s4_check_per_cost').html(per_cost);
+}

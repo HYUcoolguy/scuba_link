@@ -13,39 +13,40 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../resources/css/Scubalink_CSS_02.css"/>
 
-
 <style>
-  input[type="range"]::-moz-range-progress {
-  height:10px;
-  border-radius:8px;
-  background-image: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    color-stop(1, #A90F00),
-    color-stop(1, #E2E2E2)
-  );
-  background-color: #43e5f7; 
-  outline:none;
-  border:0;
-}
-input[type="range"]::-moz-range-track {  
-  height:10px;
-  border-radius:8px;
-  background-color: #D3D3D3;
-  background-image: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    color-stop(1, #D3D3D3),
-    color-stop(1, #D3D3D3)
-  );
-  outline:none;
-  border:0;
-  
-}
-</style>
+  input[type=range] {
+    -webkit-appearance: none; 
+    width: 100%; 
+    height: 4px;
+    background: rgba(20,93,178,0.3); 
+    cursor: pointer;
+    border-radius: 0; /* iOS */
+   transition: background 450ms ease-in;
+  }
 
+  input[type=range]:focus {
+    outline: none; 
+  }
+
+  input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #145db2;
+    border: 1px solid #145db2;
+    border-radius:50%;
+    cursor: pointer;
+  }
+  input[type=range]::-moz-range-thumb{
+    -webkit-appearance: none;
+    width:18px;
+    height:18px;
+    background: #145db2;
+    border: 1px solid #145db2;
+    border-radius:50%;
+    cursor: pointer;
+  }
+</style>
 
    </head>
 
@@ -735,7 +736,7 @@ input[type="range"]::-moz-range-track {
   </div>
 
 
-  <button class="col-xs-4 next-step" type="button">
+  <button class="col-xs-4 next-step" type="button" onclick="s3_to_s4()">
     다음
     <img src="../resources/img/ic-keyboard-arrow-right-white.svg">
   </button>
@@ -777,69 +778,98 @@ input[type="range"]::-moz-range-track {
 
       
         <div class="panel-body">
-    <div>
-      <text style="font-size:14px">1. 교육생 1인 비용과 예상 수익을 확인하세요.</text>
+    <div class="s4_check_cost">
+      <text>1. 교육생 1인 비용과 예상 수익을 확인하세요.</text>
 
-      <div>숙박
-        <span>+ 90,000원</span>
-      </div>
-      
-      <div>다이빙 3회
-        <span>+ 406,000원</span>
-      </div>
 
-      <div>페이팔 수수료
-        <span>+ 16,590원</span>
-      </div>
+      <div id="s4_check_per_cost">
+        <div class="s4_check_cost_arr">숙박
+          <span>+ 90,000원</span>
+        </div>
+        
+        <div class="s4_check_cost_arr">다이빙 3회
+          <span>+ 406,000원</span>
+        </div>
 
-      <div>할인
+        <div class="s4_check_cost_arr">페이팔 수수료
+          <span>+ 16,590원</span>
+        </div>
+     </div>
+
+      <div class="s4_check_cost_control">할인
         <span>- 16,200원</span>
       </div>
 
-      <div>교육생 1인 비용
+      <div class="s4_check_cost_fin">교육생 1인 비용
         <span>496,390원</span>
       </div>
+
+
+
 
     </div>
 
 
-    <div>
-      <div>예상 총 수입
+    <div class="s4_check_cost">
+      <div class="s4_check_cost_arr">예상 총 수입
         <span>2,481,950원</span>
       </div>
 
-      <div>예상 총 지출
+      <div class="s4_check_cost_arr">예상 총 지출
         <span>- 2,481,950원</span>
       </div>
 
-      <div>예상 수익
+      <div class="s4_check_cost_fin">예상 수익
         <span>0원</span>
       </div>
     </div>
 
+</div>
+
+<div class="tour_division"></div>
 
 
 
 
 
-    <div>
-      <text>교육생 1인 비용 또는 예상 수익을 조정하세요.</text>
+    <div id="control_cost">
+      <text>2. 교육생 1인 비용 또는 예상 수익을 조정하세요.</text>
 
-      <div>교육생 1인 비용</div>
-      <input id="slide-range" type="range" min="0" max="100" step="1" value="100">
-      <div class="input-amount">
-        <input id="input-Amount" name="price" value="100">
-        <span class="unit">$</span>
+      <div class="per_cost">교육생 1인 비용</div>
+      <input type="text" placeholder="예) 교육비, 예비비, 할인">
+
+
+      <div class="set_cost">
+      <select>
+        <option>+</option>
+        <option>-</option>
+      </select>
+      
+
+        <input type="number" id="input-Amount" name="price" value="100">
+        <span>원</span>
       </div>
+     
 
+<text class="per_cost">예상 수익</text>
+<div id="expect_cost">
+<input type="number">
+<span>원</span>
+</div>
 
+<input id="slide-range" type="range" min="0" max="500000" step="1" value="0">
+
+<div id="slide-range-text">
+  <text>0</text>
+  <span>|</span>
+  <text>500,000</text>
+</div>
 
 
 
           </div>
 
 
- </div>
 
 
 
@@ -959,10 +989,17 @@ input[type="range"]::-moz-range-track {
 
   $("#input-Amount").val(newVal);
 });
+
 $('#input-Amount').on('input', function(){
   //console.log($(this).val())
   $('#slide-range').val($(this).val())
 });
+
+$('input[type=range]').on('input', function(){
+    var val = $(this).val()/5000;
+    $(this).css('background', 'linear-gradient(to right, #145db2 0%, #145db2 '+ val +'%, rgba(20,93,178,0.3) ' + val + '%, rgba(20,93,178,0.3) 100%)');
+  });
+
 </script>
 <script type="text/javascript" src="../resources/js/Scubalink_js.js"></script>
 <script type="text/javascript" src="../resources/js/cost_s1.js"></script>
