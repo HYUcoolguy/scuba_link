@@ -412,4 +412,10 @@ function s3_to_s4(){
     per_cost+=text;
   }
   $('#s4_check_per_cost').html(per_cost);
+
+
+  $('#step4 .s4_check_cost_fin span').text($('#s2_p_total text')[0].innerText+$('#s2_p_total text')[1].innerText);
+  $('#step4 #s4_check_cost_income span').text($('#total_c text')[0].innerText + $('#total_c text')[1].innerText);
+  $('#step4 #s4_check_cost_expense span').text($('#s3_f_cost')[0].innerText + $('#s3_f_cur')[0].innerText);
+  $('#step4 .s4_check_cost_revenue span').text(parseInt($('#total_c text')[0].innerText)-parseInt($('#s3_f_cost')[0].innerText)+$("#c_main_cur select").val());
 }

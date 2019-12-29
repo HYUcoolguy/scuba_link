@@ -4106,14 +4106,24 @@ div.custom div{
   color:#000000;
 }
 #step4 .s4_check_cost_arr,
-#step4 .s4_check_cost_control{
+#step4 .s4_check_cost_control,
+#step4 #s4_check_cost_income,
+#step4 #s4_check_cost_expense{
   margin-top:4px;
   margin-bottom:4px;
 }
 #step4 .s4_check_cost span{
   float:right;
 }
-#step4 .s4_check_cost_fin{
+#step4 .s4_check_cost_control text{
+  font-size:12px;
+  color:#777777;
+}
+#step4 .s4_check_cost_control{
+  height:16.8px;
+}
+#step4 .s4_check_cost_fin,
+#step4 .s4_check_cost_revenue{
   margin-top:4px;
   margin-bottom:4px;
   font-size:14px;
@@ -4123,7 +4133,9 @@ div.custom div{
   padding-top:6px;
   margin-bottom:16px;
 }
-
+#step4 .s4_check_cost_revenue{
+  color:#145db2;
+}
 #step4 #control_cost{
   padding:16px;
 }
@@ -4190,4 +4202,68 @@ div.custom div{
   float:right;
 }
 
+  input[type=range] {
+    -webkit-appearance: none; 
+    width: 100%; 
+    height: 4px;
+    background: rgba(20,93,178,0.3); 
+    cursor: pointer;
+    border-radius: 0; /* iOS */
+   transition: background 450ms ease-in;
+  }
 
+  input[type=range]:focus {
+    outline: none; 
+  }
+
+  input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #145db2;
+    border: 1px solid #145db2;
+    border-radius:50%;
+    cursor: pointer;
+  }
+  input[type=range]::-moz-range-thumb{
+    -webkit-appearance: none;
+    width:18px;
+    height:18px;
+    background: #145db2;
+    border: 1px solid #145db2;
+    border-radius:50%;
+    cursor: pointer;
+  }
+
+#step5 .s5_check_cost{
+  font-size:12px;
+  color:#777777;
+  background-color:#f4f4f4;
+  padding:16px 0px;
+  margin-bottom:16px;
+}
+#step5 .s5_check_cost_arr,
+.s5_check_cost_control,
+#s5_check_cost_income,
+#s5_check_cost_expense{
+  margin-bottom:10px;
+  padding:0px 16px;
+}
+#step5 .s5_check_cost_arr span,
+.s5_check_cost_control span,
+#s5_check_cost_income span,
+#s5_check_cost_expense span{
+  float:right;
+}
+#step5 #s5_check_cost_revenue,
+#step5 .s5_check_cost_fin{
+  font-size:14px;
+  font-weight:bold;
+  color:#333333;
+  border-top:solid 1px #dddddd;
+  padding:16px 16px 0px 16px;
+}
+#step5 #s5_check_cost_revenue span,
+#step5 .s5_check_cost_fin span{
+  float:right;
+}
