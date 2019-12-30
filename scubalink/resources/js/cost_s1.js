@@ -104,6 +104,7 @@ $(document).on("change","#step1 #cost_member input",function(){
 
 //비용 추가
 function add_div(){
+  var s1_input = $('#step1 .cost_name').get().map(function(el) { return el.value });
   var div = document.createElement('div');
   div.innerHTML = document.getElementById('room_type').innerHTML;
   document.getElementById('field').appendChild(div);
@@ -208,9 +209,9 @@ if(s1_input!==s2_input){
   div+=`<div class="label label-default`
   
   if(cost_arr_s1[i].check==="true"){//FOC 체크 표시
-    div+=`">FOC 할인</div>`
+    div+=`">FOC 적용</div>`
   }else{
-    div+=` hide">FOC 할인</div>`
+    div+=` hide">FOC 적용</div>`
   }
 
   div+=`<div class="s2_div">`
@@ -275,10 +276,10 @@ if(s1_input!==s2_input){
             <text class="cur"></text> 
           
           </div></div></div>`
-  div+='<div class="accordion-toggle" data-toggle="collapse" data-target="#ex_cost_';
+  div+='<div class="accordion-toggle collapsed" data-toggle="collapse" data-target="#ex_cost_';
   div+=i+1;
-  div+='">1인 비용 = <text class="cost2"></text><text class="currency2"></text>';
-  div+='<i><img src="../resources/img/ic-arrow-ltr.svg" class="arrow-bottom"></i></div></div></div>';
+  div+='">1인 비용 = <text class="cost2">0</text><text class="currency2">원</text>';
+  div+='<i><img src="../resources/img/group-16.svg" class="arrow-bottom"></i></div></div></div>';
 
   var s_div = s_div + div;
 }

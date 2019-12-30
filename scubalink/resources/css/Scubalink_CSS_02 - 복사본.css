@@ -1905,8 +1905,8 @@ input:checked + .slider:before {
 .c_list div.panel-body{
   padding-left:16px;
   padding-right:16px;
-  font-size:14px;
-  color:#000000;
+  font-size:12px;
+  color:#333333;
 }
 .c_list div.input_cost{
   border-radius:4px;
@@ -3746,11 +3746,11 @@ input[type="radio"]:checked + label span{
 
 #FOC_list{
   margin-left:16px;
-  margin-top:24px;
+  margin-top:44px;
 }
 #FOC_list div{
-  font-size:14px;
-  color:#000000;
+  font-size:12px;
+  color:#333333;
   margin-bottom:4px;
 }
 #FOC_list ul{
@@ -3806,34 +3806,27 @@ input[type="radio"]:checked + label span{
   padding-right:16px;
   border-top:1px solid #dddddd;
 }
-.ex_cost_detail{
-  color:#777777;
-}
 .ex_cost div:first-child{
   line-height:1.5;
   font-size:12px;
-  color:#777777;
+  color:#333333;
   padding-top:12px;
-}
-#step3 .ex_cost div:first-child{
-  padding-top:5px;
 }
 .ex_cost div.accordion-toggle{
   font-size:14px;
   font-weight:bold;
+  color:#145db2;
   margin-top:16px;
 }
 .ex_cost div.accordion-toggle i img{
+  border:1px solid #aaaaaa;
+  border-radius:100%;
   width:24px;
+  padding:4px;
   position:relative;
   top:-6px;
-  float:right !important;
-  transform:rotate(180deg);
 }
 
-.ex_cost div.collapsed i img{
-  transform:rotate(0deg);
-}
 #check_currency{
   margin-left:16px;
   margin-top:28px;
@@ -3842,7 +3835,7 @@ input[type="radio"]:checked + label span{
 #cost_no_s{
   margin-right:16px;
   margin-left:16px;
-  margin-top:24px;
+  margin-top:44px;
 }
 #check_currency div,
 #cost_ins div{
@@ -4016,7 +4009,6 @@ div.custom div{
   font-size:12px;
   line-height:1.5;
   margin-bottom:0px;
-  font-weight:normal;
 }
 
 
@@ -4083,16 +4075,14 @@ div.custom div{
 #step3 #s3_sum_cost div:first-child{
   font-size:14px;
   color:#000000;
+  font-weight:bold;
 }
 #step2 .s2_p_cost div:last-child,
 #step2 #s2_sum_cost div:last-child,
 #step3 #s3_sum_cost div:last-child{
   color:#000000;
 }
-#step3 .s3_ex_text{
-  font-size:12px;
-  color:#777777;
-}
+
 
 
 #c_main_cur{
@@ -4129,11 +4119,10 @@ div.custom div{
 }
 #step4 .s4_check_cost_control text{
   font-size:12px;
-  color:#cccccc;
+  color:#777777;
 }
 #step4 .s4_check_cost_control{
   height:16.8px;
-  color:#cccccc;
 }
 #step4 .s4_check_cost_fin,
 #step4 .s4_check_cost_revenue{

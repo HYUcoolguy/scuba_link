@@ -244,7 +244,7 @@ $("#step2 #s2_p_total text").eq(0).html(t_cost);
 $("#step2 #s2_p_total text").eq(1).html(currency);
 
 
-
+$("#step2 .mid_cost text").text(t_cost+currency);
 
 
 

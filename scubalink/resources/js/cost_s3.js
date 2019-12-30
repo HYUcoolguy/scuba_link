@@ -74,7 +74,7 @@ for(i=0;i<actual_check.length;i++){
             div+=`</div>
           </div>
 
-          <div class="accordion-toggle" data-toggle="collapse" data-target="#s3_cost_`
+          <div class="accordion-toggle collapsed" data-toggle="collapse" data-target="#s3_cost_`
           div+=i;
           div+=`">1인 실지출 = <text class="p_real_cost">`
           div+=cost_arr[i].per_cost;
@@ -83,7 +83,7 @@ for(i=0;i<actual_check.length;i++){
           div+=`
             <text class="cost2"></text>
             <text class="currency2"></text>
-            <i><img src="../resources/img/ic-arrow-ltr.svg" class="arrow-bottom"></i>
+            <i><img src="../resources/img/group-16.svg"></i>
           </div>
         </div>
         </div>`
@@ -297,7 +297,7 @@ var cost_ins_n=$('#step1 #cost_member input').get().map(function(el) {return el.
 
   var s3_f_cost=parseInt(t_cost)*parseInt(cost_ins_n[1])+parseInt(extra_cost);
   $('#step3 #s3_f_cost').html(s3_f_cost);
-
+  $('#step3 .mid_cost text').html(s3_f_cost+$("#c_main_cur select").val())
 })
 
 
