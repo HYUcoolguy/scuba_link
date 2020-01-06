@@ -407,8 +407,8 @@
         <div class="ex_cost">
           <div id="ex_cost_1" class="collapse">
           	<div>
-          	<span class="check1 hide">강사비용지원 체크 시</span>
-          	<span class="check2 hide">공동비용지원 체크 시</span>
+          	<span class="check1 hide">공동비용지원 체크 시</span>
+          	<span class="check2 hide">강사비용지원 체크 시</span>
           	<span class="check3 hide">공동비용, 강사비용지원 체크 시</span>
           </div>
           <div class="ex_cost_detail">
@@ -417,12 +417,12 @@
             
             <span>= 단가 x 횟수</span>
             <span class="check_1"> /교육생 수</span>
-            <span class="check_2 hide"> +(단가 x 횟수)/교육생 수</span>
-            <span class="check_3 hide"> /(교육생 수 + 강사 수)</span>
+            <span class="check_2 hide"> + (단가 x 횟수) x (강사 수 /교육생 수)</span>
+            <span class="check_3 hide"> /교육생 수</span>
 
 
 
-
+         <!--모두 미 체크시 -->
             <div>=
               <text class="p1"></text>
               <text class="cur"></text>
@@ -430,33 +430,33 @@
               <text class="p2"></text>
               <text class="unit"></text>
 
-
+          <!--공동비용지원 체크-->
               <span class="check_1">
                 <text>/</text>
                 <text class="bgn_n"></text>
                 <text>명</text>
               </span>
 
-
+          <!--강사포함비용 체크-->
               <span class="hide check_2">
-                <text>+</text>
+                <text>+(</text>
                 <text class="p1"></text>
                 <text class="cur"></text>
                 <text>x</text>
                 <text class="p2"></text>
                 <text class="unit"></text>
+                <text>)x(</text>
+                <text class="ins_n"></text>
+                <text>명</text>
                 <text>/</text>
                 <text class="bgn_n"></text>
-                <text>명</text>
+                <text>명)</text>
               </span>
 
-
+            <!--모두 체크시-->
               <span class="hide check_3">
                 <text>/</text>
                 <text class="bgn_n"></text>
-                <text>명</text>
-                <text>+</text>
-                <text class="ins_n"></text>
                 <text>명</text>
               </span>
 
@@ -616,7 +616,7 @@
           <div class="input_cost">
             <div>
 
-              <input type="text" class="cost_name" placeholder="추가 지출 항목 이름">
+              <input type="text" class="cost_name" placeholder="추가 지출 항목 이름" style="background-color:#ffffff;border: solid 1px #979797;padding: .5em .7em;">
 
               <span class="remove_div btn" onclick="remove_div_s3(this)"><img src="../resources/img/ic-close.svg"></span> 
             </div>

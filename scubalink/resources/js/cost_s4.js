@@ -35,7 +35,7 @@ $('#slide-range').on('input',function () {
 });
 
 
-//input : 교육생 1인 비용 조정 시, Step4 값 조정
+//교육생 1인 비용 조정 시, Step4 값 조정
 $('#input-Amount').on('input', function(){
   //console.log($(this).val())
   var newVal=$(this).val();
@@ -46,7 +46,44 @@ $('#input-Amount').on('input', function(){
 
 });
 
+//예상 수익 조정 시, 1인 비용 조정
+$('#step4 #expect_cost input').on('input',function(){
+  var newVal=$(this).val();
+  //예상 수익
+  $('#step4 .s4_check_cost_revenue span').text(newVal+$("#c_main_cur select").val());
 
+  //예상 총 수입
+  var expect_income=parseInt(newVal)+parseInt($('#s3_f_cost')[0].innerText);
+  $('#step4 #s4_check_cost_income span').text(expect_income+$("#c_main_cur select").val());
+
+  //교육생 1인 비용
+  var bgn_n=$('#step1 #cost_member input').get().map(function(el) {return el.value});
+  var per_cost=parseInt(parseInt(expect_income)/parseInt(bgn_n[1]));
+  $('#step4 .s4_check_cost_fin span').text(per_cost+$("#c_main_cur select").val());
+   $('#step4 .mid_cost text').text(per_cost+$("#c_main_cur select").val());
+  //조정 비용
+  var control_cost=parseInt(per_cost)-parseInt($('#s2_p_total text')[0].innerText);
+  var abs_control_cost=Math.abs(control_cost)
+
+  if(control_cost<0){
+    $('#control_cost select option:eq(0)').prop("selected",false);
+    $('#control_cost select option:eq(1)').prop("selected",true);
+    $('.s4_check_cost_control span:last-of-type').text('-'+abs_control_cost)
+  }else{
+    $('#control_cost select option:eq(0)').prop("selected",true);
+    $('#control_cost select option:eq(1)').prop("selected",false);
+    $('.s4_check_cost_control span:last-of-type').text('+'+abs_control_cost)
+  }
+
+  
+  $('.s4_check_cost_control span:first-of-type').text($("#c_main_cur select").val())
+
+  $('#slide-range').val(control_cost);
+  $('.s4_check_cost_control span:last-of-type').text(control_cost);
+  $("#input-Amount").val(abs_control_cost);
+
+  
+})
 
 
 //slide, CSS

@@ -59,7 +59,7 @@ document.getElementById('FOC_ul').innerHTML=FOC_list_sum;
 
 var cur_arr=new Array();
 // 2. 환율 체크 --> select option 생성
-$(document).on("change","#step1 #check_currency input",function(){
+$(document).on("change","#step1 #check_currency input","#step1 select",function(){
   var c_cur=$('#step1 #check_currency .cost_checkbox_container').children('input').get().map(function(el) { 
     if(el.checked==true){ return el.value;}});
 
@@ -79,20 +79,10 @@ $(document).on("change","#step1 #check_currency input",function(){
       currrency:c_val[i-1]
     })
     }
-    //Step2 : select에 선택된 통화 추가
-  var text='';
-  for(i=0;i<c_cur.length;i++){
-    if(c_cur[i]){
-    text+=`<option value="`;
-    text+=c_cur[i];
-    text+=`">`
-    text+=c_cur[i];
-    text+=`</option>`
-  }
-}
-$('#step2 .cost_p1 select').html(text);
-$('#step3 .c_select select').html(text);
+
 });
+
+
 
 //강사 수, 교육생 수 입력 시 Step2에 반영
 $(document).on("change","#step1 #cost_member input",function(){
@@ -191,6 +181,32 @@ function s1_to_s2(){
 
   var s1_input = $('#step1 .cost_name').get().map(function(el) { return el.value });
   var s2_input = $('#step2 .cost_name').get().map(function(el) { return el.value });
+  var c_cur=$('#step1 #check_currency .cost_checkbox_container').children('input').get().map(function(el) { 
+    if(el.checked==true){ return el.value;}});
+  
+
+    //Step2 : select에 선택된 통화 추가
+    var text='';
+    for(i=0;i<c_cur.length;i++){
+      if(c_cur[i]){
+      text+=`<option value="`;
+      text+=c_cur[i];
+      text+=`"`;
+      if(c_cur[i]==$("#c_main_cur select").val()){
+        text+=` selected="selected"`;  
+      }
+      text+=`>`
+      text+=c_cur[i];
+      text+=`</option>`
+    }
+  }
+  $('#step2 .cost_p1 select').html(text);
+  $('#step3 .c_select select').html(text);
+
+
+
+
+
 
 if(s1_input!==s2_input){
   //첫 번째 항목만 별도 처리 : div의 id가 다름
@@ -228,9 +244,9 @@ if(s1_input!==s2_input){
 
   div+=`<div class="ex_cost_detail"><div>1인 비용</div>
         <span>= 단가 x 횟수</span>
-        <span class="check_1"> /교육생 수</span>
-        <span class="check_2 hide"> +(단가 x 횟수)/교육생 수</span>
-        <span class="check_3 hide"> /(교육생 수 + 강사 수)</span>
+            <span class="check_1"> /교육생 수</span>
+            <span class="check_2 hide"> + (단가 x 횟수) x (강사 수 /교육생 수)</span>
+            <span class="check_3 hide"> /교육생 수</span>
 
 
 
@@ -249,25 +265,26 @@ if(s1_input!==s2_input){
           </span>
 
           <span class="hide check_2">
-            <text>+</text>
-            <text class="p1"></text>
-            <text class="cur"></text>
-            <text>x</text>
-            <text class="p2"></text>
-            <text class="unit"></text>
-            <text>/</text>
-            <text class="bgn_n"></text>
-            <text>명</text>
+            <text>+(</text>
+                <text class="p1"></text>
+                <text class="cur"></text>
+                <text>x</text>
+                <text class="p2"></text>
+                <text class="unit"></text>
+                <text>)x(</text>
+                <text class="ins_n"></text>
+                <text>명</text>
+                <text>/</text>
+                <text class="bgn_n"></text>
+                <text>명)</text>
           </span>
 
 
           <span class="hide check_3">
-            <text>/</text>
-            <text class="bgn_n"></text>
-            <text>명</text>
-            <text>+</text>
-            <text class="ins_n"></text>
-            <text>명</text>
+            <span class="hide check_3">
+                <text>/</text>
+                <text class="bgn_n"></text>
+                <text>명</text>
           </span>
 
           <br>

@@ -79,21 +79,12 @@ var c_check_1=$('.ex_cost .collapse .check1');
       check_1.addClass('hide');
       check_2.addClass('hide');
       check_3.removeClass('hide');
-      cost=parseInt(parseInt(cost_arr[i].p1)*parseInt(cost_arr[i].p2)/parseInt(cost_ins_n[1]));
+    
+      cost=parseInt(parseInt(cost_arr[i].p1)*parseInt(cost_arr[i].p2)/(parseInt(cost_ins_n[0])+parseInt(cost_ins_n[1])));
+      
+
     }else if((!cost_n[i])&&(cost_ins[i])){
       /**강사비용지원만 체크**/
-      c_check_1.eq(i).addClass('hide');
-      c_check_2.eq(i).removeClass('hide');
-      c_check_3.eq(i).addClass('hide');
-
-
-      check_1.addClass('hide');
-      check_2.removeClass('hide');
-      check_3.addClass('hide');
-
-      cost=parseInt(parseInt(cost_arr[i].p1)*parseInt(cost_arr[i].p2)*(1+parseInt(cost_ins_n[0])/parseInt(cost_ins_n[1])));
-    }else if((cost_n[i])&&(!cost_ins[i])){
-      /**공동비용지원 체크**/
       c_check_1.eq(i).removeClass('hide');
       c_check_2.eq(i).addClass('hide');
       c_check_3.eq(i).addClass('hide');
@@ -102,7 +93,17 @@ var c_check_1=$('.ex_cost .collapse .check1');
       check_2.addClass('hide');
       check_3.addClass('hide');
       cost=parseInt(parseInt(cost_arr[i].p1)*parseInt(cost_arr[i].p2)/parseInt(cost_ins_n[1]));
+    }else if((cost_n[i])&&(!cost_ins[i])){
+      /**공동비용지원 체크**/
+      c_check_1.eq(i).addClass('hide');
+      c_check_2.eq(i).removeClass('hide');
+      c_check_3.eq(i).addClass('hide');
 
+
+      check_1.addClass('hide');
+      check_2.removeClass('hide');
+      check_3.addClass('hide');
+      cost=parseInt(parseInt(cost_arr[i].p1)*parseInt(cost_arr[i].p2)/parseInt(cost_ins_n[1])*(parseInt(cost_ins_n[1])+1));
     }
 
     else{

@@ -128,13 +128,13 @@ var s3_t_cost=0;//교육생 1인 실지출
     if(actual_check[i]){
 		//모두 클릭
 	    if((cost_arr[i].n_check)&&(cost_arr[i].ins_check)){
-	      cost=parseInt(parseInt(real_cost[i])*parseInt(cost_arr[i].p2)/(parseInt(cost_ins_n[0])+parseInt(cost_ins_n[1])));
+	      cost=parseInt(parseInt(real_cost[i])*parseInt(cost_arr[i].p2)/parseInt(cost_ins_n[1]));
 	    }else if((!cost_arr[i].n_check)&&(cost_arr[i].ins_check)){
 	      //강사비용지원만 체크
-	       cost=parseInt(parseInt(real_cost[i])*parseInt(cost_arr[i].p2)/parseInt(cost_ins_n[1]));
+	       cost=parseInt(parseInt(real_cost[i])*parseInt(cost_arr[i].p2)*(1+parseInt(cost_ins_n[0])/parseInt(cost_ins_n[1])));
 	    }else if((cost_arr[i].n_check)&&(!cost_arr[i].ins_check)){
 	      //공동비용지원 체크
-	      cost=parseInt(parseInt(real_cost[i])*parseInt(cost_arr[i].p2)/parseInt(cost_ins_n[1])*(parseInt(cost_ins_n[1])+1));
+	      cost=parseInt(parseInt(real_cost[i])*parseInt(cost_arr[i].p2)/parseInt(cost_ins_n[1]));
 	    }
 	    else{
 	      //모두 미 체크시
@@ -418,4 +418,7 @@ function s3_to_s4(){
   $('#step4 #s4_check_cost_income span').text($('#total_c text')[0].innerText + $('#total_c text')[1].innerText);
   $('#step4 #s4_check_cost_expense span').text($('#s3_f_cost')[0].innerText + $('#s3_f_cur')[0].innerText);
   $('#step4 .s4_check_cost_revenue span').text(parseInt($('#total_c text')[0].innerText)-parseInt($('#s3_f_cost')[0].innerText)+$("#c_main_cur select").val());
+  $('#step4 .set_cost span').text($("#c_main_cur select").val());
+  $('#step4 #expect_cost span').text($("#c_main_cur select").val());
+
 }
