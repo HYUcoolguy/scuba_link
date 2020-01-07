@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>스쿠버 링크 : 홈</title>
+
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/Scubalink_CSS_02.css">
+
+
+   </head>
+
+
+  <body>
+
+
+
+    <div class="header">
+      <!--현재 페이지-->
+     <span class="logo">투어/교육</span>
+     <!--메뉴 버튼-->
+      <div class="burger_container">
+        <img class="burger_img menu" src="../resources/img/ic-menu.svg">
+      </div>
+      <!-- 검색 버튼-->
+        <span class="search"><img src="../resources/img/search.svg"></span>
+      <span class="plus"><img src="../resources/img/ic-add.svg"></span>
+    </div>
+
+
+    <!--메뉴 클릭 시-->
+
+<div id="overlay"></div>
+    
+    <div class="side-nav">
+      <div class="side-nav-head">
+       </div>
+      
+
+      <ul>
+        <li class="name"> 
+          <span >
+            <img src="../resources/img/profile_default_img.svg" alt="..." class="img-circle">
+          </span>
+
+           <span class="INS_badge">
+              <img src='../resources/img/ic.png'>
+            </span>
+
+
+          <span>
+            <h5>김스쿠</h5>
+            <p class="explain_text">SDI/TDI 강사</p>
+          </span>
+          <img class="arrow_right" src='../resources/img/ic-arrow-ltr.svg'>
+        </li>
+        <li class="none"></li>
+        <li>내 교육생</li>
+        <li>내 자격증</li>
+        <li>알림 설정</li>
+        <li class="none"></li>
+        <li>공지사항</li>
+        <li>문의하기</li>
+        <li>약관 및 정책</li>
+        <li class="none"></li>
+        <li>로그아웃</li>
+      </ul>
+    </div>
+
+    <!--투어/교육 추가 버튼-->
+    <div class="gray_rectangle">
+      <div>
+        <button type="button" class="btn btn-block tour_plus">
+   
+          <span><img src="../resources/img/ic-add-blue.svg"></span>
+          <span id="text_tour_education">투어/교육 추가</span>
+        </button>
+ 
+
+      </div>
+    </div>
+
+
+<!--처음 화면, 콘텐츠가 없을 떄-->
+<!--class의 hidden on/off로 조정 --> 
+<div id="CONTENT_OFF" class="">
+  <div style="margin-top:-12px">
+    강사님 안녕하세요.
+    <br>위 버튼을 눌러
+    <br>새로운 투어/교육 일정을 시작해보세요 
+  </div>
+  <!--아래 회색 배경 -->
+  <div></div>
+</div>
+
+
+
+
+<!--콘텐츠가 있을 때-->
+<!--class의 hidden on/off로 조정 --> 
+<div id="CONTENT_ON" class="hidden">
+<!--home main-->
+  <div class="tour">
+    <div class="tour_head">
+      <!--강사 사진 + 뱃지 -->  
+     <span>
+          <img src="../resources/img/my_profile.jpg" alt="..." class="img-circle">
+      </span>
+
+
+         <span class="INS_badge">
+              <img src='../resources/img/ic.png'>
+            </span>
+
+      <span>
+        <!--강사 이름-->
+          <h5>김스쿠</h5>
+        <!--강사 이메일-->
+          <p class="explain_text">SDI/TDI 강사</p>
+      </span>
+      
+    </div>
+
+    <div class="tour_image">
+      <!--썸네일 이미지-->
+      <img src="../resources/img/sea.png" alt="...">
+    </div>
+
+    <div class="tour_bar tour_uncomplete">
+      <!--모집 중  인원-->
+      <span class="tour_bar_text_left"><p>2/4 모집 중</p></span>
+      <!--자세히 보기-->
+       
+       <span class="right"><img src="../resources/img/ic-keyboard-arrow-right-white.svg"></span>
+       <span class="tour_bar_text_right"><p>자세히 보기</p></span>
+     </div>
+
+     <div class="tour_contents">
+      <div class="tour_contents_when">
+        <!--투어 일시-->
+        <h4>10.17금~10.21일 / 해양실습</h4>
+      </div>
+      <div class="tour_contents_where">
+    
+        <span><img src="../resources/img/ic-map-marker.svg"></span>
+        <!--투어 장소-->
+        <span>강원도 동해 ○○○리조트</span>
+      </div>
+      <!--투어 설명-->
+      <div class="tour_contents_comment">
+        안전한 교육을 위한 실습단계의 해양 실습, 30만원 기존 교육생도 환영해요!
+      </div>
+      <div class="tour_contents_etc">
+        <!--댓글 수-->
+        <span>댓글 10</span>
+      </div>
+    </div>
+<!--구분선-->
+    <div class="tour_division">
+    </div>
+  </div>
+
+
+   <div class="tour">
+    <div class="tour_head">
+       <!--강사 사진 + 뱃지 --> 
+     <span>
+          <img src="../resources/img/my_profile.jpg" alt="..." class="img-circle">
+      </span>
+
+
+         <span class="INS_badge">
+              <img src='../resources/img/ic.png'>
+            </span>
+
+      <span>
+        <!--강사 이름-->
+          <h5>김스쿠</h5>
+        <!--강사 이메일-->
+          <p class="explain_text">SDI/TDI 강사</p>
+      </span>
+      
+    </div>
+
+    <div class="tour_image">
+      <img src="../resources/img/sea.png" alt="...">
+    </div>
+
+    <div class="tour_bar tour_complete">
+      <span class="tour_bar_text_left"><p>4/4 모집 완료</p></span>
+       <span class="right"><img src="../resources/img/ic-keyboard-arrow-right-white.svg"></span>
+       <span class="tour_bar_text_right"><p>자세히 보기</p></span>
+     </div>
+
+     <div class="tour_contents">
+      <div class="tour_contents_when">
+        <h4>10.17금~10.21일 / 해양실습</h4>
+      </div>
+      <div class="tour_contents_where">
+        <span><img src="../resources/img/ic-map-marker.svg"></span>
+        <span>강원도 동해 ○○○리조트</span>
+      </div>
+      <div class="tour_contents_comment">
+        안전한 교육을 위한 실습단계의 해양 실습, 30만원 기존 교육생도 환영해요!
+      </div>
+      <div class="tour_contents_etc">
+        <span>댓글 10</span>
+      </div>
+    </div>
+
+<!--마지막 여백용 구분 선 -->
+    <div class="tour_division_last">
+    </div>
+  </div>
+</div><!--end of CONTENT_ON-->
+
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+ <script type="text/javascript" src="../resources/js/Scubalink_js.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
+
