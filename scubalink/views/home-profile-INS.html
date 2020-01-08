@@ -10,8 +10,6 @@
     <!-- 합쳐지고 최소화된 최신 CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../resources/css/Scubalink_CSS_02.css">
-
-
    </head>
 
 
@@ -19,18 +17,19 @@
 
 
 
-    <div class="header header_ins">
+     <!--heaer-->
+    <div class="header header_ins" name="myprofile">
       <!--현재 페이지-->
-     <span class="logo">김스쿠 강사</span>
-     <!--메뉴 버튼-->
-      <div class="burger_container">
-        <img class="burger_img menu" src="../resources/img/ic-menu.svg">
-      </div>
-      <!-- 검색 버튼-->
-        <span class="search" style="right:16px"><img src="../resources/img/search.svg"></span>
+      <span class="logo">김스쿠 강사</span>
+      <!--뒤로가기-->
+      <img src="../resources/img/left-arrow.svg" id="back">
+      <!--저장-->
       
-      <!--<span class="plus"><img src="../resources/img/ic-add.svg"></span>-->
-
+      <span class="header_save">공유</span>
+      <!--
+      <span class="header_save hidden">팔로우</span>
+      <span class="header_save header_save_">팔로우중</span>
+    -->
 
       <div id="header_ins_img"><img src="../resources/img/profile_default_img.svg" alt="..." class="img-circle"></div>
       <div id="header_ins_info">
@@ -40,81 +39,51 @@
       </div>
       <div id="header_ins_btn">
         <button>강사 소개</button>
-        <button>교육생 소개</button>
+
+
+        <!--팔로우/팔로우 중 기능을 옮김 -->
+        <button id="btn_follow" class="hidden" style="background-color:#145db2;color:#ffffff">내 강사로 등록</button>
+        <a data-toggle="modal" href="#ins_unfollow"><button class="" style="color:#777777">내 강사</button></a>
+
+        <div class="modal fade" id="ins_unfollow" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <p>내 강사로 등록을 취소하겠습니까?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal">닫기</button>
+                        <button id="btn_unfollow" type="button" data-dismiss="modal">등록 취소</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
       </div>
     </div>
 
 
-    <!--메뉴 클릭 시-->
 
-<div id="overlay"></div>
-    
-    <div class="side-nav">
-      <div class="side-nav-head">
-       </div>
-      
+   <!--
+    <div class="gray_rectangle">
+      <span class="big_img">
+          <img src="../resources/img/my_profile.jpg" alt="..." class="img-circle">
+      </span>
 
-      <ul>
-        <li class="name"> 
-          <span >
-            <img src="../resources/img/profile_default_img.svg" alt="..." class="img-circle">
-          </span>
+      <span class="INS_info">
+          <h5>김스쿠</h5>
+          <p>SDI/TDI 강사</p>
+          <span>투어/교육  <text>35</text></span>
+          <span>팔로우  <text>42</text></span>
+      </span>
 
-           <span class="INS_badge">
-              <img src='../resources/img/ic.png'>
-            </span>
-
-
-          <span>
-            <h5>김스쿠</h5>
-            <p class="explain_text">SDI/TDI 강사</p>
-          </span>
-          <img class="arrow_right" src='../resources/img/ic-arrow-ltr.svg'>
-        </li>
-        <li class="none"></li>
-        <li onclick="location.href='/mybgn';">내 교육생</li>
-        <li onclick="location.href='/license';">내 자격증</li>
-        <li>알림 설정</li>
-        <!-- <li class="none"></li> -->
-        <li onclick="location.href='/notice';">공지사항</li>
-        <li onclick="location.href='/policy';">약관 및 정책</li>
-        <!--
-        <li onclick="sendEmail();">이메일 보내기</li>
-        <li onclick="sendSMS();">문자 보내기</li>
-        -->
-        <!-- <li class="none"></li> -->
-        <li id="btn_logout">로그아웃</li>
-      </ul>
+      <div class="INS_self_info">
+      강사 설명~~~ 강사 설명~~~ 강사 설명~~~ 강사 설명~~~강사 설명~~~ 강사 설명~~~강사 설명~~~ 강사 설명~~~강사 설명~~~ 강사 설명~~~
     </div>
+    </div>
+  -->
 
-    <!--투어/교육 추가 버튼-->
-    
-      <div id="home_tour_plus">
-        <button type="button" class="btn btn-block tour_plus">
-   
-          <!--<span><img src="../resources/img/ic-add.svg" style="filter:invert(1)"></span>-->
-          <span id="text_tour_education">일정 만들기</span>
-        </button>
-      </div>
-
-<!--처음 화면, 콘텐츠가 없을 떄-->
-<!--class의 hidden on/off로 조정 --> 
-<div id="CONTENT_OFF" class="hidden">
-  <div style="margin-top:-12px">
-    강사님 안녕하세요.
-    <br>아래 '일정 만들기' 버튼을 눌러
-    <br>새로운 일정을 시작해보세요 
-  </div>
-  <!--아래 회색 배경 -->
-  <div></div>
-</div>
-
-
-
-
-<!--콘텐츠가 있을 때-->
-<!--class의 hidden on/off로 조정 --> 
-<div id="CONTENT_ON" class="">
 <!--home main-->
   <div class="tour">
     <!--
@@ -175,7 +144,7 @@
       </div>
     </div>
 <!--구분선-->
-    <div class="tour_division">
+    <div class="gray_rectangle tour_division">
     </div>
   </div>
 
@@ -198,7 +167,6 @@
         <!--강사 이메일-->
           <p class="explain_text">SDI/TDI 강사</p>
       </span>
-      
     </div>
 
     <div class="tour_image">
@@ -227,11 +195,10 @@
       </div>
     </div>
 
-<!--마지막 여백용 구분 선 -->
-    <div class="tour_division_last">
+    <div class="gray_rectangle tour_division">
     </div>
   </div>
-</div><!--end of CONTENT_ON-->
+
 
 
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -257,6 +224,6 @@
 
 
 
-
   </body>
 </html>
+

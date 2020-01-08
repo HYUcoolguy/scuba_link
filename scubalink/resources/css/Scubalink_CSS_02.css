@@ -454,7 +454,7 @@ input.InputAddOn-field {
   z-index:1;
   background: #ffffff;
   width: 100%;
-  height:234px;
+  height:50px;
   display: block;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
 }
@@ -493,6 +493,11 @@ input.InputAddOn-field {
 .header_ins #header_ins_btn button:last-of-type{
   margin-left:8px;
 }
+.header_ins #btn_follow{
+  background-color:#145db2;
+  color:#ffffff;
+}
+
 .header .search{
   position:absolute;
   right:55px;
@@ -1446,12 +1451,17 @@ img#my_image{
 }
 
 /**자격증 편집 모달 **/
+.header_ins #ins_unfollow .modal-dialog,
 #certif_delete>.modal-dialog{
   margin:35px;
   position:fixed;
   left:0px;
   right:0px;
   top:148px;
+}
+.header_ins #ins_unfollow .modal-body{
+  padding-top:24px;
+  color:#000000;
 }
 #certif_delete .modal-body{
   padding-left:22px;
@@ -1463,6 +1473,20 @@ img#my_image{
   font-family:NanumBarunGothic;
   line-height:1.43;
   color:#333333;
+}
+.header_ins #ins_unfollow .modal-footer{
+  border:none;
+}
+.header_ins #ins_unfollow .modal-footer button:first-of-type{
+  color:#000000;
+  margin-right:32px;
+  padding:0px;
+  border:none;
+}
+.header_ins #ins_unfollow .modal-footer button:last-of-type{
+  color:#e02020;
+  padding:0px;
+  border:none;
 }
 #certif_delete .modal-footer{
   border-top:0px;
