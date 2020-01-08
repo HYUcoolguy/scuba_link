@@ -4357,3 +4357,31 @@ div.custom div{
 #step5 .s5_check_cost_fin span{
   float:right;
 }
+
+#INS_intro{
+  padding:20px;
+  font-size:14px;
+}
+#INS_intro>div{
+  margin-bottom:32px;
+}
+#INS_intro .INS_intro_title{
+  font-weight:bold;
+  margin-bottom:6px;
+}
+#INS_intro text{
+  line-height:1.43;
+  white-space: pre-line;
+}
+
+#INS_intro span{
+  font-size:12px;
+  color:#777777;
+}
+
+#INS_intro textarea{
+  width:100%;
+  height:54px;
+  border-radius:2px;
+  border:solid 1px #979797;
+}
