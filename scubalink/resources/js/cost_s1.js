@@ -54,6 +54,29 @@ function update_arr(){
     FOC_list_sum+=FOC_list
   }
 document.getElementById('FOC_ul').innerHTML=FOC_list_sum;
+
+
+
+//비용 항목 :입력 시 다음 활성화
+  var check_cost_name=0;
+  for(i=0;i<s1_input.length;i++){
+    if(s1_input[i]==""){
+      check_cost_name+=1;
+    }
+       
+    else{
+      check_cost_name+=0;
+    }
+  }
+
+    if(check_cost_name==0){
+      $('#step1 .next-step').css("background-color","#145db2");
+    }
+    else{
+      $('#step1 .next-step').css("background-color","#cccccc")
+    }
+
+
 };
 
 
@@ -89,6 +112,7 @@ $(document).on("change","#step1 #cost_member input",function(){
   var cost_ins_n=$('#step1 #cost_member input').get().map(function(el) {return el.value});
   $('#step2 .bgn_n').text(cost_ins_n[1]);
   $('#step2 .ins_n').text(cost_ins_n[0]);
+  $('#step2 .all_n').text(parseInt(cost_ins_n[0])+parseInt(cost_ins_n[1]));
 })
 
 
@@ -126,9 +150,6 @@ document.getElementById('FOC_ul').innerHTML=FOC_list_sum;
 }
 
 
-//첫 항목 값 '다이빙'
-$(document).ready(function(){
-  $('#room_type input.cost_name').val("다이빙");});
 
 
 var cost_arr_s1=new Array();
@@ -160,6 +181,8 @@ function update_s1(){
     cost_arr_s1.push({name:s1_input[i], check:"true"});
   }
   else{cost_arr_s1.push({name:s1_input[i], check:"false"});
+
+
   }}}}
 
 
@@ -183,10 +206,11 @@ function s1_to_s2(){
   var s2_input = $('#step2 .cost_name').get().map(function(el) { return el.value });
   var c_cur=$('#step1 #check_currency .cost_checkbox_container').children('input').get().map(function(el) { 
     if(el.checked==true){ return el.value;}});
+  var cost_ins_n=$('#step1 #cost_member input').get().map(function(el) {return el.value});
   
 
-    //Step2 : select에 선택된 통화 추가
-    var text='';
+  //Step2 : select에 선택된 통화 추가
+  var text='';
     for(i=0;i<c_cur.length;i++){
       if(c_cur[i]){
       text+=`<option value="`;
@@ -220,85 +244,84 @@ if(s1_input!==s2_input){
 
   var s_div="";
   for(i=1;i<cost_arr_s1.length;i++){
-  var div ="";
-  div='<div><div class="input_cost">';
-  div+=`<div class="label label-default`
-  
-  if(cost_arr_s1[i].check==="true"){//FOC 체크 표시
-    div+=`">FOC 적용</div>`
-  }else{
-    div+=` hide">FOC 적용</div>`
-  }
+    var div ="";
+    div='<div><div class="input_cost">';
+    div+=`<div class="label label-default`
+    
+    if(cost_arr_s1[i].check==="true"){//FOC 체크 표시
+      div+=`">FOC 적용</div>`
+    }else{
+      div+=` hide">FOC 적용</div>`
+    }
 
-  div+=`<div class="s2_div">`
-  div+=document.getElementById('c_first').getElementsByClassName('s2_div')[0].innerHTML;
-  div+='</div></div>';
+    div+=`<div class="s2_div">`
+    div+=document.getElementById('c_first').getElementsByClassName('s2_div')[0].innerHTML;
+    div+='</div></div>';
 
-  div+="<div class='ex_cost'>";
-  div+="<div id='ex_cost_";
-  div+=i+1;
-  div+="' class='collapse'>";
-  div+=`<div><span class="check1 hide">강사비용지원 체크 시</span>
-            <span class="check2 hide">공동비용지원 체크 시</span>
-            <span class="check3 hide">공동비용, 강사비용지원 체크 시</span></div>`
+    div+="<div class='ex_cost'>";
+    div+="<div id='ex_cost_";
+    div+=i+1;
+    div+="' class='collapse'>";
+    div+=`<div><span class="check1 hide">공동비용지원 체크 시</span>
+              <span class="check2 hide">강사비용지원 체크 시</span>
+              <span class="check3 hide">공동비용, 강사비용지원 체크 시</span></div>`
 
-  div+=`<div class="ex_cost_detail"><div>1인 비용</div>
-        <span>= 단가 x 횟수</span>
-            <span class="check_1"> /교육생 수</span>
-            <span class="check_2 hide"> + (단가 x 횟수) x (강사 수 /교육생 수)</span>
-            <span class="check_3 hide"> /교육생 수</span>
-
-
+    div+=`<div class="ex_cost_detail"><div>1인 비용</div>
+          <span>= 단가 x 횟수</span>
+              <span class="check_1"> /참여자 수</span>
+              <span class="check_2 hide"> + (단가 x 횟수) x 강사 수 /교육생 수</span>
+              <span class="check_3 hide"> /교육생 수</span>
 
 
-        <div>=
-          <text class="p1"></text>
-          <text class="cur"></text>
-          <text> x </text>
-          <text class="p2"></text>
-          <text class="unit"></text>
-
-          <span class="check_1">
-            <text>/</text>
-            <text class="bgn_n"></text>
-            <text>명</text>
-          </span>
-
-          <span class="hide check_2">
-            <text>+(</text>
-                <text class="p1"></text>
-                <text class="cur"></text>
-                <text>x</text>
-                <text class="p2"></text>
-                <text class="unit"></text>
-                <text>)x(</text>
-                <text class="ins_n"></text>
-                <text>명</text>
-                <text>/</text>
-                <text class="bgn_n"></text>
-                <text>명)</text>
-          </span>
 
 
-          <span class="hide check_3">
-            <span class="hide check_3">
-                <text>/</text>
-                <text class="bgn_n"></text>
-                <text>명</text>
-          </span>
+          <div>=
+            <text class="p1"></text>
+            <text class="cur"></text>
+            <text> x </text>
+            <text class="p2"></text>
+            <text class="unit"></text>
 
-          <br>
-            <text> = </text>
-            <text class="cost">40,600</text>
-            <text class="cur"></text> 
-          
-          </div></div></div>`
-  div+='<div class="accordion-toggle collapsed" data-toggle="collapse" data-target="#ex_cost_';
-  div+=i+1;
-  div+='">1인 비용 = <text class="cost2">0</text><text class="currency2">원</text>';
-  div+='<i><img src="../resources/img/group-16.svg" class="arrow-bottom"></i></div></div></div>';
+            <span class="check_1">
+              <text>/</text>
+              <text class="all_n"></text>
+              <text>명</text>
+            </span>
 
-  var s_div = s_div + div;
+            <span class="hide check_2">
+              <text>+(</text>
+                  <text class="p1"></text>
+                  <text class="cur"></text>
+                  <text>x</text>
+                  <text class="p2"></text>
+                  <text class="unit"></text>
+                  <text>)x</text>
+                  <text class="ins_n"></text>
+                  <text>명</text>
+                  <text>/</text>
+                  <text class="bgn_n"></text>
+                  <text>명</text>
+            </span>
+
+
+              <span class="hide check_3">
+                  <text>/</text>
+                  <text class="bgn_n"></text>
+                  <text>명</text>
+            </span>
+
+            <br>
+              <text> = </text>
+              <text class="cost">0</text>
+              <text class="cur"></text> 
+            
+            </div></div></div>`
+    div+='<div class="accordion-toggle collapsed" data-toggle="collapse" data-target="#ex_cost_';
+    div+=i+1;
+    div+='">1인 비용 = <text class="cost2">0</text><text class="currency2">원</text>';
+    div+='<i><img src="../resources/img/group-16.svg" class="arrow-bottom"></i></div></div></div>';
+
+    var s_div = s_div + div;
 }
   //양식 생성
   document.getElementById('c_sibling').innerHTML=s_div;
@@ -310,16 +333,21 @@ if(s1_input!==s2_input){
   //설정된 값이 있을 경우, 값 불러오기
   for(i=0;i<s1_input.length;i++){
     if(cost_arr.length!=0){
+
       $('.cost_p1 input').eq(i).val(cost_arr[i].p1);
       $('.cost_p2 input').eq(i).val(cost_arr[i].p2);
       $('.cost_p1 select').eq(i).val(cost_arr[i].currency);
       $('.cost_p2 select').eq(i).val(cost_arr[i].unit);
+    
     if(cost_arr[i].n_check){
       $('.cost_n input[type="checkbox"]').eq(i).prop('checked',true);
     }
     if(cost_arr[i].ins_check){
       $('.cost_ins input[type="checkbox"]').eq(i).prop('checked',true);
-    }}
+    }
+    ex_calc_cost(i, cost_arr[i]);
+
+  }
 
     //FOC 체크 시, 강사 포함 비용 disabeld 처리
     if(cost_arr_s1[i].check=="true"){
@@ -331,5 +359,115 @@ if(s1_input!==s2_input){
     }else{
       $('.cost_ins input[type="checkbox"]').eq(i).attr('disabled',false);
       $('.cost_ins').eq(i).css("opacity","1.0");
-    }}}}
+    }
 
+    
+  }
+}
+}
+
+
+
+
+//누락된 입력값 체크
+$('#step1 .next-step').click(function(event){
+
+var c_cur=$('#step1 #check_currency .cost_checkbox_container').children('input').get().map(function(el) { 
+    if(el.checked==true){ return el.value;}});
+
+for(i=1;i<c_cur.length;i++){
+  if(c_cur[i]){
+    if($('#check_currency .custom input').eq(i-1).val()==""){
+      $('#check_currency div.custom').eq(i-1).children('div:first-of-type').css("display","block");
+      event.stopImmediatePropagation();
+    }
+    else{
+       $('#check_currency div.custom').eq(i-1).children('div:first-of-type').css("display","none");
+    }
+  }
+}
+
+var s1_input = $('#step1 .cost_name').get().map(function(el) { return el.value });
+
+for(i=0;i<s1_input.length;i++){
+  if(s1_input[i]==""){
+    $('#step1 .name_empty_error').eq(i).css("display","block");
+    event.stopImmediatePropagation();
+  }
+  else{
+    $('#step1 .name_empty_error').eq(i).css("display","none");
+  } 
+}
+
+});
+
+
+
+
+ 
+function ex_calc_cost(i,cost_arr){
+  var cost_ins_n=$('#step1 #cost_member input').get().map(function(el) {return el.value});
+
+  $('#step2 #ex_cost_'+(i+1)+' .p1').text(cost_arr.p1);
+  $('#step2 #ex_cost_'+(i+1)+' .p2').text(cost_arr.p2);
+  $('#step2 #ex_cost_'+(i+1)+' .cur').text(cost_arr.currency);
+  $('#step2 #ex_cost_'+(i+1)+' .unit').text(cost_arr.unit);
+  $('#step2 .ins_n').text(cost_ins_n[0]);
+  $('#step2 .bgn_n').text(cost_ins_n[1]);
+  $('#step2 .all_n').text(parseInt(cost_ins_n[0])+parseInt(cost_ins_n[1]));
+  $('#step2 .currency2').eq(i).html(cost_arr.currency);
+  $('#step2 .cost').eq(i).text(cost_arr.per_cost);
+  $('#step2 .cost2').eq(i).text(cost_arr.per_cost);
+  $('#step2 #s2_p_cal .ex_per_cost').eq(i).text(cost_arr.per_cost);
+
+
+  var c_check_1=$('.ex_cost .collapse .check1');
+  var c_check_2=$('.ex_cost .collapse .check2');
+  var c_check_3=$('.ex_cost .collapse .check3');
+
+  var check_1=$('#ex_cost_'+(i+1)+' .check_1');
+  var check_2=$('#ex_cost_'+(i+1)+' .check_2');
+  var check_3=$('#ex_cost'+(i+1)+' .check_3');
+
+    /**모두 클릭**/
+    if((cost_arr.n_check)&&(cost_arr.ins_check)){
+      c_check_1.eq(i).addClass('hide');
+      c_check_2.eq(i).addClass('hide');
+      c_check_3.eq(i).removeClass('hide');
+
+      check_1.addClass('hide');
+      check_2.addClass('hide');
+      check_3.removeClass('hide');
+    }else if((!cost_arr.n_check)&&(cost_arr.ins_check)){
+      /**강사비용지원만 체크**/
+      c_check_1.eq(i).addClass('hide');
+      c_check_2.eq(i).removeClass('hide');
+      c_check_3.eq(i).addClass('hide');
+
+
+      check_1.addClass('hide');
+      check_2.removeClass('hide');
+      check_3.addClass('hide');
+    }else if((cost_arr.n_check)&&(!cost_arr.ins_check)){
+      /**공동비용지원 체크**/
+      c_check_1.eq(i).removeClass('hide');
+      c_check_2.eq(i).addClass('hide');
+      c_check_3.eq(i).addClass('hide');
+
+      check_1.removeClass('hide');
+      check_2.addClass('hide');
+      check_3.addClass('hide');
+    }
+
+    else{
+      /**모두 미 체크시**/
+      c_check_1.eq(i).addClass('hide');
+      c_check_2.eq(i).addClass('hide');
+      c_check_3.eq(i).addClass('hide');
+
+      check_1.addClass('hide');
+      check_2.addClass('hide');
+      check_3.addClass('hide');
+    }
+  return;
+  };

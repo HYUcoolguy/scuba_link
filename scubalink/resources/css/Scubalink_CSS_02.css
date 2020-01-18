@@ -2018,7 +2018,7 @@ input:checked + .slider:before {
     width: 31px;
     height: 40px;
     padding: 0px;
-    font-size: 12px;
+    font-size: 14px;
     opacity: 0.7;
 }
 #collapseTwo .panel-body div[class="col-xs-12"]{
@@ -3638,7 +3638,7 @@ input[type="radio"]:checked + label span{
 #cost_member div{
   float:left;
   width:100px;
-  margin-right:40px;
+  margin-right:12px;
 }
 #cost_member div:first-child{
   float:none;
@@ -3843,6 +3843,7 @@ input[type="radio"]:checked + label span{
   border:1px solid #979797;
   display:inline-block;
   background-color:#ffffff;
+  border-radius:2px;
 }
 
 .cost_p1 input{
@@ -3860,6 +3861,7 @@ input[type="radio"]:checked + label span{
   border:1px solid #979797;
   display:inline-block;
   background-color:#ffffff;
+  border-radius:2px;
 }
 .cost_p2 input{
   width:62px;
@@ -3882,6 +3884,7 @@ input[type="radio"]:checked + label span{
   padding-left:16px;
   padding-right:16px;
   border-top:1px solid #dddddd;
+  border-radius:4px;
 }
 .ex_cost_detail{
   color:#777777;
@@ -3897,7 +3900,6 @@ input[type="radio"]:checked + label span{
 }
 .ex_cost div.accordion-toggle{
   font-size:14px;
-  font-weight:bold;
   margin-top:16px;
 }
 .ex_cost div.accordion-toggle i img{
@@ -3943,9 +3945,11 @@ div.input_cost{
 .label{
   background-color:#145db2;
   font-weight:normal;
+  margin-right:4px;
 }
 .label-default{
-  background-color:#aaaaaa
+  background-color:#aaaaaa;
+  margin-right:1px;
 }
 .cost_p1 span{
   position: relative;
@@ -3986,6 +3990,9 @@ div.custom{
   width:120px;
   padding-right:25px;
 }
+#check_currency div.custom input::placeholder {
+  color: #999999;
+}
 #check_currency span.c_text,
 #cost_ins span.c_text{
   position:relative;
@@ -3996,6 +4003,11 @@ div.custom{
   font-size:12px;
   color:#777777;
   margin-top:7px;
+}
+#check_currency div.custom div:first-of-type{
+  margin-top:4px;
+  color:#e02020;
+  display:none;
 }
 #cost_ins div.custom div{
   font-size:14px;
@@ -4009,6 +4021,7 @@ div.custom{
 }
 #cost_ins .custom .label-default{
   background-color:#aaaaaa;
+  margin-right:1px;
 }
 
 div.custom div{
@@ -4028,6 +4041,7 @@ div.custom div{
   text-align:left;
   position:fixed;
   bottom:0px;
+  box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.25);
 }
 .form_wizard button.prev-step img,
 .form_wizard #step_1_prev img{
@@ -4043,6 +4057,11 @@ div.custom div{
   position:fixed;
   bottom:0px;
   right:0px;
+  box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.25);
+}
+
+#step1 .form_wizard button.next-step{
+  background-color:#cccccc;
 }
 .form_wizard button.next-step img{
   margin-top:-3px;
@@ -4146,7 +4165,8 @@ div.custom div{
 
 #step2 .s2_p_cost,
 #step2 #s2_sum_cost,
-#step3 #s3_sum_cost{
+#step3 #s3_sum_cost,
+#step3 #s3_actual_per_cost{
   padding-left:16px;
   padding-right:16px;
   padding-top:24px;
@@ -4157,7 +4177,8 @@ div.custom div{
 
 #step2 .s2_p_cost div:first-child,
 #step2 #s2_sum_cost div:first-child,
-#step3 #s3_sum_cost div:first-child{
+#step3 #s3_sum_cost div:first-child,
+#step3 #s3_actual_per_cost div:first-child{
   font-size:14px;
   color:#000000;
 }
@@ -4223,9 +4244,7 @@ div.custom div{
   padding-top:6px;
   margin-bottom:16px;
 }
-#step4 .s4_check_cost_revenue{
-  color:#145db2;
-}
+
 #step4 #control_cost{
   padding:16px;
 }
@@ -4238,6 +4257,12 @@ div.custom div{
 #step4 #control_cost input[type="text"]{
   width:100%;
 }
+
+#step4 #control_cost input[type="text"]::placeholder {
+  color: #999999;
+}
+
+
 #step4 .set_cost{
   margin-top:10px;
   margin-bottom:20px;
@@ -4384,4 +4409,18 @@ div.custom div{
   height:54px;
   border-radius:2px;
   border:solid 1px #979797;
+}
+#step1 .c_list div.name_empty_error{
+  color:#e02020;
+  font-size:12px;
+  margin-top:4px;
+  display:none;
+}
+#step1 #room_type .name_empty_error{
+  margin-top:-12px;
+}
+
+#step2 .c_list .panel-body .input_cost{
+  padding-top:14px;
+  padding-left:20px;
 }

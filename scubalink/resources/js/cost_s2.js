@@ -1,6 +1,4 @@
-
-
-$(document).on("change","#step2 input",function(){
+$(document).on("change","#step2 input, #step2 select",function(){
   var cost_ins_n=$('#step1 #cost_member input').get().map(function(el) {return el.value});
   var cost_p1=$('#step2 .cost_p1 input').get().map(function(el) {return el.value});
   var cost_p2=$('#step2 .cost_p2 input').get().map(function(el) {return el.value});
@@ -101,7 +99,7 @@ var c_check_1=$('.ex_cost .collapse .check1');
       check_1.removeClass('hide');
       check_2.addClass('hide');
       check_3.addClass('hide');
-      cost=parseInt(parseInt(cost_arr[i].p1)*parseInt(cost_arr[i].p2)/parseInt(cost_ins_n[1]));
+      cost=parseInt(parseInt(cost_arr[i].p1)*parseInt(cost_arr[i].p2)/(parseInt(cost_ins_n[0])+parseInt(cost_ins_n[1])));
 
     }
 
@@ -121,10 +119,9 @@ var c_check_1=$('.ex_cost .collapse .check1');
     $('#step2 .cost').eq(i).text(cost);
     $('#step2 .cost2').eq(i).text(cost);
     $('#step2 #s2_p_cal .ex_per_cost').eq(i).text(cost);
-    
+
+
   }
-
-
 
 
 
@@ -150,94 +147,64 @@ $('#s2_p_name text:first-child').text(cost_arr[0].name);
 
 
 
-//환율 계산 : 각 통화끼리 합산 후, 환율 조정
-  var c_krw=0;
-  var c_usd=0;
-  var c_jpy=0;
-  var c_php=0;
-  var c_eur=0;
 
 
-
-//같은 통화끼리 합산
-  for(i=0;i<cost_arr.length;i++){
-    switch(cost_arr[i].currency){
-      case("원") :
-      c_krw+=parseInt(document.getElementsByClassName("cost2")[i].innerText);
-      break;
-      case("달러") :
-      c_usd+=parseInt(document.getElementsByClassName("cost2")[i].innerText);
-      break;
-      case("엔") :
-      c_jpy+=parseInt(document.getElementsByClassName("cost2")[i].innerText);
-      break;
-      case("페소") :
-      c_php+=parseInt(document.getElementsByClassName("cost2")[i].innerText);
-      break;
-      case("유로") :
-      c_eur+=parseInt(document.getElementsByClassName("cost2")[i].innerText);
-      break;
-    }
-  }
-
-  
-    
-    //합산된 통화 화면에 표시
-    var text='= ';  
-    if(c_krw!=0){
-      text+=c_krw;
-      text+='원';
-    }
-    if(c_usd!=0){
-      text+=` + `;
-      text+=c_usd;
-      text+='달러'
-    }
-    if(c_jpy!=0){
-      text+=` + `;
-      text+=c_jpy;
-      text+="엔"
-    }
-    if(c_php!=0){
-      text+=` + `;
-      text+=c_php;
-      text+='페소';
-    }
-    if(c_eur!=0){
-      text+=` + `;
-      text+=c_eur;
-      text+='유로'
-    }
-
-
-    $("#step2 #s2_p_sum").html(text);
-
-
-  $('#check_currency .custom input').eq(0).val()
-    c_usd*=parseInt($('#check_currency .custom input').eq(0).val()) || 0;
-    c_jpy*=parseInt($('#check_currency .custom input').eq(1).val())/100  || 0;
-    c_php*=parseInt($('#check_currency .custom input').eq(2).val())  || 0;
-    c_eur*=parseInt($('#check_currency .custom input').eq(3).val())  || 0;
-
-    t_cost=parseInt(c_krw)+parseInt(c_usd)+parseInt(c_jpy)+parseInt(c_php)+parseInt(c_eur);
-  //최종에 기본 통화로 계산/표시
   var currency=$("#c_main_cur select").val();
-  switch(currency){
+  var s2_p_sum='';
+  var t_cost=0;
+
+  for(i=0;i<cost_arr.length;i++){
+
+    //원화로 먼저 통일
+    switch(cost_arr[i].currency){
     case("원"):
-      t_cost=parseInt(t_cost);
+      var text=parseInt(document.getElementsByClassName("cost2")[i].innerText);
       break;
     case("달러"):
-      t_cost=parseInt(parseInt(t_cost)/parseInt($('#check_currency .custom input').eq(0).val()));
+      var text=parseInt(document.getElementsByClassName("cost2")[i].innerText)*parseInt($('#check_currency .custom input').eq(0).val());
       break;
     case("엔"):
-      t_cost=parseInt(parseInt(t_cost)/parseInt($('#check_currency .custom input').eq(1).val())*100);
+      var text=parseInt(document.getElementsByClassName("cost2")[i].innerText)*parseInt($('#check_currency .custom input').eq(1).val())/100;
       break;
     case("페소"):
-      t_cost=parseInt(parseInt(t_cost)/parseInt($('#check_currency .custom input').eq(2).val()));
-    case("유로"):
-      t_cost=parseInt(parseInt(t_cost)/parseInt($('#check_currency .custom input').eq(3).val()));
+      var text=parseInt(document.getElementsByClassName("cost2")[i].innerText)*parseInt($('#check_currency .custom input').eq(2).val());
       break;
+    case("유로"):
+      var text=parseInt(document.getElementsByClassName("cost2")[i].innerText)*parseInt($('#check_currency .custom input').eq(3).val());
+      break;
+    }
+
+    //기본 통화의 환율 적용
+    switch(currency){
+    case("원"):
+      text=parseInt(text);
+      break;
+    case("달러"):
+      text=parseInt(text)/parseInt($('#check_currency .custom input').eq(0).val());
+      break;
+    case("엔"):
+      text=parseInt(text)/parseInt($('#check_currency .custom input').eq(1).val())*100;
+      break;
+    case("페소"):
+      text=parseInt(text)/parseInt($('#check_currency .custom input').eq(2).val());
+      break;
+    case("유로"):
+      text=parseInt(text)/parseInt($('#check_currency .custom input').eq(3).val());
+      break;
+    }
+
+    s2_p_sum+=`<text> + </text><text>`;
+    s2_p_sum+=parseInt(text);
+    s2_p_sum+=currency;
+    s2_p_sum+=`</text>`
+
+    t_cost+=parseInt(text);
+
   }
+
+$("#step2 #s2_p_sum").html(s2_p_sum);
+$('#step2 #s2_p_sum text:first-child').html('= ');
+
 
 $("#step2 #s2_p_total text").eq(0).html(t_cost);
 $("#step2 #s2_p_total text").eq(1).html(currency);
@@ -267,162 +234,15 @@ var bgn_n=$('#step1 #cost_member input').get().map(function(el) {return el.value
   $('#step2 .bgn_n').text(cost_ins_n[1]);
   $('#step3 .bgn_n').text(cost_ins_n[1]);
   $('#step2 .ins_n').text(cost_ins_n[0]);
+  $('#step2 .all_n').text(parseInt(cost_ins_n[0])+parseInt(cost_ins_n[1]));
 var total_cost=parseInt(t_cost)*parseInt(bgn_n[1]);
 
 $('#step2 #total_c text:first-child').html(total_cost);
 
 
-
-
-
-
-
-
-// //계산식 변경 : 공동 비용, 강사 포함 비용 
-//   var cost_n=$('.cost_n input').get().map(function(el) { return el.checked});
-//   var cost_ins=$('.cost_ins input').get().map(function(el) {return el.checked});
-//   var c_check_1=$('.ex_cost .collapse .check1');
-//   var c_check_2=$('.ex_cost .collapse .check2');
-//   var c_check_3=$('.ex_cost .collapse .check3');
-//   var e="#ex_cost_"
-//   var cost_ins_n=$('#step1 #cost_member input').get().map(function(el) {return el.value});
-  
-//   for(i=0;i<=cost_n.length;i++){
-
-//     var check_1=$(e+(i+1)+' .check_1');
-//     var check_2=$(e+(i+1)+' .check_2');
-//     var check_3=$(e+(i+1)+' .check_3');
-//     var cost=''
-//     /**모두 클릭**/
-//     if((cost_n[i])&&(cost_ins[i])){
-//       c_check_1.eq(i).addClass('hide');
-//       c_check_2.eq(i).addClass('hide');
-//       c_check_3.eq(i).removeClass('hide');
-
-//       check_1.addClass('hide');
-//       check_2.addClass('hide');
-//       check_3.removeClass('hide');
-    
-//       cost=parseInt(parseInt(cost_arr[i].p1)*parseInt(cost_arr[i].p2)/(parseInt(cost_ins_n[0])+parseInt(cost_ins_n[1])));
-      
-
-//     }else if((!cost_n[i])&&(cost_ins[i])){
-//       /**강사비용지원만 체크**/
-//       c_check_1.eq(i).removeClass('hide');
-//       c_check_2.eq(i).addClass('hide');
-//       c_check_3.eq(i).addClass('hide');
-
-//       check_1.removeClass('hide');
-//       check_2.addClass('hide');
-//       check_3.addClass('hide');
-//        cost=parseInt(parseInt(cost_arr[i].p1)*parseInt(cost_arr[i].p2)/parseInt(cost_ins_n[1]));
-//     }else if((cost_n[i])&&(!cost_ins[i])){
-//       /**공동비용지원 체크**/
-//       c_check_1.eq(i).addClass('hide');
-//       c_check_2.eq(i).removeClass('hide');
-//       c_check_3.eq(i).addClass('hide');
-
-
-//       check_1.addClass('hide');
-//       check_2.removeClass('hide');
-//       check_3.addClass('hide');
-//       cost=parseInt(parseInt(cost_arr[i].p1)*parseInt(cost_arr[i].p2)/parseInt(cost_ins_n[1])*(parseInt(cost_ins_n[1])+1));
-//     }
-
-//     else{
-//       /**모두 미 체크시**/
-//       c_check_1.eq(i).addClass('hide');
-//       c_check_2.eq(i).addClass('hide');
-//       c_check_3.eq(i).addClass('hide');
-
-//       check_1.addClass('hide');
-//       check_2.addClass('hide');
-//       check_3.addClass('hide');
-//       cost=parseInt(parseInt(cost_arr[i].p1)*parseInt(cost_arr[i].p2));
-//     }
-
-
-//     $('#step2 .cost').eq(i).text(cost);
-//     $('#step2 .cost2').eq(i).text(cost);
-//     $('#step2 #s2_p_cal .ex_per_cost').eq(i).text(cost);
-//     cost_arr[i].per_cost=cost;
-//   }
 });
 
 
-
-// //계산식 변경 : 공동 비용, 강사 포함 비용 
-// $(document).on("change","#step2 input",function(){
-//   var cost_n=$('.cost_n input').get().map(function(el) { return el.checked});
-//   var cost_ins=$('.cost_ins input').get().map(function(el) {return el.checked});
-//   var c_check_1=$('.ex_cost .collapse .check1');
-//   var c_check_2=$('.ex_cost .collapse .check2');
-//   var c_check_3=$('.ex_cost .collapse .check3');
-//   var e="#ex_cost_"
-//   var cost_ins_n=$('#step1 #cost_member input').get().map(function(el) {return el.value});
-  
-//   for(i=0;i<=cost_n.length;i++){
-
-//     var check_1=$(e+(i+1)+' .check_1');
-//     var check_2=$(e+(i+1)+' .check_2');
-//     var check_3=$(e+(i+1)+' .check_3');
-//     var cost=''
-//     /**모두 클릭**/
-//     if((cost_n[i])&&(cost_ins[i])){
-//       c_check_1.eq(i).addClass('hide');
-//       c_check_2.eq(i).addClass('hide');
-//       c_check_3.eq(i).removeClass('hide');
-
-//       check_1.addClass('hide');
-//       check_2.addClass('hide');
-//       check_3.removeClass('hide');
-    
-//       cost=parseInt(parseInt(cost_arr[i].p1)*parseInt(cost_arr[i].p2)/(parseInt(cost_ins_n[0])+parseInt(cost_ins_n[1])));
-      
-
-//     }else if((!cost_n[i])&&(cost_ins[i])){
-//       /**강사비용지원만 체크**/
-//       c_check_1.eq(i).removeClass('hide');
-//       c_check_2.eq(i).addClass('hide');
-//       c_check_3.eq(i).addClass('hide');
-
-//       check_1.removeClass('hide');
-//       check_2.addClass('hide');
-//       check_3.addClass('hide');
-//        cost=parseInt(parseInt(cost_arr[i].p1)*parseInt(cost_arr[i].p2)/parseInt(cost_ins_n[1]));
-//     }else if((cost_n[i])&&(!cost_ins[i])){
-//       /**공동비용지원 체크**/
-//       c_check_1.eq(i).addClass('hide');
-//       c_check_2.eq(i).removeClass('hide');
-//       c_check_3.eq(i).addClass('hide');
-
-
-//       check_1.addClass('hide');
-//       check_2.removeClass('hide');
-//       check_3.addClass('hide');
-//       cost=parseInt(parseInt(cost_arr[i].p1)*parseInt(cost_arr[i].p2)/parseInt(cost_ins_n[1])*(parseInt(cost_ins_n[1])+1));
-//     }
-
-//     else{
-//       /**모두 미 체크시**/
-//       c_check_1.eq(i).addClass('hide');
-//       c_check_2.eq(i).addClass('hide');
-//       c_check_3.eq(i).addClass('hide');
-
-//       check_1.addClass('hide');
-//       check_2.addClass('hide');
-//       check_3.addClass('hide');
-//       cost=parseInt(parseInt(cost_arr[i].p1)*parseInt(cost_arr[i].p2));
-//     }
-
-
-//     $('#step2 .cost').eq(i).text(cost);
-//     $('#step2 .cost2').eq(i).text(cost);
-//     $('#step2 #s2_p_cal .ex_per_cost').eq(i).text(cost);
-//     cost_arr[i].per_cost=cost;
-//   }
-
-// })
 
 
 //Step2 -> Step3 
@@ -505,7 +325,24 @@ function s2_to_s3(){
 
   for(i=0;i<cost_arr.length;i++)
     cost_arr[i].per_cost=$('#step2 .cost2').eq(i).text();
+
+
+if($('#step3 .cost_p1 input[type="number"]').length==0){
+  //교육생 1인 실지출
+  $('#step3 #s3_actual_per_cost #s3_p_name').html($('#step2 .s2_p_cost #s2_p_name').html());
+  $('#step3 #s3_actual_per_cost #s3_p_cal').html($('#step2 .s2_p_cost #s2_p_cal').html());
+  $('#step3 #s3_actual_per_cost #s3_p_sum').html($('#step2 .s2_p_cost #s2_p_sum').html());
+  $('#step3 #s3_actual_per_cost #s3_p_total').html($('#step2 .s2_p_cost #s2_p_total').html());
+
+//예상 총 지출
+  $("#step3 .actual_t_cost").text($("#step2 #s2_p_total text").eq(0).html());
+  $("#step3 #s3_f_cost").text(parseInt($("#step2 #s2_p_total text").eq(0).html())*parseInt($('#step1 #cost_member input').get().map(function(el) {return el.value})[1]));
 }
+}
+
+
+
+
 
 // Step 2 -> Step 1
 function s2_to_s1(){
@@ -550,4 +387,7 @@ function s2_to_s1(){
 
       document.getElementById('FOC_ul').innerHTML=FOC_list_sum;
     }
-  }
+
+    for(i=0;i<cost_arr.length;i++)
+      cost_arr[i].per_cost=$('#step2 .cost2').eq(i).text();
+  };
