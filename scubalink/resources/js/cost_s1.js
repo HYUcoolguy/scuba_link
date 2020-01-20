@@ -333,7 +333,7 @@ if(s1_input!==s2_input){
   //설정된 값이 있을 경우, 값 불러오기
   for(i=0;i<s1_input.length;i++){
     if(cost_arr.length!=0){
-
+      ex_calc_cost(i, cost_arr[i]);
       $('.cost_p1 input').eq(i).val(cost_arr[i].p1);
       $('.cost_p2 input').eq(i).val(cost_arr[i].p2);
       $('.cost_p1 select').eq(i).val(cost_arr[i].currency);
@@ -345,7 +345,7 @@ if(s1_input!==s2_input){
     if(cost_arr[i].ins_check){
       $('.cost_ins input[type="checkbox"]').eq(i).prop('checked',true);
     }
-    ex_calc_cost(i, cost_arr[i]);
+    
 
   }
 
@@ -355,7 +355,6 @@ if(s1_input!==s2_input){
       $('.cost_ins input[type="checkbox"]').eq(i).prop('checked',false);
       $('.cost_ins').eq(i).css("opacity","0.3");
       cost_arr[i].ins_check=false;
-      console.log(cost_arr[i].ins_check)
     }else{
       $('.cost_ins input[type="checkbox"]').eq(i).attr('disabled',false);
       $('.cost_ins').eq(i).css("opacity","1.0");
@@ -427,19 +426,23 @@ function ex_calc_cost(i,cost_arr){
 
   var check_1=$('#ex_cost_'+(i+1)+' .check_1');
   var check_2=$('#ex_cost_'+(i+1)+' .check_2');
-  var check_3=$('#ex_cost'+(i+1)+' .check_3');
+  var check_3=$('#ex_cost_'+(i+1)+' .check_3');
 
     /**모두 클릭**/
     if((cost_arr.n_check)&&(cost_arr.ins_check)){
+      console.log('1')
       c_check_1.eq(i).addClass('hide');
       c_check_2.eq(i).addClass('hide');
       c_check_3.eq(i).removeClass('hide');
+
 
       check_1.addClass('hide');
       check_2.addClass('hide');
       check_3.removeClass('hide');
     }else if((!cost_arr.n_check)&&(cost_arr.ins_check)){
       /**강사비용지원만 체크**/
+      console.log('2')
+
       c_check_1.eq(i).addClass('hide');
       c_check_2.eq(i).removeClass('hide');
       c_check_3.eq(i).addClass('hide');
@@ -450,6 +453,8 @@ function ex_calc_cost(i,cost_arr){
       check_3.addClass('hide');
     }else if((cost_arr.n_check)&&(!cost_arr.ins_check)){
       /**공동비용지원 체크**/
+      console.log('3')
+
       c_check_1.eq(i).removeClass('hide');
       c_check_2.eq(i).addClass('hide');
       c_check_3.eq(i).addClass('hide');
@@ -460,6 +465,8 @@ function ex_calc_cost(i,cost_arr){
     }
 
     else{
+      console.log('4')
+
       /**모두 미 체크시**/
       c_check_1.eq(i).addClass('hide');
       c_check_2.eq(i).addClass('hide');

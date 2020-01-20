@@ -5,7 +5,16 @@ var actual_check=$('#step3 #cost_ins .cost_checkbox_container').children('input'
 var cost_no_s='';
 var s3='#s3_cost_';
 console.log(actual_check);
-for(i=0;i<actual_check.length;i++){
+//아무것도 체크 안 했을 경우
+if(actual_check.every(x=>!x)){
+  $('#step3 #cost_no_s_list_empty').removeClass("hidden");
+  $('#step3 #cost_no_s_list').addClass("hidden");
+}
+
+else{
+  $('#step3 #cost_no_s_list_empty').addClass("hidden");
+  $('#step3 #cost_no_s_list').removeClass("hidden");
+  for(i=0;i<actual_check.length;i++){
 
   var div='';
   //실지출 check시에만 생성
@@ -16,25 +25,25 @@ for(i=0;i<actual_check.length;i++){
     div+=`<div><div class="input_cost">`;
 
     if(cost_arr[i].check=="true"){
-  		div+=`<div class="actual_box"><span class="label label-default hide">FOC 미적용</span>
-       		  <span class="label">FOC 적용</span>`
-  	}else{
-  		div+=`<div class="actual_box"><span class="label label-default">FOC 미적용</span>
-       		  <span class="label hide">FOC 적용</span>`}
-
-  	if(cost_arr[i].n_check){
-  		div+=`<span class="label label-default hide">개인 비용</span>
-        	 <span class="label">공동 비용</span>`
-  	}else{
-  		div+=`<span class="label label-default">개인 비용</span>
-        	  <span class="label hide">공동 비용</span>`}
-  
-  	if(cost_arr[i].ins_check){
-  		div+=`<span class="label label-default hide">강사비용 미포함</span>
-       		 <span class="label">강사비용 포함</span></div>`
+      div+=`<div class="actual_box"><span class="label label-default hide">FOC 미적용</span>
+            <span class="label">FOC 적용</span>`
     }else{
-  		div+=`<span class="label label-default">강사비용 미포함</span>
-       		  <span class="label hide">강사비용 포함</span></div>`}
+      div+=`<div class="actual_box"><span class="label label-default">FOC 미적용</span>
+            <span class="label hide">FOC 적용</span>`}
+
+    if(cost_arr[i].n_check){
+      div+=`<span class="label label-default hide">개인 비용</span>
+           <span class="label">공동 비용</span>`
+    }else{
+      div+=`<span class="label label-default">개인 비용</span>
+            <span class="label hide">공동 비용</span>`}
+  
+    if(cost_arr[i].ins_check){
+      div+=`<span class="label label-default hide">강사비용 미포함</span>
+           <span class="label">강사비용 포함</span></div>`
+    }else{
+      div+=`<span class="label label-default">강사비용 미포함</span>
+            <span class="label hide">강사비용 포함</span></div>`}
 
 
   
@@ -98,106 +107,15 @@ for(i=0;i<actual_check.length;i++){
 }
 
 $('#cost_no_s_list').html(cost_no_s);
-});
-
-
-
-
-
-function ex_rate(cur, main_cur, num){
-  //원화로 먼저 통일
-    switch(cur){
-    case("원"):
-      var text=parseInt(num);
-      break;
-    case("달러"):
-      var text=parseInt(num)*parseInt($('#check_currency .custom input').eq(0).val());
-      break;
-    case("엔"):
-      var text=parseInt(num)*parseInt($('#check_currency .custom input').eq(1).val())/100;
-      break;
-    case("페소"):
-      var text=parseInt(num)*parseInt($('#check_currency .custom input').eq(2).val());
-      break;
-    case("유로"):
-      var text=parseInt(num)*parseInt($('#check_currency .custom input').eq(3).val());
-      break;
-    }
-
-    //기본 통화의 환율 적용
-    switch(main_cur){
-    case("원"):
-      text=parseInt(text);
-      break;
-    case("달러"):
-      text=parseInt(text)/parseInt($('#check_currency .custom input').eq(0).val());
-      break;
-    case("엔"):
-      text=parseInt(text)/parseInt($('#check_currency .custom input').eq(1).val())*100;
-      break;
-    case("페소"):
-      text=parseInt(text)/parseInt($('#check_currency .custom input').eq(2).val());
-      break;
-    case("유로"):
-      text=parseInt(text)/parseInt($('#check_currency .custom input').eq(3).val());
-      break;
-    }
-
-    return parseInt(text);
 }
-
-
-
-
-
-/** Step 3 - 비용 추가/삭제 **/
-function add_div_s3(){
-  var div = document.createElement('div');
-  div.innerHTML = document.getElementById('c_extra_first').innerHTML;
-  document.getElementById('c_extra_sibling').appendChild(div);
-}
-
-function remove_div_s3(obj){
-  document.getElementById('c_extra_sibling').removeChild(obj.parentNode.parentNode.parentNode);
-}
-
-$(document).on("change","#step3 input",function(){
 
 });
-
-
-
-function s3_to_s4(){
-  var per_cost='';
-
-  for(i=0;i<cost_arr.length;i++){
-    var text=`<div class="s4_check_cost_arr">`
-    text+=cost_arr[i].name;
-    text+=`<span>+ `
-    text+=cost_arr[i].per_cost;
-    text+=cost_arr[i].currency;
-    text+=`</span></div>`
-
-    per_cost+=text;
-  }
-  $('#s4_check_per_cost').html(per_cost);
-
-
-  $('#step4 .s4_check_cost_fin span').text($('#s2_p_total text')[0].innerText+$('#s2_p_total text')[1].innerText);
-  $('#step4 #s4_check_cost_income span').text($('#total_c text')[0].innerText + $('#total_c text')[1].innerText);
-  $('#step4 #s4_check_cost_expense span').text($('#s3_f_cost')[0].innerText + $('#s3_f_cur')[0].innerText);
-  $('#step4 .s4_check_cost_revenue span').text(parseInt($('#total_c text')[0].innerText)-parseInt($('#s3_f_cost')[0].innerText)+$("#c_main_cur select").val());
-  $('#step4 .set_cost span').text($("#c_main_cur select").val());
-  $('#step4 #expect_cost span').text($("#c_main_cur select").val());
-
-}
-
 
 
 
 
 //Step3, 실지출 비용 입력 시 값 조정
-$(document).on("change","#step3 input",function(){
+$(document).on("change","#step3 input, #step3 select",function(){
 var cost_ins_n=$('#step1 #cost_member input').get().map(function(el) {return el.value});
 var real_cost=$('#step3 #cost_no_s_list input').get().map(function(el) {return el.value});
 var actual_check=$('#step3 #cost_ins .cost_checkbox_container').children('input').get().map(function(el) { return el.checked })
@@ -307,3 +225,92 @@ for(i=0;i<extra_c_name.length;i++){
   $('#step3 #s3_f_cur').html(main_cur);
   $('#step3 .mid_cost text').html(s3_f_cost+main_cur)
 });
+
+
+function ex_rate(cur, main_cur, num){
+  //원화로 먼저 통일
+    switch(cur){
+    case("원"):
+      var text=parseInt(num);
+      break;
+    case("달러"):
+      var text=parseInt(num)*parseInt($('#check_currency .custom input').eq(0).val());
+      break;
+    case("엔"):
+      var text=parseInt(num)*parseInt($('#check_currency .custom input').eq(1).val())/100;
+      break;
+    case("페소"):
+      var text=parseInt(num)*parseInt($('#check_currency .custom input').eq(2).val());
+      break;
+    case("유로"):
+      var text=parseInt(num)*parseInt($('#check_currency .custom input').eq(3).val());
+      break;
+    }
+
+    //기본 통화의 환율 적용
+    switch(main_cur){
+    case("원"):
+      text=parseInt(text);
+      break;
+    case("달러"):
+      text=parseInt(text)/parseInt($('#check_currency .custom input').eq(0).val());
+      break;
+    case("엔"):
+      text=parseInt(text)/parseInt($('#check_currency .custom input').eq(1).val())*100;
+      break;
+    case("페소"):
+      text=parseInt(text)/parseInt($('#check_currency .custom input').eq(2).val());
+      break;
+    case("유로"):
+      text=parseInt(text)/parseInt($('#check_currency .custom input').eq(3).val());
+      break;
+    }
+
+    return parseInt(text);
+}
+
+
+
+
+
+/** Step 3 - 비용 추가/삭제 **/
+function add_div_s3(){
+  var div = document.createElement('div');
+  div.innerHTML = document.getElementById('c_extra_first').innerHTML;
+  document.getElementById('c_extra_sibling').appendChild(div);
+}
+
+function remove_div_s3(obj){
+  document.getElementById('c_extra_sibling').removeChild(obj.parentNode.parentNode.parentNode);
+}
+
+$(document).on("change","#step3 input",function(){
+
+});
+
+
+
+function s3_to_s4(){
+  var per_cost='';
+
+  for(i=0;i<cost_arr.length;i++){
+    var text=`<div class="s4_check_cost_arr">`
+    text+=cost_arr[i].name;
+    text+=`<span>+ `
+    text+=cost_arr[i].per_cost;
+    text+=cost_arr[i].currency;
+    text+=`</span></div>`
+
+    per_cost+=text;
+  }
+  $('#s4_check_per_cost').html(per_cost);
+
+
+  $('#step4 .s4_check_cost_fin span').text($('#s2_p_total text')[0].innerText+$('#s2_p_total text')[1].innerText);
+  $('#step4 #s4_check_cost_income span').text($('#total_c text')[0].innerText + $('#total_c text')[1].innerText);
+  $('#step4 #s4_check_cost_expense span').text($('#s3_f_cost')[0].innerText + $('#s3_f_cur')[0].innerText);
+  $('#step4 .s4_check_cost_revenue span').text(parseInt($('#total_c text')[0].innerText)-parseInt($('#s3_f_cost')[0].innerText)+$("#c_main_cur select").val());
+  $('#step4 .set_cost span').text($("#c_main_cur select").val());
+  $('#step4 #expect_cost span').text($("#c_main_cur select").val());
+
+}

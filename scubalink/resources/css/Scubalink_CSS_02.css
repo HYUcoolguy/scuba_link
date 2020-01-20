@@ -3667,6 +3667,7 @@ input[type="radio"]:checked + label span{
   height:40px;
   padding-right:30px;
   margin-top:4px;
+  text-align:center;
 }
 
 #cost_currency{
@@ -4423,4 +4424,15 @@ div.custom div{
 #step2 .c_list .panel-body .input_cost{
   padding-top:14px;
   padding-left:20px;
+}
+
+#step3 #cost_no_s_list_empty{
+  font-size: 14px;
+  background-color: #f4f4f4;
+  color: #aaaaaa;
+  text-align: center;
+  height: 64px;
+  line-height: 64px;
+  margin-top: 14px;
+  margin-bottom: 24px;
 }
