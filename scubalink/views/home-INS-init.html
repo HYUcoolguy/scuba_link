@@ -19,16 +19,29 @@
 
 
 
-    <div class="header">
+    <div class="header header_ins">
       <!--현재 페이지-->
-     <span class="logo">투어/교육</span>
+     <span class="logo">김스쿠 강사</span>
      <!--메뉴 버튼-->
       <div class="burger_container">
         <img class="burger_img menu" src="../resources/img/ic-menu.svg">
       </div>
       <!-- 검색 버튼-->
-        <span class="search"><img src="../resources/img/search.svg"></span>
-      <span class="plus"><img src="../resources/img/ic-add.svg"></span>
+        <span class="search" style="right:16px"><img src="../resources/img/search.svg"></span>
+      
+      <!--<span class="plus"><img src="../resources/img/ic-add.svg"></span>-->
+
+
+      <div id="header_ins_img"><img src="../resources/img/profile_default_img.svg" alt="..." class="img-circle"></div>
+      <div id="header_ins_info">
+        <text>투어/교육 50회</text>
+        <text>|</text>
+        <text>교육생 45명</text>
+      </div>
+      <div id="header_ins_btn">
+        <button>강사 소개</button>
+        <button>교육생 소개</button>
+      </div>
     </div>
 
 
@@ -37,8 +50,7 @@
 <div id="overlay"></div>
     
     <div class="side-nav">
-      <div class="side-nav-head">
-       </div>
+
       
 
       <ul>
@@ -54,44 +66,46 @@
 
           <span>
             <h5>김스쿠</h5>
-            <p class="explain_text">SDI/TDI 강사</p>
+            <p class="explain_text">강사</p>
           </span>
-          <img class="arrow_right" src='../resources/img/ic-arrow-ltr.svg'>
         </li>
         <li class="none"></li>
-        <li>내 교육생</li>
-        <li>내 자격증</li>
+        <!--<li onclick="location.href='/mybgn';">내 교육생</li>
+        <li onclick="location.href='/license';">내 자격증</li>
+      -->
+        <li>내 정보</li>
         <li>알림 설정</li>
-        <li class="none"></li>
-        <li>공지사항</li>
-        <li>문의하기</li>
-        <li>약관 및 정책</li>
-        <li class="none"></li>
-        <li>로그아웃</li>
+        <!-- <li class="none"></li> -->
+        <li onclick="location.href='/notice';">공지사항</li>
+        <li onclick="location.href='/policy';">약관 및 정책</li>
+        <!--
+        <li onclick="sendEmail();">이메일 보내기</li>
+        <li onclick="sendSMS();">문자 보내기</li>
+        -->
+        <!-- <li class="none"></li> -->
+        <li id="btn_logout">로그아웃</li>
       </ul>
     </div>
 
-    <!--투어/교육 추가 버튼-->
-    <div class="gray_rectangle">
-      <div>
+
+
+    
+        <!--투어/교육 추가 버튼-->
+      <div id="home_tour_plus">
         <button type="button" class="btn btn-block tour_plus">
    
-          <span><img src="../resources/img/ic-add-blue.svg"></span>
-          <span id="text_tour_education">투어/교육 추가</span>
+          <!--<span><img src="../resources/img/ic-add.svg" style="filter:invert(1)"></span>-->
+          <span id="text_tour_education">일정 만들기</span>
         </button>
- 
-
       </div>
-    </div>
-
 
 <!--처음 화면, 콘텐츠가 없을 떄-->
 <!--class의 hidden on/off로 조정 --> 
 <div id="CONTENT_OFF" class="">
   <div style="margin-top:-12px">
     강사님 안녕하세요.
-    <br>위 버튼을 눌러
-    <br>새로운 투어/교육 일정을 시작해보세요 
+    <br>아래 '일정 만들기' 버튼을 눌러
+    <br>새로운 일정을 시작해보세요 
   </div>
   <!--아래 회색 배경 -->
   <div></div>
@@ -105,8 +119,9 @@
 <div id="CONTENT_ON" class="hidden">
 <!--home main-->
   <div class="tour">
+    <!--
     <div class="tour_head">
-      <!--강사 사진 + 뱃지 -->  
+
      <span>
           <img src="../resources/img/my_profile.jpg" alt="..." class="img-circle">
       </span>
@@ -117,13 +132,14 @@
             </span>
 
       <span>
-        <!--강사 이름-->
+
           <h5>김스쿠</h5>
-        <!--강사 이메일-->
+
           <p class="explain_text">SDI/TDI 강사</p>
       </span>
       
     </div>
+  -->
 
     <div class="tour_image">
       <!--썸네일 이미지-->
@@ -142,13 +158,14 @@
      <div class="tour_contents">
       <div class="tour_contents_when">
         <!--투어 일시-->
-        <h4>10.17금~10.21일 / 해양실습</h4>
+        <h4>강원도 해양 실습</h4>
       </div>
       <div class="tour_contents_where">
-    
-        <span><img src="../resources/img/ic-map-marker.svg"></span>
-        <!--투어 장소-->
-        <span>강원도 동해 ○○○리조트</span>
+        <span>
+          <text>기간</text>
+              2019.10.12 ~ 2019.10.17</span>
+        <span>
+          <text>장소</text>강원도 동해 ○○○리조트</span>
       </div>
       <!--투어 설명-->
       <div class="tour_contents_comment">
@@ -245,4 +262,3 @@
 
   </body>
 </html>
-

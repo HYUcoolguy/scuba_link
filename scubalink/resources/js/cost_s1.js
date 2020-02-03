@@ -43,7 +43,8 @@ var s1_input = $('#step1 .cost_name').get().map(function(el) { return el.value }
 var s2_input = $('#step2 .cost_name').get().map(function(el) { return el.value });
 var cost_arr=new Array();
 
-//3. 비용 이름 --> 4. FOC 항목 
+//3. 비용 이름 --> 4. FOC 항목
+//빈칸 체크
 function update_arr(){
   var s1_input = $('#step1 .cost_name').get().map(function(el) { return el.value });
   var FOC_list_sum="";
@@ -75,6 +76,19 @@ document.getElementById('FOC_ul').innerHTML=FOC_list_sum;
     else{
       $('#step1 .next-step').css("background-color","#cccccc")
     }
+
+
+
+
+//빈칸 체크
+for(i=0;i<s1_input.length;i++){
+  if(s1_input[i]==""){
+    $('#step1 .name_empty_error').eq(i).css("display","block");
+  }
+  else{
+    $('#step1 .name_empty_error').eq(i).css("display","none");
+  } 
+}
 
 
 };
@@ -228,8 +242,38 @@ function s1_to_s2(){
   $('#step3 .c_select select').html(text);
 
 
+//주요 통화 '원' -> 계산식 한줄 삭제
+if($("#c_main_cur select").val()=="원"){
+  $('#s2_p_sum').addClass("hide");
+  $('#s3_p_sum').addClass("hide");
+}else{
+  $('#s2_p_sum').removeClass("hide");
+  $('#s3_p_sum').removeClass("hide");
+}
 
+//Step 2 하단 계산식 : Default
+if(s2_input==""){
+var s2_name='';
+var s2_cal='';
 
+  for(i=0;i<s1_input.length;i++){
+    s2_name+='<text> + </text><text>';
+    s2_name+=s1_input[i];
+    s2_name+='</text>';
+
+    s2_cal+=`<text> + </text>
+                <text class="ex_per_cost">0</text><text>`
+    s2_cal+=$("#c_main_cur select").val();
+    s2_cal+='</text>';
+  }
+$('#s2_p_name').html(s2_name);
+$('#s2_p_name text:first-child').html('= ');
+
+$('#s2_p_cal').html(s2_cal);
+$('#s2_p_cal text:first-child').html('= ');
+
+$("#s2_p_total text").eq(1).html($("#c_main_cur select").val());
+}
 
 
 if(s1_input!==s2_input){
@@ -478,3 +522,12 @@ function ex_calc_cost(i,cost_arr){
     }
   return;
   };
+
+function addComma(num) {
+                var regexp = /\B(?=(\d{3})+(?!\d))/g;
+                return num.toString().replace(regexp, ',');
+            }
+
+function removeComma(num){
+  return parseInt(num.replace(/,/g, '')) 
+}

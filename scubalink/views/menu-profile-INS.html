@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>스쿠버 링크 : 내 프로필</title>
+
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/Scubalink_CSS_02.css">
+
+ 
+
+
+   </head>
+
+
+  <body>
+    <!--heaer-->
+    <div class="header" name="myprofile">
+      <!--현재 페이지-->
+      <span class="logo">내 정보</span>
+      <!--뒤로가기-->
+      <img src="../resources/img/left-arrow.svg" id="back">
+      <!--저장-->
+      <span class="header_save">편집</span>
+    </div>
+
+
+
+
+    <!--내 프로필 시작-->
+    <div class="my_profile">
+
+      <div class="my_profile_image">
+        <!--내 프로필 이미지-->
+        <img src="../resources/img/profile_default_img.svg" alt="..." class="img-circle" id="img-upload">
+        
+
+        <div class="btn-file">
+        <!--카메라 버튼-->
+        <button type="button" class="img-circle" id="camera_img_back_small">
+          <input type="file" id="imgInp">
+        <img id="camera_img" src="../resources/img/photo-camera.svg">
+    </button>
+  </div>
+
+
+  </div><!--my-profile_image-->
+  
+
+
+      <!--내 프로필 정보-->
+      <div class="my_profile_information">
+        <!--기본정보-->
+      <div class="basic_information my_profile_tab">
+        <p class="set_text">기본정보</p>
+      </div>
+       
+
+        <!--이름-->
+        <div class="basic_information">
+          <span class="basic_information_guide">이름</span>
+          <span class="info_text">홍길동</span>
+        </div>
+
+        <!--연락처-->
+        <div class="basic_information">
+          <span class="basic_information_guide">연락처</span>
+          <span class="info_text">01012345678</span>
+        </div>
+
+        <!--이메일-->
+        <div class="basic_information">
+          <span class="basic_information_guide">이메일</span>
+          <span class="info_text">abc@test.com</span>
+        </div>
+      </div><!--my_profile_information-->
+
+
+    </div><!--my_profile-->
+
+ 
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../resources/js/Scubalink_js.js"></script>
+
+
+
+
+  </body>
+</html>

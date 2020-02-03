@@ -297,8 +297,7 @@ function s3_to_s4(){
     var text=`<div class="s4_check_cost_arr">`
     text+=cost_arr[i].name;
     text+=`<span>+ `
-    text+=cost_arr[i].per_cost;
-    text+=cost_arr[i].currency;
+    text+=$('#s2_p_sum text:odd').eq(i).text();
     text+=`</span></div>`
 
     per_cost+=text;

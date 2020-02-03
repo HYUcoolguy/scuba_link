@@ -460,6 +460,7 @@ input.InputAddOn-field {
 }
 .header_ins{
   height:234px;
+  box-shadow:none;
 }
 .header_ins #header_ins_img{
   text-align:center;
@@ -1090,7 +1091,7 @@ input.InputAddOn-field {
   margin-top:10px;
 }
 .tour_contents_etc span{
-  font-size:10px;
+  font-size:12px;
   color:#999999;
   margin-right:9px;
 
@@ -1106,7 +1107,7 @@ div#accordion .tour_division{
   background-color:#eeeeee;
 }
 .tour_division_last{
-  height:60px;
+  height:100px;
   margin-top:5px;
   max-width:100%;
   background-color:#eeeeee;
@@ -1440,6 +1441,7 @@ img#my_image{
 .gone{
   background: transparent;
   transition: 250ms;
+  display:none;
 }
 
 .my_certif_information .basic_information{
@@ -2164,7 +2166,7 @@ input:checked + .slider:before {
     margin-bottom: 12px;
     cursor: pointer;
     font-size: 14px;
-    color:#333333;
+    color:#000000;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -3564,6 +3566,8 @@ div.input_cost input.selboxDirect:focus {
   line-height:1.71;
   color:#333333;
   padding-top:56px;
+  padding-bottom:300px;
+  background-color:#f4f4f4;
 }
 #CONTENT_OFF div:nth-of-type(2){
   background-color:#f4f4f4;
@@ -3850,7 +3854,8 @@ input[type="radio"]:checked + label span{
 .cost_p1 input{
   width:83px;
   border:none;
-  padding-left:5px;
+  padding-left:6px;
+  padding-right:6px;
 }
 .cost_p1+span{
   margin-left:16px;
@@ -3865,7 +3870,7 @@ input[type="radio"]:checked + label span{
   border-radius:2px;
 }
 .cost_p2 input{
-  width:62px;
+  width:59px;
   border:none;
   padding-left:5px;
 }
@@ -3894,7 +3899,7 @@ input[type="radio"]:checked + label span{
   line-height:1.5;
   font-size:12px;
   color:#777777;
-  padding-top:12px;
+  margin-top:24px;
 }
 #step3 .ex_cost div:first-child{
   padding-top:5px;
@@ -4070,7 +4075,7 @@ div.custom div{
 
 #c_first div.input_cost div:first-of-type,
 #c_sibling div.input_cost div:first-of-type{
-  margin-bottom:18px;
+  margin-bottom:24px;
 }
 
 #c_first .cost_checkbox_container,
@@ -4080,6 +4085,9 @@ div.custom div{
 
 #step2 div.c_list{
   margin-top:-30px;
+}
+#step2 div.input_cost{
+  margin-bottom:14px;
 }
 
 #c_extra_first div.c_select,
@@ -4093,8 +4101,8 @@ div.custom div{
 #c_extra_first div.c_select select,
 #c_extra_sibling div.c_select select{
   background-color:#ffffff;
-  height:38px;
-  top:-1px;
+  height:40px;
+  opacity:1.0;
   border:solid 1px #979797;
   width:80px;
   margin-left:7px;
@@ -4143,7 +4151,7 @@ div.custom div{
 }
 
 .c_list .s2_cost{
-  margin-top:8px;
+  margin-top:10px;
   margin-bottom:17px;
 }
 
@@ -4157,6 +4165,8 @@ div.custom div{
   border:solid 3px #145db2;
   display:table;
   margin-bottom:8px;
+  padding-left:4px;
+  padding-right:4px;
 }
 
 .cost_ins input:disabled{
@@ -4245,7 +4255,9 @@ div.custom div{
   padding-top:6px;
   margin-bottom:16px;
 }
-
+#step4 .s4_check_cost_fin{
+  margin-bottom:24px;
+}
 #step4 #control_cost{
   padding:16px;
 }
@@ -4352,6 +4364,7 @@ div.custom div{
   }
 
 #step5 .s5_check_cost{
+  margin-top:6px;
   font-size:12px;
   color:#777777;
   background-color:#f4f4f4;
@@ -4411,6 +4424,28 @@ div.custom div{
   border-radius:2px;
   border:solid 1px #979797;
 }
+#step1 input.cost_name{
+  outline:none;
+  font-size:14px;
+}
+#step1 input.cost_name::placeholder{
+ color:#aaaaaa; 
+}
+#step3 input.cost_name::placeholder{
+ color:#aaaaaa;
+ font-size:14px;
+}
+
+#step3 input.cost_name{
+ background-color:#ffffff;
+ border: solid 1px #979797;
+ padding: .5em .7em;
+}
+
+#step1 div.input_cost{
+  margin-bottom:12px;
+  margin-top:12px;
+}
 #step1 .c_list div.name_empty_error{
   color:#e02020;
   font-size:12px;
@@ -4435,4 +4470,29 @@ div.custom div{
   line-height: 64px;
   margin-top: 14px;
   margin-bottom: 24px;
+}
+
+#step2 .c_list .input_cost select{
+  width:35px
+}
+
+#step3 .c_list .s3_ex_text{
+  margin-top:6px;
+}
+
+#step3 div.c_select input{
+  height:40px;
+}
+#step3 #plus_cost{
+  margin-top:16px;
+}
+
+#CONTENT_ON .tour_division{
+  height:16px;
+}
+.my_profile .basic_information{
+  margin-top:16px;
+}
+.my_profile .basic_information .info_text{
+  line-height:1;
 }

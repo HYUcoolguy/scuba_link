@@ -337,7 +337,7 @@ if($('#step3 .cost_p1 input[type="number"]').length==0){
 //예상 총 지출
   $("#step3 .actual_t_cost").text($("#step2 #s2_p_total text").eq(0).html());
   $("#step3 #s3_f_cost").text(parseInt($("#step2 #s2_p_total text").eq(0).html())*parseInt($('#step1 #cost_member input').get().map(function(el) {return el.value})[1]));
-}
+} $('#step3 #s3_f_cur').html($("#c_main_cur select").val());
 }
 
 
@@ -362,7 +362,6 @@ function s2_to_s1(){
                   value="`
           div+=s2_input[i];
           div+=`" onkeyup="update_arr()">
-                <i class="glyphicon glyphicon-pencil"></i>
                 <span class="remove_div btn" onclick="remove_div(this)"><img src="../resources/img/ic-close.svg"></span> 
                 </div>
                 </div>
