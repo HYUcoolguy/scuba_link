@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>스쿠버 링크 : 투어/교육 등록</title>
+
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/Scubalink_CSS_02.css">
+
+ 
+
+
+   </head>
+
+
+  <body>
+    <!--heaer-->
+    <div class="header" name="certif">
+      <!--현재 페이지-->
+      <span class="logo_mini">투어/교육 추가</span>
+      <!--뒤로가기-->
+      <img src="../resources/img/left-arrow.svg" id="back">
+      <!--저장-->
+     
+    </div>
+
+    <!--투어/교육 이름-->
+    <div id="tour_edu_plus">
+      <div class="tour_input">
+        <p>투어/교육 이름 <span>*</span></p>
+        <input type="text" class="form-control" placeholder="동해 오픈워터 해양실습">
+      </div>
+
+    <!--기간-->
+    <div class="tour_input">
+      <p>기간 <span>*</span></p>
+      <input type="date">
+      <span>~</span>
+      <input type="date">
+    </div>
+
+    <!--장소-->
+    <div class="tour_input">
+      <p>장소 <span>*</span></p>
+      <input type="text" class="form-control" placeholder=" 예) 해피 다이빙 리조트">
+    </div>
+
+    <!--참여 강사수(본인 포함)-->
+    <div class="tour_input">
+      <p>참여 정원 수(본인 포함) <span>*</span></p>
+      <input type="number" placeholder="0">
+      <span>명</span>
+    </div>
+
+   
+
+    <!--간단한 설명(최대 140자)-->
+    <div class="tour_input">
+      <p>간단한 설명(최대 140자)</p>
+      <textarea name="test" class="form-control" placeholder="안전하고 즐거운 해양실습"></textarea>
+    </div>
+    
+    <!--대표사진-->
+    <div class="tour_input">
+      <p>대표사진</p>
+      <div class="my_certif_image btn-file">
+        <i class="glyphicon glyphicon-picture"></i>
+        <p>눌러서 이미지를 추가하세요</p>
+        <input type="file" id="imgInp">
+        <div>
+          <img id='img-upload'/>
+        </div>
+      </div>
+    </div>
+
+    <!--전송 버튼-->
+    <input type="button" value="완료" class="btn">
+
+
+
+</div><!--tour_edu_plus-->
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../resources/js/Scubalink_js.js"></script>
+
+  </body>
+</html>

@@ -213,6 +213,34 @@ $(document).on("change","#step1 .cost_checkbox_container input",function(){
 
 
 
+//기본 통화 변경 시, Step 4 - Slider 범위 조정
+$('#step1 #c_main_cur select').on('input', function(){
+  var newVal=$(this).val();
+
+  switch(newVal){
+    case("원"):
+      $('#step4 #slide-range').attr('max',500000);
+      $('#step4 #slide-range-text text:last-of-type').text('500000');
+      break;
+    case("달러"):
+      $('#step4 #slide-range').attr('max',500);
+      $('#step4 #slide-range-text text:last-of-type').text('500');
+      break;
+    case("엔"):
+      $('#step4 #slide-range').attr('max',5000);
+      $('#step4 #slide-range-text text:last-of-type').text('5000');
+      break;
+    case("페소"):
+      $('#step4 #slide-range').attr('max',2500);
+      $('#step4 #slide-range-text text:last-of-type').text('2500');
+      break;
+    case("유로"):
+      $('#step4 #slide-range').attr('max',5000);
+      $('#step4 #slide-range-text text:last-of-type').text('5000');
+      break;
+  }
+});
+
 //Step 1 -> Step 2
 function s1_to_s2(){
 

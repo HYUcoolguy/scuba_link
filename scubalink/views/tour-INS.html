@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>스쿠버 링크 : 상세일정</title>
+
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/Scubalink_CSS_02.css">
+
+
+
+   </head>
+
+
+  <body>
+
+  <!--투어 헤더 -->
+    <div id="tour_schedule_head">
+      <div class="overlay"></div>
+    <!--투어 배경 이미지-->
+      <img class="back_img" src="../resources/img/sea.png">
+
+      <div class="tour_content">
+        <!--뒤로가기-->
+        <img id="back_white" src="../resources/img/left-arrow.svg">
+        <!--수정/삭제 옵션-->
+        <span class="dropdown">
+          <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <span class="glyphicon glyphicon-option-vertical"></span>
+          </button>
+
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="#">편집</a></li>
+            <li><a href="#">알림 보내기</a></li>
+            <li><a href="#">링크 복사</a></li>
+            <li><a href="#">삭제</a></li>
+          </ul>
+        </span>
+
+        <!--투어 제목-->    
+        <p>동해안 고성 투어</p>
+        <!--투어 부제-->
+         <!-- 미입력시 class에 hidden 추가-->
+        <p>해양실습 #2박3일</p>
+        <!--모집중 인원-->
+        <!-- 미입력시 class에 hidden 추가-->
+        <div class="tour_mem_num">2/4명 모집중</div>
+
+          <!--투어 참석 여부, 밑 라디오와 연동-->
+          <div class="switch-field">
+            <label id="switch_3_left_l">비공개</label>
+            <label  id="switch_3_center_l">모집마감</label>
+            <!--class blue 가 있는 것이,초기값-->
+            <label class="blue" id="switch_3_right_l">모집 중</label>
+          </div>
+
+        </div><!--tour_content-->
+      </div><!--tour_schedule_head-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!--투어 정보-->
+      <div id="tour_basic_info">
+
+      <!--투어 기본 정보-->
+        <div class="my_profile_information">
+          <!--투어 설명-->
+          <p class="tour_basic_explain" style="text-align:center">"안전한 교육을 위한 실습단계 해양 실습입니다. 기존 교육생도 환영해요!"</p>
+          <!--기간-->
+          <div class="basic_information" id="id">
+            <span class="basic_information_guide" style="font-size:12px;color:#777777">기간</span>
+            <span class="info_text">2019. 10. 20 금 19:00</span><br>
+            <span class="info_text" style="margin-left:53px">2019. 10. 22 일 16:00</span>
+          </div>
+
+        <!--장소-->
+          <div class="basic_information">
+            <span class="basic_information_guide" style="font-size:12px;color:#777777">장소</span>
+            <span class="info_text">동해안 고성/태평양샵</span>
+          </div>
+
+        <!--비용-->
+          <div class="basic_information">
+            <span name="birth" class="basic_information_guide" style="font-size:12px;color:#777777">비용</span>
+             <!--미입력 시 내용은 '입력 전'-->
+            <span class="info_text">35만원</span>
+          </div>
+
+        <!--강사-->
+          <div class="basic_information tour_instructor">
+            <span class="basic_information_guide" style="font-size:12px;color:#777777">강사</span>
+            <span class="info_text">
+              <!--강사 사진-->
+              <img src="../resources/img/my_profile.jpg" alt="..." class="img-circle">
+            </span>
+            <!--강사 뱃지, 강사에게만-->
+            <span class="INS_badge">
+              <img src='../resources/img/ic.png'>
+            </span>
+
+            <!--강사 이름-->
+            <span class="tour_ins_name" style="top:0px">김스쿠 강사</span>
+
+          </div>
+
+        </div><!--투어 기본 정보-->
+
+
+
+
+
+
+
+
+
+
+
+
+<!--구분선-->
+<div class="tour_division"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!--상세일정-->
+
+  <div class="panel panel-default" id="panel_basic">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <span class="panel_text_01">상세일정</span>
+      </h4>
+
+          <!--수정 버튼-->
+    <button class="edit_detail">편집</button>
+    </div>
+
+
+  <div class="panel-body">
+      <div class="more">10월 20일 금요일
+오후 07:00 서울 잠실역 앞 출발
+오후 11:00 동해 도착
+
+10월 21일 토요일
+보트 다이빙 2회(포인트 : XXX)
+
+10월 22일 일요일
+보트 디이빙 1회(포인트 : xxx)
+오후 02:00 동해 출발
+오후 06:00 서울 도착</div>
+<!--정보 미입력시 pre, button수정, class에 hidden 추가 -->
+<!--정보 입력시 button상세일정등록 class에 hidden 추가-- pre,button 은 삭제--> 
+          
+    <button type="button" id="plus_cost" class="btn btn-block col-xs-12 hidden">
+          <span id="text_tour_education">상세일정 등록</span>
+      </button>
+    </div>
+</div><!-- panel panel-default-->
+
+
+
+
+
+
+
+
+
+<!--구분선-->
+<div class="tour_division"></div>
+
+
+
+
+
+
+
+
+
+
+
+<!--비용-->
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <span class="panel_text_01">비용</span>
+        <!--클릭 시 화면 이동, 수정-->
+
+        <!--정보 미입력시 span에 hidden 추가-->
+        <span id="tour_info_edit">편집</span>
+      </h4>
+    </div><!--a,div 태그 순서 glyphicon때문에 바꿈-->
+
+
+    <div id="collapseFour" class="panel-collapse collapse in">
+      <div class="panel-body">
+
+<!--정보 미입력시 아래 각 div.row 에 hidden 추가-->
+        
+        <!--교육생 총 비용-->   
+        <div class="row">
+          <span>1인 비용</span>
+          <span>350,000원</span>
+        </div>
+        <!--교통비-->
+        <div class="row">
+          <span>교통(고속버스)</span>
+          <span>40,000원</span>
+        </div>
+        <!--식비-->    
+        <div class="row">
+          <span>식비</span>
+          <span>50,000원</span>
+        </div>
+        <!--숙박비-->
+        <div class="row">
+          <span>숙박비</span>
+          <span>100,000원</span>
+        </div>
+        <!--보트다이빙-->
+        <div class="row">
+          <span>보트다이빙</span>
+          <span>90,000원</span>
+        </div>
+        <!--장비대여료-->
+        <div class="row">
+          <span>장비대여료</span>
+          <span>50,000원</span>
+        </div>
+        <!--교육비-->
+        <div class="row">
+          <span>교육비</span>
+          <span>60,000원</span>
+        </div>
+
+        <div class="row profit_per_explain">
+          <span>※ 투어 상황에 따라 비용이 변동될 수 있습니다.</span>
+        </div>
+
+    
+  <!--정보 입력시 아래 button 의 클래스에 hidden 추가 -- div hidden 해제 -->
+<button type="button" id="plus_cost" class="btn btn-block col-xs-12 hidden">
+      <span id="text_tour_education">비용 등록</span>
+    </button>
+
+      </div><!--panel body-->
+
+    
+    </div><!-- panel panel-default-->
+
+
+
+
+
+
+
+
+
+
+
+
+<!--구분선-->
+<div class="tour_division"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--참석자-->
+    <div id="tour_attend">
+      <div class="panel-heading">
+      	<h4 class="panel-title">
+          <span class="panel_text_01">참석자</span>
+
+          <!--현재 참석합니다 체크한 인원 집계-->
+        	<button class="btn">3/4명 모집중</button>
+      	</h4>
+      </div><!--a,div 태그 순서 glyphicon때문에 바꿈-->
+    
+
+      <div class="panel-body">
+        <div class="instructor_profit">
+          <!--참석 인원 수-->
+          <label class="container">참석합니다 3명
+            <!--참석 멤버-->
+  					<p>김스쿠 강사, 홍길동, 김영희</p>
+            <input type="radio" id="switch_3_right" name="swtich_3" checked="checked">
+            <span class="checkmark"></span>
+            <span class="right_arrow"><img src="../resources/img/ic-arrow-ltr.svg"></span>
+          </label>
+
+          <!--관심있는 인원 수 -->
+          <label class="container">관심있어요 2명
+            <!--관심있는 멤버-->
+  				  <p>한바다, 이다빙</p>
+            <input type="radio" id="switch_3_center" name="swtich_3">
+            <span class="checkmark"></span>
+          </label>
+
+          <!--미정 인원 수-->
+          <label class="container">미정 10명
+            <input type="radio" id="switch_3_left" name="swtich_3">
+            <span class="checkmark"></span>
+      		</label>
+        </div>
+      </div><!--panel body-->
+		</div><!--tour_attend-->
+
+
+
+
+
+
+
+
+
+
+
+<div class="tour_division"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--댓글-->
+      <div class="tour_comment">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+          <!--클릭 시, 댓글 전체보기 화면으로-->
+          <span>
+            <span class="right_arrow"><img src="../resources/img/ic-arrow-ltr.svg"></span>
+            <span>전체보기</span>
+          </span>
+          <!--댓글 수-->
+          <span class="panel_text_01">댓글 12</span>
+          </h4>
+        </div><!--a,div 태그 순서 glyphicon때문에 바꿈-->
+
+
+        <div class="panel-collapse collapse in">
+          <div class="panel-body">
+
+
+
+            <!--댓글 1개-->
+            <div class="comment">
+              <!--강사 사진-->
+              <span class="info_text">
+                <img src="../resources/img/my_profile.jpg" alt="..." class="img-circle">
+              </span>
+              <!--강사 표시용 뱃지-->
+              <span class="INS_badge">
+              <img src='../resources/img/ic.png'>
+            </span>
+
+              <!--댓글 이름-->
+              <span class="comment_name">김스쿠</span>
+              <!--댓글 시간-->
+              <span class="comment_date">2018. 10. 21 오후 7:00</span>
+              <!--댓글 내용-->
+              <p class="comment_content">The term 123  has been widely used in recent years, but what does it mean and why shold you stay in one ? </p>
+            </div>
+
+
+
+
+                <!--댓글 1개-->
+            <div class="comment">
+              <!--강사 사진-->
+              <span class="info_text">
+                <img src="../resources/img/my_profile.jpg" alt="..." class="img-circle">
+              </span>
+              <!--강사 표시용 뱃지-->
+              <span class="INS_badge">
+              <img src='../resources/img/ic.png'>
+            </span>
+
+
+              <!--댓글 이름-->
+              <span class="comment_name">김스쿠</span>
+              <!--댓글 시간-->
+              <span class="comment_date">2018. 10. 21 오후 7:00</span>
+              <!--댓글 내용-->
+              <p class="comment_content">The term 123  has been widely used in recent years, but what does it mean and why shold you stay in one ? </p>
+            </div>
+
+
+
+
+                <!--댓글 1개-->
+            <div class="comment">
+              <!--강사 사진-->
+              <span class="info_text">
+                <img src="../resources/img/my_profile.jpg" alt="..." class="img-circle">
+              </span>
+             
+
+              <!--댓글 이름-->
+              <span class="comment_name">김스쿠</span>
+              <!--댓글 시간-->
+              <span class="comment_date">2018. 10. 21 오후 7:00</span>
+              <!--댓글 내용-->
+              <p class="comment_content">The term 123  has been widely used in recent years, but what does it mean and why shold you stay in one ? </p>
+            </div>
+
+<!-- 댓글 내용이 있다면, class 에hidden 추가 -->
+<div id="none_comment" class="hidden"> 첫 댓글을 달아보세요</div>
+
+
+
+
+
+
+            <button id="wr_comment">
+              댓글쓰기
+              <img id="comment_img" src="../resources/img/ic-chat.svg">
+            </button>
+
+          </div><!--panel body-->
+        </div><!--CollapseOne-->
+      </div><!--tour_comment-->
+
+
+
+
+
+
+
+
+</div><!--tour_basic_info-->
+
+
+ <div id="space_last"></div>
+
+
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../resources/js/Scubalink_js.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
+
