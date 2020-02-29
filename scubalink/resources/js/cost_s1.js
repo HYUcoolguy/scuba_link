@@ -63,22 +63,15 @@ document.getElementById('FOC_ul').innerHTML=FOC_list_sum;
   for(i=0;i<s1_input.length;i++){
     if(s1_input[i]==""){
       check_cost_name+=1;
-    }
-       
-    else{
+    }else{
       check_cost_name+=0;
     }
   }
-
     if(check_cost_name==0){
       $('#step1 .next-step').css("background-color","#145db2");
-    }
-    else{
+    }else{
       $('#step1 .next-step').css("background-color","#cccccc")
     }
-
-
-
 
 //빈칸 체크
 for(i=0;i<s1_input.length;i++){
@@ -89,9 +82,10 @@ for(i=0;i<s1_input.length;i++){
     $('#step1 .name_empty_error').eq(i).css("display","none");
   } 
 }
+};//end of : update_arr();
 
 
-};
+
 
 
 var cur_arr=new Array();
@@ -121,11 +115,17 @@ $(document).on("change","#step1 #check_currency input","#step1 select",function(
 
 
 
-//강사 수, 교육생 수 입력 시 Step2에 반영
+//강사 수, 교육생 수 입력 시 다음 Step에 반영
 $(document).on("change","#step1 #cost_member input",function(){
   var cost_ins_n=$('#step1 #cost_member input').get().map(function(el) {return el.value});
   $('#step2 .bgn_n').text(cost_ins_n[1]);
   $('#step2 .ins_n').text(cost_ins_n[0]);
+  $('#step3 .bgn_n').text(cost_ins_n[1]);
+  $('#step3 .ins_n').text(cost_ins_n[0]);
+  $('#step4 .bgn_n').text(cost_ins_n[1]);
+  $('#step4 .ins_n').text(cost_ins_n[0]);
+  $('#step5 .bgn_n').text(cost_ins_n[1]);
+  $('#step5 .ins_n').text(cost_ins_n[0]);
   $('#step2 .all_n').text(parseInt(cost_ins_n[0])+parseInt(cost_ins_n[1]));
 })
 
@@ -214,29 +214,41 @@ $(document).on("change","#step1 .cost_checkbox_container input",function(){
 
 
 //기본 통화 변경 시, Step 4 - Slider 범위 조정
+//기본 통화 변경 시, Step 2 - 교육생 1인 비용 : 텍스트 수정
 $('#step1 #c_main_cur select').on('input', function(){
   var newVal=$(this).val();
-
+  $('.mid_cost .main_currency').text($("#c_main_cur select").val());
+  $('#s5_cost_arr>div span text:last-of-type').text($("#c_main_cur select").val())
   switch(newVal){
     case("원"):
-      $('#step4 #slide-range').attr('max',500000);
-      $('#step4 #slide-range-text text:last-of-type').text('500000');
+      $('#step4 #slide-range').attr('max',150000);
+      $('#step4 #slide-range-text text:last-of-type').text('150,000');
+      $('#step4 #slide-range-text text:first-of-type').text('-50,000');
+      $('#step2 #main_cur').text('대한민국 원')
       break;
     case("달러"):
-      $('#step4 #slide-range').attr('max',500);
-      $('#step4 #slide-range-text text:last-of-type').text('500');
+      $('#step4 #slide-range').attr('max',150);
+      $('#step4 #slide-range-text text:last-of-type').text('150');
+      $('#step4 #slide-range-text text:first-of-type').text('-50');
+      $('#step2 #main_cur').text('미국 달러')
       break;
     case("엔"):
-      $('#step4 #slide-range').attr('max',5000);
-      $('#step4 #slide-range-text text:last-of-type').text('5000');
+      $('#step4 #slide-range').attr('max',1500);
+      $('#step4 #slide-range-text text:last-of-type').text('1,500');
+      $('#step4 #slide-range-text text:first-of-type').text('-500');
+      $('#step2 #main_cur').text('일본 엔')
       break;
     case("페소"):
-      $('#step4 #slide-range').attr('max',2500);
-      $('#step4 #slide-range-text text:last-of-type').text('2500');
+      $('#step4 #slide-range').attr('max',750);
+      $('#step4 #slide-range-text text:last-of-type').text('750');
+      $('#step4 #slide-range-text text:first-of-type').text('-250');
+      $('#step2 #main_cur').text('필리핀 페소')
       break;
     case("유로"):
-      $('#step4 #slide-range').attr('max',5000);
-      $('#step4 #slide-range-text text:last-of-type').text('5000');
+      $('#step4 #slide-range').attr('max',1500);
+      $('#step4 #slide-range-text text:last-of-type').text('1,500');
+      $('#step4 #slide-range-text text:first-of-type').text('-500');
+      $('#step2 #main_cur').text('유럽 유로')
       break;
   }
 });
@@ -267,41 +279,10 @@ function s1_to_s2(){
     }
   }
   $('#step2 .cost_p1 select').html(text);
-  $('#step3 .c_select select').html(text);
+  $('#step3 .ex_cost_p1 select').html(text);
 
 
-//주요 통화 '원' -> 계산식 한줄 삭제
-if($("#c_main_cur select").val()=="원"){
-  $('#s2_p_sum').addClass("hide");
-  $('#s3_p_sum').addClass("hide");
-}else{
-  $('#s2_p_sum').removeClass("hide");
-  $('#s3_p_sum').removeClass("hide");
-}
 
-//Step 2 하단 계산식 : Default
-if(s2_input==""){
-var s2_name='';
-var s2_cal='';
-
-  for(i=0;i<s1_input.length;i++){
-    s2_name+='<text> + </text><text>';
-    s2_name+=s1_input[i];
-    s2_name+='</text>';
-
-    s2_cal+=`<text> + </text>
-                <text class="ex_per_cost">0</text><text>`
-    s2_cal+=$("#c_main_cur select").val();
-    s2_cal+='</text>';
-  }
-$('#s2_p_name').html(s2_name);
-$('#s2_p_name text:first-child').html('= ');
-
-$('#s2_p_cal').html(s2_cal);
-$('#s2_p_cal text:first-child').html('= ');
-
-$("#s2_p_total text").eq(1).html($("#c_main_cur select").val());
-}
 
 
 if(s1_input!==s2_input){
@@ -398,12 +379,36 @@ if(s1_input!==s2_input){
   //양식 생성
   document.getElementById('c_sibling').innerHTML=s_div;
   //양식에 이름 넣기
-  for(i=1;i<s1_input.length;i++){
+  for(i=0;i<s1_input.length;i++){
     $('#step2 input.cost_name').eq(i).val(s1_input[i]);
+  
+
+    //FOC 체크 시, 강사 포함 비용 disabeld 처리
+    //FOC 체크 시, step2 비용 정리에 표시
+    if($('#step1 #FOC_ul input.FOC_sale').eq(i).is(":checked")){
+      console.log(i);
+      $('#step2 .cost_ins input[type="checkbox"]').eq(i).attr('disabled',true);
+      $('#step2 .cost_ins input[type="checkbox"]').eq(i).prop('checked',false);
+      $('#step2 .cost_ins').eq(i).css("opacity","0.3");
+      if(cost_arr.length!=0){
+        cost_arr[i].ins_check=false;}
+
+    }else{
+      $('.cost_ins input[type="checkbox"]').eq(i).attr('disabled',false);
+      $('.cost_ins').eq(i).css("opacity","1.0");
+    }
+
   }
 
+
+
+
+    
+
+
+
   //설정된 값이 있을 경우, 값 불러오기
-  for(i=0;i<s1_input.length;i++){
+  for(i=0;i<cost_arr.length;i++){
     if(cost_arr.length!=0){
       ex_calc_cost(i, cost_arr[i]);
       $('.cost_p1 input').eq(i).val(cost_arr[i].p1);
@@ -417,39 +422,144 @@ if(s1_input!==s2_input){
     if(cost_arr[i].ins_check){
       $('.cost_ins input[type="checkbox"]').eq(i).prop('checked',true);
     }
-    
+    }
 
-  }
-
+ 
     //FOC 체크 시, 강사 포함 비용 disabeld 처리
-    if(cost_arr_s1[i].check=="true"){
-      $('.cost_ins input[type="checkbox"]').eq(i).attr('disabled',true);
-      $('.cost_ins input[type="checkbox"]').eq(i).prop('checked',false);
-      $('.cost_ins').eq(i).css("opacity","0.3");
-      cost_arr[i].ins_check=false;
+    //FOC 체크 시, step2 비용 정리에 표시
+    if($('#step1 #FOC_ul input.FOC_sale').eq(i).is(":checked")){
+      console.log(i);
+      $('#step2 .cost_ins input[type="checkbox"]').eq(i).attr('disabled',true);
+      $('#step2 .cost_ins input[type="checkbox"]').eq(i).prop('checked',false);
+      $('#step2 .cost_ins').eq(i).css("opacity","0.3");
+      if(cost_arr.length!=0){
+        cost_arr[i].ins_check=false;}
+
+      $('#step2 .s2_FOC_n').eq(i).addClass('hide');
+      $('#step2 .s2_FOC_y').eq(i).removeClass('hide')
     }else{
       $('.cost_ins input[type="checkbox"]').eq(i).attr('disabled',false);
       $('.cost_ins').eq(i).css("opacity","1.0");
+
+      $('#step2 .s2_FOC_n').eq(i).removeClass('hide');
+      $('#step2 .s2_FOC_y').eq(i).addClass('hide')
     }
 
     
   }
 }
+
+var s1_input = $('#step1 .cost_name').get().map(function(el) { return el.value });
+ //Step2 : 하단 교육생 1인 비용 li 생성
+  var s_div="";
+  for(i=0;i<s1_input.length;i++){
+    var div="";
+    div+=`<li>
+            <div>
+              <span class="s2_FOC_n`
+              if(cost_arr_s1[i].check=="true"){
+                div+=` hide"`}
+              div+=`">FOC 미적용</span>
+              <span class="s2_FOC_y`
+              if(cost_arr_s1[i].check=="false"){
+                div+=` hide"`}
+              div+=`">FOC 적용</span>`
+              div+=`<span class="s2_n_n">개인 비용</span>
+              <span class="s2_n_y hide">공동 비용</span>
+              <span class="s2_ins_n">강사비용 미포함</span>
+              <span class="s2_ins_y hide">강사비용 포함</span>
+            </div>
+
+          <div class="s2_cost_name">`
+          div+=s1_input[i];
+          div+=`</div>
+        <div class="s2_cost_ex">
+          <span>
+            <text class="s2_cost_p1">0</text>
+            <text class="s2_cost_currency"></text>
+            <text>x</text>
+            <text class="s2_cost_p2">0</text>
+            <text class="s2_cost_unit"></text>
+          </span>
+
+          <span class="s2_cost_calc">
+            <span class="ex_calc hide"><text class="cost3">0</text>
+              <text class="s2_cost_currency_">0</text>
+              <text> = </text>
+            </span>
+            <span>
+            <text class="s2_cost_fin">0</text>`
+              div+=`<text class="main_currency">`
+              div+=$("#c_main_cur select").val();
+              div+=`</text>
+            </span>
+          </span>
+        </div>
+      </li>`
+
+      s_div+=div;
 }
+document.getElementById('s2_cost_arrange').innerHTML=s_div;
+
+  //설정된 값이 있을 경우, 값 불러오기
+  if(cost_arr.length!=0){
+    for(i=0;i<s1_input.length;i++){
+    
+    $('#step2 .s2_cost_name').eq(i).text(s1_input[i]);
+    $('#step2 .s2_cost_p1').eq(i).text(cost_arr[i].p1);
+    $('#step2 .s2_cost_currency').eq(i).text(cost_arr[i].currency);
+    $('#step2 .s2_cost_p2').eq(i).text(cost_arr[i].p2);
+    $('#step2 .s2_cost_unit').eq(i).text(cost_arr[i].unit);
+    $('#step2 .s2_cost_currency_').eq(i).text(cost_arr[i].currency);
+    $('#step2 .main_currency').text($("#c_main_cur select").val());
+    $('#step2 .ex_calc .cost3').eq(i).text(cost_arr[i].per_cost);
+    $('#step2 .s2_cost_fin').eq(i).text(ex_rate(cost_arr[i].currency, $("#c_main_cur select").val(), cost_arr[i].per_cost));
+
+    if(cost_arr[i].n_check){
+      $('#step2 .s2_n_n').eq(i).addClass('hide');
+      $('#step2 .s2_n_y').eq(i).removeClass('hide')
+    }else{
+      $('#step2 .s2_n_n').eq(i).removeClass('hide');
+      $('#step2 .s2_n_y').eq(i).addClass('hide')
+    }
+
+    if(cost_arr[i].ins_check){
+      $('#step2 .s2_ins_n').eq(i).addClass('hide');
+      $('#step2 .s2_ins_y').eq(i).removeClass('hide')
+    }else{
+      $('#step2 .s2_ins_n').eq(i).removeClass('hide');
+      $('#step2 .s2_ins_y').eq(i).addClass('hide')
+    }
+
+    if(cost_arr[i].currency!==$("#c_main_cur select").val()){
+      $('#step2 .ex_calc').eq(i).removeClass('hide');
+    }else{
+      $('#step2 .ex_calc').eq(i).addClass('hide');
+    }
+
+  }
+}
+    
+
+
+}
+
 
 
 
 
 //누락된 입력값 체크
 $('#step1 .next-step').click(function(event){
-
+var error_count;
 var c_cur=$('#step1 #check_currency .cost_checkbox_container').children('input').get().map(function(el) { 
     if(el.checked==true){ return el.value;}});
-
+//환율 누락
 for(i=1;i<c_cur.length;i++){
   if(c_cur[i]){
     if($('#check_currency .custom input').eq(i-1).val()==""){
       $('#check_currency div.custom').eq(i-1).children('div:first-of-type').css("display","block");
+      $('html, body').animate({scrollTop : $('#check_currency .custom input').eq(i-1).offset().top-300}, 400);
+      error_count=1;
       event.stopImmediatePropagation();
     }
     else{
@@ -458,17 +568,28 @@ for(i=1;i<c_cur.length;i++){
   }
 }
 
+//항목 누락
 var s1_input = $('#step1 .cost_name').get().map(function(el) { return el.value });
 
 for(i=0;i<s1_input.length;i++){
   if(s1_input[i]==""){
     $('#step1 .name_empty_error').eq(i).css("display","block");
     event.stopImmediatePropagation();
+    if(error_count!=1){
+      $('html, body').animate({scrollTop : $('#step1 .name_empty_error').eq(i).offset().top-300}, 400);
+    }
   }
   else{
     $('#step1 .name_empty_error').eq(i).css("display","none");
   } 
 }
+
+
+
+window.scrollTo({
+    top: 0,
+});
+
 
 });
 

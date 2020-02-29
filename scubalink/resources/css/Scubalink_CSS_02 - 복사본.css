@@ -458,47 +458,6 @@ input.InputAddOn-field {
   display: block;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
 }
-.header_ins{
-  height:234px;
-  box-shadow:none;
-}
-.header_ins #header_ins_img{
-  text-align:center;
-  margin-top:20px;
-}
-.header_ins #header_ins_img img{
-  width:80px;
-  height:80px;
-}
-.header_ins #header_ins_info{
-  text-align:center;
-  margin-top:12px;
-  font-size:14px;
-}
-.header_ins #header_ins_btn{
-  text-align:center;
-  margin-top:22px;
-  font-size:14px;
-  color:#777777;
-}
-.header_ins #header_ins_btn button{
-  border:solid 1px #cccccc;
-  border-radius:4px;
-  padding:8px 39px;
-  margin-right:8px;
-  background-color:#ffffff;
-}
-.header_ins #header_ins_btn button:first-of-type{
-  margin-right:8px;
-}
-.header_ins #header_ins_btn button:last-of-type{
-  margin-left:8px;
-}
-.header_ins #btn_follow{
-  background-color:#145db2;
-  color:#ffffff;
-}
-
 .header .search{
   position:absolute;
   right:55px;
@@ -747,17 +706,8 @@ input.InputAddOn-field {
   height:24px;
   margin-top:0px;
 }
-#home_tour_plus{
-  background-color:#145db2;
-  color:#ffffff;
-}
-#home_tour_plus button{
-  background-color:#145db2;
-  height:50px;
-  position:fixed;
-  bottom:0px;
-  border-radius:0px;
-  font-weight:bold;
+.gray_rectangle button.tour_plus span#text_tour_education{
+
 }
 .gray_rectangle span.INS_info{
   display:inline-block;
@@ -1057,7 +1007,7 @@ input.InputAddOn-field {
   padding-bottom:2px;
 }
 .tour_contents_when{
-  margin-top:16px;
+  margin-top:11px;
   margin-bottom:5px;
 }
 .tour_contents_when h4{
@@ -1066,7 +1016,6 @@ input.InputAddOn-field {
 }
 .tour_contents_where{
   margin-bottom:6px;
-  padding-top:5px;
 }
 .tour_contents_where.glyphicon-map-marker{
   width:8px;
@@ -1075,23 +1024,15 @@ input.InputAddOn-field {
 .tour_contents_where span{
   font-size:12px;
   color:#333333;
-  display:block;
-  margin-bottom:8px;
-}
-.tour_contents_where span text{
-  color:#777777;
-  margin-right:10px;
 }
 .tour_contents_comment{
   font-size:12px;
   color:#333333;
-  line-height:1.5;
+  line-height:16px;
 }
-.tour_contents_etc{
-  margin-top:10px;
-}
+
 .tour_contents_etc span{
-  font-size:12px;
+  font-size:10px;
   color:#999999;
   margin-right:9px;
 
@@ -1107,7 +1048,7 @@ div#accordion .tour_division{
   background-color:#eeeeee;
 }
 .tour_division_last{
-  height:100px;
+  height:60px;
   margin-top:5px;
   max-width:100%;
   background-color:#eeeeee;
@@ -1441,7 +1382,6 @@ img#my_image{
 .gone{
   background: transparent;
   transition: 250ms;
-  display:none;
 }
 
 .my_certif_information .basic_information{
@@ -1453,17 +1393,12 @@ img#my_image{
 }
 
 /**자격증 편집 모달 **/
-.header_ins #ins_unfollow .modal-dialog,
 #certif_delete>.modal-dialog{
   margin:35px;
   position:fixed;
   left:0px;
   right:0px;
   top:148px;
-}
-.header_ins #ins_unfollow .modal-body{
-  padding-top:24px;
-  color:#000000;
 }
 #certif_delete .modal-body{
   padding-left:22px;
@@ -1475,20 +1410,6 @@ img#my_image{
   font-family:NanumBarunGothic;
   line-height:1.43;
   color:#333333;
-}
-.header_ins #ins_unfollow .modal-footer{
-  border:none;
-}
-.header_ins #ins_unfollow .modal-footer button:first-of-type{
-  color:#000000;
-  margin-right:32px;
-  padding:0px;
-  border:none;
-}
-.header_ins #ins_unfollow .modal-footer button:last-of-type{
-  color:#e02020;
-  padding:0px;
-  border:none;
 }
 #certif_delete .modal-footer{
   border-top:0px;
@@ -1910,7 +1831,7 @@ input:checked + .slider:before {
 .panel-body{
   border:0px;
   padding-left:16px;
-  padding-right:16px;
+  padding-right:8px;
 }
 #collapseThree>.panel-body, #collapseFour>.panel-body{
   padding-right:16px;
@@ -1984,8 +1905,8 @@ input:checked + .slider:before {
 .c_list div.panel-body{
   padding-left:16px;
   padding-right:16px;
-  font-size:14px;
-  color:#000000;
+  font-size:12px;
+  color:#333333;
 }
 .c_list div.input_cost{
   border-radius:4px;
@@ -2020,7 +1941,7 @@ input:checked + .slider:before {
     width: 31px;
     height: 40px;
     padding: 0px;
-    font-size: 14px;
+    font-size: 12px;
     opacity: 0.7;
 }
 #collapseTwo .panel-body div[class="col-xs-12"]{
@@ -2166,7 +2087,7 @@ input:checked + .slider:before {
     margin-bottom: 12px;
     cursor: pointer;
     font-size: 14px;
-    color:#000000;
+    color:#333333;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -2215,6 +2136,7 @@ input:checked + .slider:before {
   opacity:0.54;
   font-size:15px;
   cursor:pointer;
+  padding-left:5px;
 }
 .input_cost div[class="cost_check_box_1"] i img,.input_cost div[class="cost_check_box_2"] i img{
   width:16px;
@@ -2233,14 +2155,15 @@ input:checked + .slider:before {
 }
 
 #plus_cost{
-  height:40px;
+    height:48px;
   margin:auto;
   font-size:14px;
   font-weight:bold;
   color:#145db2;
-  border: solid 1.5px #145db2;
-  border-radius:3px;
+  border: solid 2px #145db2;
+  border-radius: 4px;
   background-color:#ffffff;
+  margin-top:12px;
 }
 
 /** 3. 강사 수익 **/
@@ -2734,7 +2657,7 @@ div#calc_cost_last{
   margin-left:53px;
 }
 #tour_basic_info .basic_information{
-  margin-top:16px;
+  margin-top:14px;
 }
 #tour_basic_info .tour_instructor{
   padding:7px 0 0px 0;
@@ -2772,6 +2695,8 @@ div#calc_cost_last{
   font-weight:bold;
   line-height:1;
   color:#333333;
+  top:-6px;
+  left:-12px;
   position:relative;
 }
 #tour_basic_info .tour_instructor div.explain_text{
@@ -2825,12 +2750,10 @@ div#calc_cost_last{
 }
 #tour_basic_info div#collapseFour div.row span:first-child{
   font-weight:normal;
-  color:#777777;
 }
 #tour_basic_info div#collapseFour div.row span:nth-child(2){
   font-size:12px;
   line-height:1.17;
-  color:#777777;
 }
 
 #tour_basic_info #tour_attend button{
@@ -2854,7 +2777,6 @@ div#calc_cost_last{
   font-size:14px;
   margin-top:0px;
   color:#333333;
-  margin-bottom:28px;
 }
 #tour_basic_info #tour_attend .instructor_profit label.blue_text{
   color:#145db2;
@@ -3367,6 +3289,9 @@ img.arrow-bottom{
 }
 
 /**tour-cost-explain**/
+.input_cost div.modal-content{
+  background-color:#eeeeee;
+}
 .input_cost div.modal-body{
   padding-bottom:0px;
 }
@@ -3392,7 +3317,6 @@ img.arrow-bottom{
 }
 .input_cost div.modal-footer{
   border:none;
-  text-align:center;
 }
 .input_cost div.modal-footer button{
   width:54px;
@@ -3401,7 +3325,7 @@ img.arrow-bottom{
   border:solid 1px #979797;
   font-size:12px;
   color:#777777;
-  background-color:#ffffff;
+  background-color:#eeeeee;
 }
 #collapseTwo div.cost_explain{
   margin-bottom:50px;
@@ -3563,8 +3487,6 @@ div.input_cost input.selboxDirect:focus {
   line-height:1.71;
   color:#333333;
   padding-top:56px;
-  padding-bottom:300px;
-  background-color:#f4f4f4;
 }
 #CONTENT_OFF div:nth-of-type(2){
   background-color:#f4f4f4;
@@ -3639,7 +3561,7 @@ input[type="radio"]:checked + label span{
 #cost_member div{
   float:left;
   width:100px;
-  margin-right:12px;
+  margin-right:40px;
 }
 #cost_member div:first-child{
   float:none;
@@ -3647,15 +3569,6 @@ input[type="radio"]:checked + label span{
   font-size:14px;
   color:#000000;
   margin-bottom:16px;
-  font-weight:bold;
-}
-#step1 #check_currency div:first-child,
-#step1 #c_main_cur div:first-child,
-#step1 .panel-body text,
-#step1 #FOC_list>div,
-#step3 #s3_cost_arrange div:first-child,
-#step3 #extra_ex_text{
-  font-weight:bold;
 }
 #cost_member div .ex_text{
   font-size:14px;
@@ -3677,7 +3590,6 @@ input[type="radio"]:checked + label span{
   height:40px;
   padding-right:30px;
   margin-top:4px;
-  text-align:center;
 }
 
 #cost_currency{
@@ -3834,11 +3746,11 @@ input[type="radio"]:checked + label span{
 
 #FOC_list{
   margin-left:16px;
-  margin-top:24px;
+  margin-top:44px;
 }
 #FOC_list div{
-  font-size:14px;
-  color:#000000;
+  font-size:12px;
+  color:#333333;
   margin-bottom:4px;
 }
 #FOC_list ul{
@@ -3850,36 +3762,32 @@ input[type="radio"]:checked + label span{
 }
 
 .cost_p1{
-  width:136px;
+  width:120px;
   border:1px solid #979797;
   display:inline-block;
   background-color:#ffffff;
-  border-radius:2px;
 }
 
 .cost_p1 input{
-  width:89px;
+  width:83px;
   border:none;
-  padding-left:12px;
-  padding-right:6px;
+  padding-left:5px;
 }
 .cost_p1+span{
-  margin-left:8px;
-  margin-right:8px;
+  margin-left:16px;
+  margin-right:16px;
 }
 
 .cost_p2{
-  width:85px;
+  width:100px;
   border:1px solid #979797;
   display:inline-block;
   background-color:#ffffff;
-  border-radius:2px;
 }
 .cost_p2 input{
-  width:34px;
+  width:62px;
   border:none;
-  padding-left:12px;
-  padding-right:6px;
+  padding-left:5px;
 }
 
 .cost_check_box_1{
@@ -3897,35 +3805,28 @@ input[type="radio"]:checked + label span{
   padding-left:16px;
   padding-right:16px;
   border-top:1px solid #dddddd;
-  border-radius:4px;
-}
-.ex_cost_detail{
-  color:#777777;
 }
 .ex_cost div:first-child{
   line-height:1.5;
   font-size:12px;
-  color:#777777;
-  margin-top:16px;
-}
-#step3 .ex_cost div:first-child{
-  padding-top:5px;
+  color:#333333;
+  padding-top:12px;
 }
 .ex_cost div.accordion-toggle{
   font-size:14px;
+  font-weight:bold;
+  color:#145db2;
   margin-top:16px;
 }
 .ex_cost div.accordion-toggle i img{
+  border:1px solid #aaaaaa;
+  border-radius:100%;
   width:24px;
+  padding:4px;
   position:relative;
   top:-6px;
-  float:right !important;
-  transform:rotate(180deg);
 }
 
-.ex_cost div.collapsed i img{
-  transform:rotate(0deg);
-}
 #check_currency{
   margin-left:16px;
   margin-top:28px;
@@ -3934,7 +3835,7 @@ input[type="radio"]:checked + label span{
 #cost_no_s{
   margin-right:16px;
   margin-left:16px;
-  margin-top:24px;
+  margin-top:44px;
 }
 #check_currency div,
 #cost_ins div{
@@ -3958,11 +3859,9 @@ div.input_cost{
 .label{
   background-color:#145db2;
   font-weight:normal;
-  margin-right:4px;
 }
 .label-default{
-  background-color:#aaaaaa;
-  margin-right:1px;
+  background-color:#aaaaaa
 }
 .cost_p1 span{
   position: relative;
@@ -4003,9 +3902,6 @@ div.custom{
   width:120px;
   padding-right:25px;
 }
-#check_currency div.custom input::placeholder {
-  color: #999999;
-}
 #check_currency span.c_text,
 #cost_ins span.c_text{
   position:relative;
@@ -4016,11 +3912,6 @@ div.custom{
   font-size:12px;
   color:#777777;
   margin-top:7px;
-}
-#check_currency div.custom div:first-of-type{
-  margin-top:4px;
-  color:#e02020;
-  display:none;
 }
 #cost_ins div.custom div{
   font-size:14px;
@@ -4034,7 +3925,6 @@ div.custom{
 }
 #cost_ins .custom .label-default{
   background-color:#aaaaaa;
-  margin-right:1px;
 }
 
 div.custom div{
@@ -4044,7 +3934,7 @@ div.custom div{
 
 .form_wizard{
   font-weight:bold;
-  margin-top:120px;
+  margin-top:100px;
 }
 
 .form_wizard button.prev-step,
@@ -4054,7 +3944,6 @@ div.custom div{
   text-align:left;
   position:fixed;
   bottom:0px;
-  box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.25);
 }
 .form_wizard button.prev-step img,
 .form_wizard #step_1_prev img{
@@ -4070,11 +3959,6 @@ div.custom div{
   position:fixed;
   bottom:0px;
   right:0px;
-  box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.25);
-}
-
-#step1 .form_wizard button.next-step{
-  background-color:#cccccc;
 }
 .form_wizard button.next-step img{
   margin-top:-3px;
@@ -4082,7 +3966,7 @@ div.custom div{
 
 #c_first div.input_cost div:first-of-type,
 #c_sibling div.input_cost div:first-of-type{
-  margin-bottom:16px;
+  margin-bottom:18px;
 }
 
 #c_first .cost_checkbox_container,
@@ -4092,9 +3976,6 @@ div.custom div{
 
 #step2 div.c_list{
   margin-top:-30px;
-}
-#step2 div.input_cost{
-  margin-bottom:14px;
 }
 
 #c_extra_first div.c_select,
@@ -4108,8 +3989,8 @@ div.custom div{
 #c_extra_first div.c_select select,
 #c_extra_sibling div.c_select select{
   background-color:#ffffff;
-  height:40px;
-  opacity:1.0;
+  height:38px;
+  top:-1px;
   border:solid 1px #979797;
   width:80px;
   margin-left:7px;
@@ -4125,14 +4006,11 @@ div.custom div{
   color:#ffffff;
   text-align:left;
   padding:14px 0px 14px 16px;
-  font-size:10px;
-  margin-bottom:0px;
-  font-weight:normal;
-  line-height:1.5;
-}
-.form_wizard div span{
   font-size:12px;
+  line-height:1.5;
+  margin-bottom:0px;
 }
+
 
 
 .wizard .nav{
@@ -4160,7 +4038,7 @@ div.custom div{
 }
 
 .c_list .s2_cost{
-  margin-top:10px;
+  margin-top:8px;
   margin-bottom:17px;
 }
 
@@ -4174,8 +4052,6 @@ div.custom div{
   border:solid 3px #145db2;
   display:table;
   margin-bottom:8px;
-  padding-left:4px;
-  padding-right:4px;
 }
 
 .cost_ins input:disabled{
@@ -4185,8 +4061,7 @@ div.custom div{
 
 #step2 .s2_p_cost,
 #step2 #s2_sum_cost,
-#step3 #s3_sum_cost,
-#step3 #s3_actual_per_cost{
+#step3 #s3_sum_cost{
   padding-left:16px;
   padding-right:16px;
   padding-top:24px;
@@ -4197,20 +4072,17 @@ div.custom div{
 
 #step2 .s2_p_cost div:first-child,
 #step2 #s2_sum_cost div:first-child,
-#step3 #s3_sum_cost div:first-child,
-#step3 #s3_actual_per_cost div:first-child{
+#step3 #s3_sum_cost div:first-child{
   font-size:14px;
   color:#000000;
+  font-weight:bold;
 }
 #step2 .s2_p_cost div:last-child,
 #step2 #s2_sum_cost div:last-child,
 #step3 #s3_sum_cost div:last-child{
   color:#000000;
 }
-#step3 .s3_ex_text{
-  font-size:12px;
-  color:#777777;
-}
+
 
 
 #c_main_cur{
@@ -4247,11 +4119,10 @@ div.custom div{
 }
 #step4 .s4_check_cost_control text{
   font-size:12px;
-  color:#cccccc;
+  color:#777777;
 }
 #step4 .s4_check_cost_control{
   height:16.8px;
-  color:#cccccc;
 }
 #step4 .s4_check_cost_fin,
 #step4 .s4_check_cost_revenue{
@@ -4264,8 +4135,8 @@ div.custom div{
   padding-top:6px;
   margin-bottom:16px;
 }
-#step4 .s4_check_cost_fin{
-  margin-bottom:24px;
+#step4 .s4_check_cost_revenue{
+  color:#145db2;
 }
 #step4 #control_cost{
   padding:16px;
@@ -4274,16 +4145,11 @@ div.custom div{
   margin-top:12px;
   margin-bottom:6px;
   font-size:12px;
+  color:#777777;
 }
 #step4 #control_cost input[type="text"]{
   width:100%;
 }
-
-#step4 #control_cost input[type="text"]::placeholder {
-  color: #999999;
-}
-
-
 #step4 .set_cost{
   margin-top:10px;
   margin-bottom:20px;
@@ -4325,12 +4191,14 @@ div.custom div{
   top:-29px;
 }
 #step4 #slide-range-text{
-  font-size:8px;
+  font-size:10px;
   color:#777777;
-  margin-bottom:10px;
+  margin-top:5px;
 }
 #step4 #slide-range-text span{
   margin-left:40px;
+  position:relative;
+  top:-13px;
 }
 #step4 #slide-range-text text:last-of-type{
   float:right;
@@ -4359,15 +4227,6 @@ div.custom div{
     border-radius:50%;
     cursor: pointer;
   }
-    input[type=range].red::-webkit-slider-thumb{
-    -webkit-appearance: none;
-    width: 18px;
-    height: 18px;
-    background: #e02020;
-    border: 1px solid #e02020;
-    border-radius:50%;
-    cursor: pointer;
-  }
   input[type=range]::-moz-range-thumb{
     -webkit-appearance: none;
     width:18px;
@@ -4379,7 +4238,6 @@ div.custom div{
   }
 
 #step5 .s5_check_cost{
-  margin-top:6px;
   font-size:12px;
   color:#777777;
   background-color:#f4f4f4;
@@ -4410,578 +4268,4 @@ div.custom div{
 #step5 #s5_check_cost_revenue span,
 #step5 .s5_check_cost_fin span{
   float:right;
-}
-
-#INS_intro{
-  padding:20px;
-  font-size:14px;
-}
-#INS_intro>div{
-  margin-bottom:32px;
-}
-#INS_intro .INS_intro_title{
-  font-weight:bold;
-  margin-bottom:6px;
-}
-#INS_intro text{
-  line-height:1.43;
-  white-space: pre-line;
-}
-
-#INS_intro span{
-  font-size:12px;
-  color:#777777;
-}
-
-#INS_intro textarea{
-  width:100%;
-  height:54px;
-  border-radius:2px;
-  border:solid 1px #979797;
-}
-#step1 input.cost_name{
-  outline:none;
-  font-size:14px;
-}
-#step1 input.cost_name::placeholder{
- color:#aaaaaa; 
-}
-#step3 input.cost_name::placeholder{
- color:#aaaaaa;
- font-size:14px;
-}
-
-#step3 input.cost_name{
- background-color:#ffffff;
- border: solid 1px #979797;
- padding: .5em .7em;
-}
-
-#step1 div.input_cost{
-  margin-bottom:12px;
-  margin-top:12px;
-}
-#step1 .c_list div.name_empty_error{
-  color:#e02020;
-  font-size:12px;
-  margin-top:4px;
-  display:none;
-}
-#step1 #room_type .name_empty_error{
-  margin-top:-12px;
-  margin-bottom:12px;
-}
-
-#step2 .c_list .panel-body .input_cost{
-  padding-top:14px;
-  padding-left:20px;
-}
-
-#step3 #cost_no_s_list_empty{
-  font-size: 14px;
-  background-color: #f4f4f4;
-  color: #aaaaaa;
-  text-align: center;
-  height: 64px;
-  line-height: 64px;
-  margin-top: 14px;
-  margin-bottom: 24px;
-}
-
-#step2 .c_list .input_cost select{
-  width:45px
-}
-
-#step3 .c_list .s3_ex_text{
-  margin-top:6px;
-  margin-bottom:12px;
-}
-
-#step3 div.c_select input{
-  height:40px;
-}
-#step3 #plus_cost{
-  margin-top:16px;
-}
-
-#CONTENT_ON .tour_division{
-  height:16px;
-}
-.my_profile .basic_information{
-  margin-top:16px;
-}
-.my_profile .basic_information .info_text{
-  line-height:1;
-}
-
-#tour_edu_plus #tour_date text{
-  font-size:12px;
-  color:#777777;
-  margin-right:10px;
-}
-#tour_edu_plus #tour_date input[type="date"]{
-  margin-right:10px;
-  text-align:center;
-}
-#tour_edu_plus #tour_date input[type="time"]{
-  border-radius:2px;
-  text-align:center;
-}
-#tour_edu_plus #tour_date div:nth-of-type(2){
-  margin-top:4px;
-}
-#tour_edu_plus #tour_member div{
-  float:left;
-  width:100px;
-  margin-right:12px;
-  margin-top:9px;
-} 
-#tour_edu_plus #tour_member span.ex_text{
-  font-size:12px;
-  color:#777777;
-}
-#tour_edu_plus #tour_member input{
-  width:100px;
-  height:40px;
-  padding-right:30px;
-  margin-top:4px;
-  text-align:center;
-}
-#tour_edu_plus #tour_member span.c_text{
-  position:relative;
-  float:right;
-  top:-26px;
-  padding-right:10px;
-  font-size:12px;
-  color:#333333;
-  left:-12px;
-}
-#tour_add_submit{
-  background-color: #145db2;
-  border: none;
-  color: #ffffff;
-  width: 100%;
-  height: 50px;
-  font-size: 14px;
-  border-radius:0px;
-  margin-top: 36px;
-}
-
-#tour_basic_info .my_profile_information{
-  margin-bottom:29px;
-}
-
-#tour_attend{
-  padding-top:6px;
-}
-
-#step2 #s2_p_cost_head{
-  font-weight:bold;
-}
-#step2 #s2_p_total{
-  font-weight:bold;
-  float:right;
-}
-#step2 #s2_p_cost_ex{
-  font-size:10px;
-  margin-top:10px;
-}
-#step2 #s2_cost_arrange li{
-  border-bottom:solid 1px #eeeeee;
-}
-#step2 li .s2_FOC_n,
-#step2 li .s2_n_n,
-#step2 li .s2_ins_n,
-
-#step3 li .s3_FOC_n,
-#step3 li .s3_n_n,
-#step3 li .s3_ins_n,
-#step3 .c_list .s3_FOC_n,
-
-#step5 li .s5_FOC_n,
-#step5 li .s5_n_n,
-#step5 li .s5_ins_n{
-  font-size:10px;
-  color:#ffffff;
-  border-radius:2px;
-  background-color:#aaaaaa;
-  padding:3px;
-  margin-right:4px;
-  font-weight:normal;
-}
-#step2 li .s2_FOC_y,
-#step2 li .s2_n_y,
-#step2 li .s2_ins_y,
-
-#step3 li .s3_FOC_y,
-#step3 li .s3_n_y,
-#step3 li .s3_ins_y,
-#step3 .c_list .s3_n_y,
-#step3 .c_list .s3_ins_y,
-
-#step5 li .s5_FOC_y,
-#step5 li .s5_n_y,
-#step5 li .s5_ins_y{
-  font-size:10px;
-  color:#ffffff;
-  border-radius:2px;
-  background-color:#145db2;
-  padding:3px;
-  margin-right:4px;
-  font-weight:normal;
-}
-#step2 li .s2_cost_name,
-#step5 li .s5_cost_name{
-  color:#000000;
-  margin-top:8px;
-  font-weight:bold;
-}
-#step2 li .s2_cost_ex{
-  color:#777777 !important;
-  margin-bottom:8px;
-}
-#step2 li .s2_cost_calc{
-  float:right;
-}
-#step2 li .s2_cost_fin,
-#step2 li .main_currency{
-  color:#000000;
-}
-#step3 li .s3_cost_name{
-  font-weight:bold;
-  margin-top:10px;
-  margin-bottom:10px;
-}
-#step3 #s3_cost_arrange{
-  padding-left:16px;
-  padding-right:16px;
-  margin-top:23px;
-}
-
-#step3 #s3_cost_arrange .s3_cost_income,
-#step3 #s3_cost_arrange .s3_cost_expense,
-#step5 #s5_cost_arr .s5_cost_income,
-#step5 #s5_cost_arr .s5_cost_expense{
-  font-size:12px;
-  color:#777777;
-  margin-bottom:10px;
-}
-
-#step3 .s3_calc_income,
-#step3 .s3_calc_expense,
-#step5 .s5_calc_income,
-#step5 .s5_calc_expense{
-  float:right;
-}
-#step3 .s3_cost_fin,
-#step3 .s3_calc_income .main_currency,
-#step3 .s3_cost_fin_expense,
-#step3 .s3_calc_expense .main_currency{
-  color:#000000;
-}
-#step3 .s3_cost_revenue,
-#step5 .s5_cost_revenue{
-  float:right;
-  font-size:12px;
-  color:#145db2;
-}
-#step3 .s3_cost_expense input{
-  width:72px;
-  height:28px;
-  text-align:right;
-  margin-left:8px;
-  font-size:12px;
-}
-#step3 .s3_cost_p1,
-#step5 .s5_cost_p1{
-  margin-left:8px;
-}
-#step3 .s3_calc_expense{
-  position:relative;
-  top:9px;
-}
-#step3 #s3_cost_arrange li,
-#step5 #s5_cost_arr li{
-  padding-top:16px;
-  border-top:1px solid #eeeeee;
-  padding-bottom:25px;
-}
-#step3 .ex_cost_box{
-  margin-bottom:66px;
-  border-top:1px solid #eeeeee;
-  padding-top:16px;
-}
-#step3 .remove_div{
-  background-color:#ffffff;
-  opacity:0.36;
-  width:12px;
-}
-#step3 .ex_cost_name{
-  width:100%;
-  height:28px;
-  font-size:12px;
-  margin-top:15px;
-}
-#step3 .ex_cost_0_income{
-  font-size:12px;
-  color:#777777;
-  margin-top:10px;
-}
-#step3 .ex_cost_0_income text:first-of-type,
-#step3 .ex_cost_expense text:first-of-type{
-  margin-right:6px;
-}
-#step3 .ex_cost_0_income span{
-  float:right;
-  color:#000000;
-}
-#step3 .ex_cost_expense{
-  margin-top:10px;
-  font-size:12px;
-  color:#777777;
-}
-#stpe3 .ex_cost_expense text:first-of-type{
-  margin-right:6px;
-}
-#step3 .ex_cost_expense .ex_cost_p1{
-  width:131px;
-  height:28px;
-  border:1px solid #979797;
-  display:inline-block;
-  border-radius:2px;
-}
-#step3 .ex_cost_expense .ex_cost_p1 input{
-  width:81px;
-  height:26px;
-  border:none;
-  font-size:12px;
-}
-#step3 .ex_cost_expense .ex_cost_p1 input::placeholder{
-  color:#bbbbbb;
-}
-#step3 .ex_cost_expense .ex_cost_p1 span{
-  position:relative;
-  float:right;
-  color:#333333;
-  top:-27px;
-}
-#step3 .ex_cost_expense .ex_cost_p1 select{
-  width:49px;
-  height:28px;
-  font-size:12px;
-  border:none;
-}
-#step3 .ex_cost_expense .ex_cost_x{
-  font-size:14px;
-  color:#000000;
-  margin-left:9px;
-  margin-right:9px;
-}
-#step3 .ex_cost_expense .ex_cost_p2{
-  width:95px;
-  height:28px;
-  border:1px solid #979797;
-  border-radius:2px;
-  display:inline-block;
-}
-#step3 .ex_cost_expense .ex_cost_p2 input{
-  width:46px;
-  height:26px;
-  border:none;
-  font-size:12px;
-}
-#step3 .ex_cost_expense .ex_cost_p2 input::placeholder{
-  color:#bbbbbb;
-}
-#step3 .ex_cost_expense .ex_cost_p2 span{
-  position:relative;
-  float:right;
-  color:#333333;
-  top:-27px;
-}
-#step3 .ex_cost_expense .ex_cost_p2 select{
-  width:49px;
-  height:28px;
-  font-size:12px;
-  border:none;
-}
-#step3 .ex_cost_calc{
-  float:right;
-  font-size:12px;
-  margin-top:10px;
-}
-#step3 .ex_cost_calc .expense{
-  color:#777777;
-}
-#step3 .ex_cost_calc .revenue{
-  float:right;
-  color:#e02020;
-  margin-top:10px;
-}
-#step3 .ex_expense{
-  float:right;
-}
-#step2 .form_wizard button.prev-step,
-#step2 .form_wizard div.mid_cost,
-#step2 .form_wizard button.next-step,
-#step3 .form_wizard button.prev-step,
-#step3 .form_wizard div.mid_cost,
-#step3 .form_wizard button.next-step,
-#step4 .form_wizard button.prev-step,
-#step4 .form_wizard div.mid_cost,
-#step4 .form_wizard button.next-step,
-#step5 .form_wizard button.prev-step,
-#step5 .form_wizard div.mid_cost,
-#step5 .form_wizard button.next-step{
-  height:90px;
-}
-.form_wizard text.ins_bgn_n{
-  opacity:0.8;
-}
-.form_wizard .text_per_cost,
-.form_wizard .text_per_revenue,
-.form_wizard .text_t_revenue{
-  max-width:120px;
-}
-.form_wizard .text_per_cost span,
-.form_wizard .text_per_revenue span,
-.form_wizard .text_t_revenue span{
-  float:right;
-}
-#step2 .mid_cost div,
-#step3 .mid_cost div,
-#step4 .mid_cost div,
-#step5 .mid_cost div{
-  max-width:120px;
-}
-
-
-#step2 .s2_cost input.cost_name{
-  font-size:14px;
-  font-weight:bold;
-}
-#step2 .mid_cost div,
-#step3 .mid_cost div,
-#step4 .mid_cost div,
-#step5 .mid_cost div{
-  font-size:12px;
-  line-height:1.5;
-}
-#step2 .mid_cost div>span,
-#step3 .mid_cost div>span,
-#step4 .mid_cost div>span,
-#step5 .mid_cost div>span{
-  float:right;
-}
-#step2 .next-step,
-#step3 .next-step,
-#step4 .next-step,
-#step5 .next-step{
-  width:26%;
-}
-#step2 .mid_cost,
-#step3 .mid_cost,
-#step4 .mid_cost,
-#step5 .mid_cost{
-  width:40.66667%;
-  padding-top:8px;
-}
-#step4 #s4_slide_text{
-  text-align:center;
-  font-size:12px;
-  color:#000000;
-  margin-bottom:1px;
-}
-.mid_cost .participate_n{
-  font-size:10px;
-  opacity:0.8;
-}
-#step4 #s4_control_cost{
-  font-size:12px;
-  margin-top:17px;
-
-}
-#step4 #s4_control_cost thead{
-  font-weight:bold;
-  border-bottom:solid #000000;
-}
-#step4 #s4_control_cost_input th.s4_cost_name text{
-  font-size:10px;
-  color:#777777;
-  margin-bottom:6px;
-}
-#step4 .s4_extra_cost,
-#step5 .s5_extra_cost{
-  font-size:10px;
-  color:#ffffff;
-  border-radius:2px;
-  background-color:#aaaaaa;
-  padding:3px;
-  font-weight:normal;
-  margin-left:2px;
-}
-#step4 #s4_control_cost_input th.s4_cost_name input{
-  font-size:12px;
-  width:120px;
-  height:28px;
-}
-#step4 #s4_control_cost_input td.s4_revenue input{
-  width:72px;
-  height:28px;
-  float:right;
-  color:#145db2;
-  font-size:12px;
-  padding-right:25px;
-  padding-left:5px;
-}
-#step4 #s4_control_cost_input td.s4_revenue span{
-  position:relative;
-  float:right;
-  font-size:12px;
-  color:#145db2;
-  margin-right:-67px;
-  top:6px;
-}
-#step4 #s4_control_cost .s4_income{
-  text-align:right;
-  vertical-align: middle;
-  padding:10px 0px;
-}
-#step4 #s4_control_cost .s4_revenue{
-  text-align:right;
-  color:#145db2;
-  vertical-align: middle;
-  padding:10px 0px;
-}
-#step4 #s4_control_cost .s4_cost_name{
-  vertical-align: middle;
-  padding:10px 0px;
-}
-
-
-#step2 .modal-content{
-  border-radius:3px;
-  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4);
-}
-
-#step5 #s5_cost_arr{
-  padding-left:16px;
-  padding-right:16px;
-}
-#step5 #s5_cost_arr ul{
-  border-top:2px solid #000000;
-}
-#step5 #s5_cost_arr>div{
-  font-weight:bold;
-}
-#step5 #s5_cost_arr>div>span{
-  float:right;
-}
-
-#step5 .s5_calc_income span:last-of-type,
-#step5 .s5_calc_expense span:last-of-type{
-  color:#000000;
-}
-#step5 .s5_cost_income{
-  margin-top:10px;
 }

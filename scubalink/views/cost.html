@@ -136,7 +136,7 @@
               <span class="c_text">원</span>
               <span class="cur_text">= 100페소</span>
               <div>환율을 입력하세요.</div>
-              <div>약 2,835 = 100페소 (2019/10/01 19:43 기준)</div>
+              <div>약 2,835원 = 100페소 (2019/10/01 19:43 기준)</div>
           	</div>
           </li>
 
@@ -185,7 +185,7 @@
 <div>
   <div class="c_list">
     <div class="panel-body">
-      4. 비용 항목을 입력하세요.
+      <text>4. 비용 항목을 입력하세요.</text>
       <div id="room_type">
         <div class="input_cost">
           
@@ -318,7 +318,7 @@
 
           <div class="cost_check_box_1">
             <span class="cost_n">
-              <label class="cost_checkbox_container">공동 비용
+              <label class="cost_checkbox_container">공동비용
                 <input type="checkbox">
                 <span class="cost_checkmark"></span>
               </label>
@@ -333,20 +333,18 @@
                 <!-- Modal content-->
                 <div class="modal-content">
                   <div class="modal-body">
-                    <div>공동 비용</div>
+                    <div>공동비용</div>
                     <div>
                       <span><img src='../resources/img/ic-check-box.svg'></span>
                       <div class="modal_text">
-                        <span class="check_text">체크</span>
-                        <p>모두 함께 쓴 비용, 참여자 수만큼 나눠야하는 공동 전체 비용. 예) 하루 총 숙박비</p>
+                        <p>1/n, 참여자 수만큼 나누는 공동 전체 비용입니다.</p>
                       </div>
                     </div>
 
                     <div>
                       <span><img src='../resources/img/ic-check-box-outline-blank.svg'></span>
                       <div class="modal_text">
-                        <span class="check_text">체크해제</span>
-                        <p>1인 당 개별 비용 예) 하루 1인 숙박비</p>
+                        <p>1인 당 개별 비용입니다.</p>
                       </div>
                     </div>
                   </div>
@@ -375,21 +373,18 @@
                 <!-- Modal content-->
                 <div class="modal-content">
                   <div class="modal-body">
-                    <div>강사 비용</div>
+                    <div>강사비용포함</div>
                     <div>
                       <span><img src='../resources/img/ic-check-box.svg'></span>
                     <div class="modal_text">
-                      <span class="check_text">체크</span>
-                        <p>강사의 몫이 계산 되어야 하는 비용<br>
-                        FOC가 적용되어 최종적으로 할인되더라도 꼭 체크하세요.</p>
+                        <p>교육생이 강사의 비용을 부담합니다.</p>
                       </div>
                     </div>
 
                     <div>
                       <span><img src='../resources/img/ic-check-box-outline-blank.svg'></span>
                       <div class="modal_text">
-                        <span class="check_text">체크해제</span>
-                        <p>교육생만 지불하는 비용</p>
+                        <p>교육생이 강사의 비용을 부담하지 않습니다.</p>
                       </div>
                     </div>
                   </div>
@@ -413,8 +408,8 @@
           <div id="ex_cost_1" class="collapse">
           	<div>
           	<span class="check1 hide">공동비용지원 체크 시</span>
-          	<span class="check2 hide">강사비용지원 체크 시</span>
-          	<span class="check3 hide">공동비용, 강사비용지원 체크 시</span>
+          	<span class="check2 hide">강사비용포함 체크 시</span>
+          	<span class="check3 hide">공동비용, 강사비용포함 체크 시</span>
           </div>
           <div class="ex_cost_detail">
             <div>1인 비용</div>
@@ -502,46 +497,63 @@
  <div class="tour_division"></div>
 
 <div class="s2_p_cost">
-  <div>교육생 1인 비용</div>
-  <div id="s2_p_name">= </div>
-  <div id="s2_p_cal"></div>
-  <div id="s2_p_sum"></div>
-  <div id="s2_p_total">=
-    <text>0</text>
-    <text>원</text>
+  <div>
+    <text id="s2_p_cost_head">교육생 1인 비용</text>
+    <span id="s2_p_total">
+      <text id="t_cost">0</text><text id="t_cur">원</text>
+    </span>
   </div>
+  <div id="s2_p_cost_ex">선택한 기본 통화('<text id="main_cur">대한민국 원</text>')로 환산 후 계산됩니다.</div>
+
+  <ul id="s2_cost_arrange">
+
+  </ul>
 </div>
 
 
-<div id="s2_sum_cost">
-  <div>예상 총 수입</div>
-  <div>= 
-    <text>교육생 1인 비용</text>
-    <text> x </text>
-    <text>교육생 수</text>
-  </div>
-  <div>=
-    <text id="p_cost">0</text>
-    <text class="t_cur">원</text>
-    <text> x </text>
-    <text class="bgn_n"></text>
-    <text>명</text>
-  </div>
-  <div id="total_c">=
-    <text>0</text>
-    <text>원</text>
-  </div>
-</div>
         <div class="form_wizard">
   <button class="col-xs-4 prev-step" type="button" onclick="s2_to_s1()">
     <img src="../resources/img/ic-keyboard-arrow-right-white.svg">
     이전
   </button>
 
+<!--   <div class="col-xs-4 mid_cost">
+    <text style="opacity:0.8">
+      강사 <text class="ins_n">0</text>명&nbsp 
+      교육생 <text class="bgn_n">1</text>명<br>
+    </text>
+    <span>
+      1인 비용 : <text id="t_cost_">0</text><text class="main_currency">원</text>
+    </span>
+  </div> -->
   <div class="col-xs-4 mid_cost">
-    교육생 1인 비용<br>
-    <text>0 원</text>
+    <span class="participate_n">
+      강사 <text class="ins_n">0</text>명,
+    교육생 <text class="bgn_n">0</text>명<br>
+    </span>
+    <div class="">
+      1인 수입 : 
+      <span>
+        <text class="per_cost">0</text>
+        <text class="main_currency">원</text>
+      </span>
+    </div>
+    <div>
+      1인 수익 : 
+      <span>
+        <text class="per_revenue">0</text>
+        <text class="main_currency">원</text>
+      </span>
+    </div>
+    <div>
+      총 수익 : 
+      <span>
+        <text class="total_revenue">0</text>
+        <text class="main_currency">원</text>
+      </span>
+    </div>
   </div>
+
 
   <button class="col-xs-4 next-step" type="button" onclick="s2_to_s3()">
     다음
@@ -576,11 +588,12 @@
         </div>
 
 
-        <div id="cost_ins">
-          <div>1. 강사 할인 받는 항목이 있나요?</div>
-          <div class="s3_ex_text">받는 금액과 실제 지출 금액이 다른 항목을 체크하세요.</div>
+        <div id="s3_cost_arrange">
+          <div>1. 실지출을 수정하세요.</div>
+
           <!--Step2의 항목이 자동 입력됨 -->
           <ul>
+
           </ul>
         </div>
 
@@ -588,50 +601,90 @@
 <div class="tour_division"></div>
 
 
-        <div id="cost_no_s">
-          <div>2. 실제 지출 단가를 입력하세요.</div>
-          <!--Step2의 항목이 자동 입력됨 -->
-          
-<div id="cost_no_s_list_empty" class="">
-  선택한 항목이 없습니다.
-</div>
-
-<div id="cost_no_s_list" class="hidden">
-
-
-
-      </div>
-    </div>
-
-<div class="tour_division"></div>
-
-  
 
   <!--추가 지출-->
   <div>
     <div class="c_list">
       <div class="panel-body">
-        <div>3. 추가 지출이 있나요? (선택 입력)</div>
+        <div id="extra_ex_text">2. 추가 지출이 있나요? (선택 입력)</div>
         <div class="s3_ex_text">강사 교통비 등 기타 지출이 있다면 입력하세요.</div>
 
         <div id="c_extra_first">
-          <div class="input_cost">
+          <div class="ex_cost_box">
             <div>
+              <span class="s3_FOC_n">FOC 미적용</span>
+              <span class="s3_n_y">공동 비용</span>
+              <span class="s3_ins_y">강사비용 포함</span>
 
-              <input type="text" class="cost_name" placeholder="추가 지출 항목 이름">
-
-              <span class="remove_div btn" onclick="remove_div_s3(this)"><img src="../resources/img/ic-close.svg"></span> 
+              <span class="remove_div btn" onclick="remove_div_s3(this)"><img src="../resources/img/ic-close.svg"></span>
             </div>
 
-            <div class="c_select">
-            <input type="number" placeholder="0">
+
+            <div>
+              <input class="ex_cost_name" type="text" placeholder="추가 지출 이름" maxlength="20">
+            </div>
+
+            <div class="ex_cost_0_income">
+              <text>수입</text>
+              <text>0</text>
+              <text class="extra_cur">원</text>
+              <text>x</text>
+              <text class="extra_p2">1</text>
+              <text class="extra_unit">회</text>
+              <span>
+                <text>0</text>
+                <text class="main_currency">원</text>
+            </div>
+
+            <div class="ex_cost_expense">
+              <text>지출</text>
+              
+
+              <span class="ex_cost_p1">
+                <input type="number" placeholder="0">
+                <span>
+                <select>
+                  <option value="원">원</option>
+                  <option value="페소" selected="selected">페소</option>
+                </select>
+                </span>
+              </span>
+              
+              <text class="ex_cost_x">x</text>
+
+            <span class="ex_cost_p2">
+              <input type="number" placeholder="0" max="999">
+              <span>
               <select>
-                <option>원</option>
-                <option>엔</option>
+                <option value="회">회</option>
+                <option value="박">박</option>
+                <option value="일">일</option>
               </select>
+              </span>
+            </span>
             </div>
+            <div class="ex_cost_calc">
+              <span class="expense hide">
+                <text>0</text>
+                <text>달러</text>
+                 =
+               </span>
+              <span class="ex_expense">
+                <text></text>
+                <text class="main_currency">원</text>
+              </span>
+              <br>
+              <span class="revenue">
+                <text>수익: </text>
+                <text>0</text>
+                <text class="main_currency">원</text>
+              </span>
+            </div>
+
+
+
           </div><!-- input cost-->
-        </div><!--end of room-type-->
+        </div><!--end : c_extra_first-->
 
         <div id="c_extra_sibling"></div>
         <!--항목 추가 시 c_extra_sibling에 c_extra_first 복사-->
@@ -646,47 +699,6 @@
 </div><!-- panel panel-default-->
 
 
-<div class="tour_division"></div>
-
-
-<div id="s3_actual_per_cost">
-  <div>교육생 1인 실지출</div>
-  <div id="s3_p_name"></div>
-  <div id="s3_p_cal"></div>
-  <div id="s3_p_sum"></div>
-  <div id="s3_p_total"></div>
-</div>
-
-
-
-
-
-<div id="s3_sum_cost">
-  <div>예상 총 지출</div>
-  <div id="s3_sum_name">= (교육생 1인 실지출 x 교육생 수)</div>
-  <div id="s3_sum_cal">= (
-    <text class="actual_t_cost"></text>
-    <text class="t_cur"></text>
-    <text> x </text>
-    <text class="bgn_n"></text>
-    <text>명)</text>
-    <text id="extra_cost"></text>
-  </div>
-  <div id="s3_sum_cal_ex">= (
-    <text class="actual_t_cost"></text>
-    <text class="t_cur"></text>
-    <text> x </text>
-    <text class="bgn_n"></text>
-    <text>명)</text>
-    <text id="extra_cost_ex"></text>
-  </div>
-
-  <div>=
-    <text id=s3_f_cost></text>
-    <text id=s3_f_cur></text>
-  </div>
-
-</div>
 
 
 
@@ -701,8 +713,31 @@
 
 
   <div class="col-xs-4 mid_cost">
-    예상 총 지출<br>
-    <text>0 원</text>
+    <span class="participate_n">
+      강사 <text class="ins_n">0</text>명,
+      교육생 <text class="bgn_n">0</text>명<br>
+    </span>
+    <div class="">
+      1인 수입 : 
+      <span>
+        <text class="per_cost">0</text>
+        <text class="main_currency">원</text>
+      </span>
+    </div>
+    <div>
+      1인 수익 : 
+      <span>
+        <text class="per_revenue">0</text>
+        <text class="main_currency">원</text>
+      </span>
+    </div>
+    <div>
+      총 수익 : 
+      <span>
+        <text class="total_revenue">0</text>
+        <text class="main_currency">원</text>
+      </span>
+    </div>
   </div>
 
 
@@ -738,108 +773,82 @@
        <!--header-->
     <div id="cost_header">
       <span>수익 조정</span><br>
-      <span class="header_explain">교육생 비용과 수익을 확인하여 조정하세요.</span>
+      <span class="header_explain">아래 슬라이드를 움직여 수익을 조정하세요.</span>
     </div>
 
 
-     
- 
     
 
       
         <div class="panel-body">
-    <div class="s4_check_cost">
-      <text>1. 교육생 1인 비용과 예상 수익을 확인하세요.</text>
-
-
-      <div id="s4_check_per_cost">
-        <div class="s4_check_cost_arr">숙박
-          <span>+ 90,000원</span>
-        </div>
-        
-        <div class="s4_check_cost_arr">다이빙 3회
-          <span>+ 406,000원</span>
-        </div>
-
-        <div class="s4_check_cost_arr">페이팔 수수료
-          <span>+ 16,590원</span>
-        </div>
-     </div>
-
-      <div class="s4_check_cost_control">
-        <text>예) 교육비, 예비비, 할인</text>
-        <span>원</span><span>0</span>
-      </div>
-
-      <div class="s4_check_cost_fin">교육생 1인 비용
-        <span>496,390원</span>
-      </div>
-
-
-
-
-    </div>
-
-
-    <div class="s4_check_cost">
-      <div id="s4_check_cost_income">예상 총 수입
-        <span>2,481,950원</span>
-      </div>
-
-      <div id="s4_check_cost_expense">예상 총 지출
-        <span>- 2,481,950원</span>
-      </div>
-
-      <div class="s4_check_cost_revenue">예상 수익
-        <span>0원</span>
-      </div>
-    </div>
-
-</div>
-
-<div class="tour_division"></div>
-
-
-
-
-
-    <div id="control_cost">
-      <text>2. 교육생 1인 비용 또는 예상 수익을 조정하세요.</text>
-
-      <div class="per_cost">교육생 1인 비용</div>
-      <input type="text" placeholder="예) 교육비, 예비비, 할인">
-
-
-      <div class="set_cost">
-      <select>
-        <option>+</option>
-        <option>-</option>
-      </select>
-      
-
-        <input type="number" id="input-Amount" name="price" placeholder="0">
-        <span>원</span>
-      </div>
-     
-
-<text class="per_cost">예상 수익</text>
-<div id="expect_cost">
-<input type="number">
-<span>원</span>
-</div>
-
-<input id="slide-range" type="range" min="0" max="500000" step="1" value="0">
-
-<div id="slide-range-text">
-  <text>0</text>
-  <span>|</span>
-  <text>500,000</text>
-</div>
-
-
-
+          <div id="s4_slide_text">
+            <text>1인 수익 조정 슬라이드</text>
           </div>
+          <div id="slide-range-text">
+            <text>-50,000</text>
+            <span style="display:none">0</span>
+            <text>150,000</text>
+          </div>
+           <input id="slide-range" type="range" min="-50000" max="150000" step="1" value="0">
 
+    
+
+<table id="s4_control_cost" class="table">
+  <thead>
+    <tr>
+      <th class="s4_cost_name">항목</th>
+      <th class="s4_income">1인 수입<br>
+                <text>650000</text>
+                <text>원</th>
+      <th class="s4_revenue">1인 수익<br>
+                <text>0</text>
+                <text>원</text></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr id="s4_control_cost_input">
+      <th class="s4_cost_name">
+        <text>수익 조정을 위한 항목</text><br>
+          <input type="text" placeholder="예) 교육비, 예비비"></th>
+      <td class="s4_income"><text>0</text>
+          <text>원</text></td>
+      <td class="s4_revenue">
+        <input id="s4_control_revenue" type="number" value="" onchange="s4_input_func()">
+        <span>원</span></td>
+    </tr>
+
+
+      <tr>
+        <th class="s4_cost_name">숙박</th>
+        <td class="s4_income"><text>105000</text>
+            <text>원</text></td>
+        <td class="s4_revenue"><text>0</text>
+            <text>원</text></td>
+      </tr>
+      <tr>
+        <th class="s4_cost_name">숙박</th>
+        <td class="s4_income"><text>105000</text>
+            <text>원</text></td>
+        <td class="s4_revenue"><text>0</text>
+            <text>원</text></td>
+      </tr>
+      <tr>
+        <th class="s4_cost_name">숙박</th>
+        <td class="s4_income"><text>105000</text>
+            <text>원</text></td>
+        <td class="s4_revenue"><text>0</text>
+            <text>원</text></td>
+      </tr>
+
+  </tbody>
+</table>
+
+
+
+
+
+
+</div>
 
 
 
@@ -857,8 +866,31 @@
   </button>
 
   <div class="col-xs-4 mid_cost">
-    교육생 1인 비용<br>
-    <text>0 원</text>
+    <span class="participate_n">
+      강사 <text class="ins_n">0</text>명,
+      교육생 <text class="bgn_n">0</text>명<br>
+    </span>
+    <div class="">
+      1인 수입 : 
+      <span>
+        <text class="per_cost">0</text>
+        <text class="main_currency">원</text>
+      </span>
+    </div>
+    <div>
+      1인 수익 : 
+      <span>
+        <text class="per_revenue">0</text>
+        <text class="main_currency">원</text>
+      </span>
+    </div>
+    <div>
+      총 수익 : 
+      <span>
+        <text class="total_revenue">0</text>
+        <text class="main_currency">원</text>
+      </span>
+    </div>
   </div>
 
 
@@ -890,89 +922,160 @@
 
      
     <!--1.기본 정보-->
-  <div>
+  <div id="s5_cost_arr">
 
-    
-    <a class="accordion-toggle" data-toggle="collapse" href="#collapseOne">
-      <div class="panel-heading">
-   
-    </div>
-  </a>
-    
+<div>교육생 1인 비용
+  <span>
+    <text>650000</text>
+    <text>원</text>
+  </span>
+</div>
+  <ul>
+  <li>
+            <div>
+              <span class="s5_FOC_n">FOC 미적용</span>
+              <span class="s5_FOC_y hide">FOC 적용</span>
+              <span class="s5_n_n">개인 비용</span>
+              <span class="s5_n_y hide">공동 비용</span>
+              <span class="s5_ins_n">강사비용 미포함</span>
+              <span class="s5_ins_y hide">강사비용 포함</span>
+            </div>
 
-      <div id="collapseOne" class="panel-collapse collapse in">
-        <div class="panel-body">
-       
-       <div class="s5_check_cost">
+        <div class="s5_cost_name">5</div>
+        <!--수입-->
+        <div class="s5_cost_income">
+          <span>
+            <text>수입</text>
+            <text class="s5_cost_p1">0</text>
+            <text class="s5_cost_currency">원</text>
+            <text>x</text>
+            <text class="s5_cost_p2">0</text>
+            <text class="s5_cost_unit">회</text>
+          </span>
 
-        <div id="s5_check_cost_div">
-          <div class="s5_check_cost_arr">
-            <text>숙박</text>
-            <span>90,000원</span>
-          </div>
-
-          <div class="s5_check_cost_arr">
-            <text>다이빙 3회</text>
-            <span>+406,000원</span>
-          </div>
-
-          <div class="s5_check_cost_arr">
-            <text>페이팔 수수료</text>
-            <span>+16,950원</span>
-          </div>
-
-          <div class="s5_check_cost_arr">
-            <text>교육비</text>
-            <span>+20,000원</span>
-          </div>
-          
-       </div>
-      
-
-      <div class="s5_check_cost_control">
-        <text>테스트</text>
-        <span>0원</span>
-      </div>
-
-
-        <div class="s5_check_cost_fin">
-          <text>교육생 1인 비용</text>
-          <span>532,590원</span>
-        </div>
-      </div>
-
-
-      <div class="s5_check_cost">
-        <div id="s5_check_cost_income">
-          <text>예상 총 수입</text>
-          <span>2,662,950원</span>
-        </div>
-
-        <div id="s5_check_cost_expense">
-          <text>예상 총 지출</text>
-          <span>-2,481,950원</span>
-        </div>
-
-        <div id="s5_check_cost_revenue">
-          <text>예상 수익</text>
-          <span>181,000원</span>
+          <span class="s5_calc_income">
+            <span class="ex_calc hide">
+              <text class="cost3">0</text>
+              <text class="s5_cost_currency_">원</text>
+              <text> = </text>
+            </span>
+            <span>
+              <text class="s3_cost_fin">0</text>
+              <text class="main_currency">원</text>
+            </span>
+          </span>
         </div>
 
 
-      </div>
+        <!--지출-->
+        <div class="s5_cost_expense">
+          <span>
+            <text>지출</text>
+            <text class="s5_cost_p1">0</text>
+            <text class="s5_cost_currency">원</text>
+            <text>x</text>
+            <text class="s5_cost_p2">0</text>
+            <text class="s5_cost_unit">회</text>
+          </span>
 
-
-
+          <span class="s5_calc_expense">
+            <span class="ex_calc hide">
+              <text class="cost3_expense">0</text>
+              <text class="s5_cost_currency_">원</text>
+              <text> = </text>
+            </span>
+            <span>
+              <text class="s5_cost_fin_expense">0</text>
+              <text class="main_currency">원</text>
+            </span>
+          </span>
         </div>
 
 
-          
+        <!--수익-->
+        <div class="s5_cost_revenue">
+          수익: 
+          <text class="s5_calc_revenue">0</text>
+          <text class="main_currency">원</text>
+        </div>
+      </li>
 
 
- 
 
 
-      </div><!--panel body-->
+
+
+
+      <li>
+            <div>
+              <span class="s4_FOC_n">FOC 미적용</span>
+              <span class="s4_FOC_y hide">FOC 적용</span>
+              <span class="s4_n_n">개인 비용</span>
+              <span class="s4_n_y hide">공동 비용</span>
+              <span class="s4_ins_n">강사비용 미포함</span>
+              <span class="s4_ins_y hide">강사비용 포함</span>
+            </div>
+
+        <div class="s4_cost_name">5</div>
+        <!--수입-->
+        <div class="s4_cost_income">
+          <span>
+            <text>수입</text>
+            <text class="s3_cost_p1"></text>
+            <text class="s3_cost_currency">원</text>
+            <text>x</text>
+            <text class="s3_cost_p2"></text>
+            <text class="s3_cost_unit">회</text>
+          </span>
+
+          <span class="s3_calc_income">
+            <span class="ex_calc hide">
+              <text class="cost3">0</text>
+              <text class="s3_cost_currency_">원</text>
+              <text> = </text>
+            </span>
+            <span>
+              <text class="s3_cost_fin">0</text>
+              <text class="main_currency">원</text>
+            </span>
+          </span>
+        </div>
+
+
+        <!--지출-->
+        <div class="s3_cost_expense">
+          <span>
+            <text>지출</text>
+            <text class="s3_cost_p1"></text>
+            <text class="s3_cost_currency">원</text>
+            <text>x</text>
+            <text class="s3_cost_p2"></text>
+            <text class="s3_cost_unit">회</text>
+          </span>
+
+          <span class="s3_calc_expense">
+            <span class="ex_calc hide">
+              <text class="cost3_expense">0</text>
+              <text class="s3_cost_currency_">원</text>
+              <text> = </text>
+            </span>
+            <span>
+              <text class="s3_cost_fin_expense">0</text>
+              <text class="main_currency">원</text>
+            </span>
+          </span>
+        </div>
+
+
+        <!--수익-->
+        <div class="s3_cost_revenue">
+          수익: 
+          <text class="s3_calc_revenue">0</text>
+          <text class="main_currency">원</text>
+        </div>
+      </li>
+    </ul>
+
     </div><!--CollapseOne-->
 
 
@@ -981,12 +1084,33 @@
     <img src="../resources/img/ic-keyboard-arrow-right-white.svg">
     이전
   </button>
-
   <div class="col-xs-4 mid_cost">
-    교육생 1인 비용<br>
-    <text>0 원 =</text>
+    <span class="participate_n">
+      강사 <text class="ins_n">0</text>명,
+      교육생 <text class="bgn_n">0</text>명<br>
+    </span>
+    <div class="">
+      1인 수입 : 
+      <span>
+        <text class="per_cost">0</text>
+        <text class="main_currency">원</text>
+      </span>
+    </div>
+    <div>
+      1인 수익 : 
+      <span>
+        <text class="per_revenue">0</text>
+        <text class="main_currency">원</text>
+      </span>
+    </div>
+    <div>
+      총 수익 : 
+      <span>
+        <text class="total_revenue">0</text>
+        <text class="main_currency">원</text>
+      </span>
+    </div>
   </div>
-
 
   <button class="col-xs-4 next-step" type="button">
     다음
