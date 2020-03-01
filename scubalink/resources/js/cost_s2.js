@@ -495,8 +495,8 @@ function mid_cost(){
   per_income=parseInt($('#s2_p_total #t_cost').text())+parseInt($('#s4_control_cost_input .s4_income text:first-child').text());
   
   $('.per_cost').text(per_income);
-  $('#s4_control_cost thead s4_income text:first-of-type').text(per_income);
-
+  $('#s4_control_cost thead .s4_income text:first-of-type').text(per_income);
+  $('#s5_cost_arr>div span text:first-of-type').text(per_income);
   //1인 수익
   var per_revenue=0;
     //Step3
@@ -524,7 +524,7 @@ function mid_cost(){
   }else{
     $('#s4_control_cost thead .s4_revenue').css('color','#145db2')
   }
-  $('#s5_cost_arr>div span text:first-of-type').text(per_revenue)
+  
 
   //총 수익
   var cost_ins_n=$('#step1 #cost_member input').get().map(function(el) {return el.value});

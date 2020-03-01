@@ -60,7 +60,7 @@ $(document).on("change","#step3 input, #step3 select",function(){
       $('#slide-range').css('background','rgba(20, 93, 178, 0.3)');
       $('#slide-range').removeClass('red');
     }
-
+    $('#step4 #slide-range').val(per_revenue);
     mid_cost();
 
 });
@@ -174,7 +174,8 @@ function s3_to_s4(){
                     if($('#step4 #s4_control_cost_input input[type="text"]')!==""){
                       s_table+=$('#step4 #s4_control_cost_input input[type="text"]').val();
                     }
-      s_table+=`"></th>
+      s_table+=`"><br>
+          <text class="s4_input_err">항목 이름을 입력하세요.</text></th>
                   <td class="s4_income"><text>0</text>
                   <text>`
                   s_table+=$("#c_main_cur select").val();

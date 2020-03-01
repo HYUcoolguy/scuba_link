@@ -1,40 +1,67 @@
 
-//slide 조정 시, Step4 값 조정
-$('#slide-range').on('input',function () {
-  var newVal = $(this).val();
-  s4_calc(newVal);
-  $('#step4 #s4_control_cost_input .s4_revenue input').val(newVal);
+// //slide 조정 시, Step4 값 조정
+// $('#slide-range').on('input',function () {
+//   var newVal = $(this).val();
+//   s4_calc(newVal);
+//   $('#step4 #s4_control_cost_input .s4_revenue input').val(newVal);
+//   mid_cost();
+// });
+
+$('#slide-range').on('input',function(){
+  var newVal=$(this).val();
+  var s_revenue=$('#s4_control_cost tbody .s4_revenue text:first-of-type');
+  var sum_revenue=0;
+  for(i=0;i<s_revenue.length;i++){
+    sum_revenue+=parseInt(s_revenue.eq(i).text());
+  }
+  var s4_control_revenue=parseInt(newVal)-parseInt(sum_revenue);
+  $('#step4 #s4_control_cost_input .s4_revenue input').val(s4_control_revenue);
+  s4_calc(newVal, s4_control_revenue)
   mid_cost();
 });
 
-//Step4 값 조정 시, slide 조정
+
+
 function s4_input_func(){
-  var newVal=$('#s4_control_revenue').val();
-  console.log(newVal);
-  s4_calc(newVal);
+  var s4_control_revenue=$('#s4_control_revenue').val();
+  var s_revenue=$('#s4_control_cost tbody .s4_revenue text:first-of-type');
+  var sum_revenue=0;
+  for(i=0;i<s_revenue.length;i++){
+    sum_revenue+=parseInt(s_revenue.eq(i).text());
+  }
+  var newVal=parseInt(s4_control_revenue)+parseInt(sum_revenue);
   $('#slide-range').val(newVal);
+  s4_calc(newVal, s4_control_revenue)
   mid_cost();
+
+  
+
+
 }
 
-
-//수익 - 일 경우, 빨간색 표시
-function s4_calc(newVal){
+function s4_calc(newVal, s4_control_revenue){
   if(newVal<0){
-    $('#s4_control_cost_input .s4_income text:first-of-type').text('0');
-    $('#s4_control_cost_input .s4_revenue input').css('color','#e02020');
-    $('#s4_control_cost_input .s4_revenue span').css('color','#e02020');
     $('#slide-range').css('background','rgba(224, 32, 32, 0.3)');
     $('#slide-range').addClass('red');
   }else{
-    $('#s4_control_cost_input .s4_income text:first-of-type').text(newVal);
-    $('#s4_control_cost_input .s4_revenue input').css('color','#145db2');
-    $('#s4_control_cost_input .s4_revenue span').css('color','#145db2');
     $('#slide-range').css('background','rgba(20, 93, 178, 0.3)');
     $('#slide-range').removeClass('red');
   }
 
+  if(s4_control_revenue<0){
+    $('#s4_control_cost_input .s4_income text:first-of-type').text('0');
+    $('#s4_control_cost_input .s4_revenue input').css('color','#e02020');
+    $('#s4_control_cost_input .s4_revenue span').css('color','#e02020');
+  }else{
+    $('#s4_control_cost_input .s4_income text:first-of-type').text(s4_control_revenue);
+    $('#s4_control_cost_input .s4_revenue input').css('color','#145db2');
+    $('#s4_control_cost_input .s4_revenue span').css('color','#145db2');
   }
+  console.log(s4_control_revenue);
 
+
+
+}
 
 
 
@@ -52,7 +79,7 @@ var control_revenue=$('#s4_control_revenue').val();
 if(control_name!==''&&control_revenue!==''){
   ul=s5_cost_arr("false",false,false,
                   control_name, control_revenue, 1, $("#c_main_cur select").val(), '회',
-                  control_revenue, $("#c_main_cur select").val(), cost_ins_n[0], cost_ins_n[1], false)
+                  0, $("#c_main_cur select").val(), cost_ins_n[0], cost_ins_n[1], false)
 }
 
 //비용 항목
@@ -72,14 +99,28 @@ var extra_currency=$('#step3 .ex_cost_p1 select').get().map(function(el) {return
 var extra_unit=$('#step3 .ex_cost_p2 select').get().map(function(el) {return el.value});
 
 for(i=0;i<extra_name.length;i++){
+  if(extra_name[i]!==""){
     var extra_arr_li=s5_cost_arr("false", true, true,
-                      extra_name[i], 0, extra_p2[i], extra_currency[i], extra_unit[i],
-                      extra_p1[i], $("#c_main_cur select").val(), cost_ins_n[0], cost_ins_n[1], true)
+                      extra_name[i], parseInt(-extra_p1[i]), extra_p2[i], extra_currency[i], extra_unit[i],
+                      0, $("#c_main_cur select").val(), cost_ins_n[0], cost_ins_n[1], true)
     ul+=extra_arr_li;
   }
+}
 
 $('#s5_cost_arr ul').html(ul);
 
+
+//누락 체크
+  if($('#s4_control_cost_input .s4_cost_name input').val()==""){
+    if(control_revenue!==""){
+      $('.s4_input_err').css('display','block')
+      event.stopImmediatePropagation();
+    }else{
+      $('.s4_input_err').css('display','none')
+    }
+  }else{
+    $('.s4_input_err').css('display','none')
+  }
   window.scrollTo({
     top: 0
 });

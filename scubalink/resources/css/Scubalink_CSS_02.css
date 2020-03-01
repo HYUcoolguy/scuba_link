@@ -4985,3 +4985,8 @@ div.custom div{
 #step5 .s5_cost_income{
   margin-top:10px;
 }
+#step4 #s4_control_cost_input .s4_input_err{
+  color:#ff0000 !important;
+  line-height:2;
+  display:none;
+}
