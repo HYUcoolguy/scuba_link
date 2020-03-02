@@ -73,14 +73,6 @@ function s4_to_s5(){
 var ul='';
 var cost_ins_n=$('#step1 #cost_member input').get().map(function(el) {return el.value})
 
-//수익 조정
-var control_name=$('#s4_control_cost_input .s4_cost_name input').val();
-var control_revenue=$('#s4_control_revenue').val();
-if(control_name!==''&&control_revenue!==''){
-  ul=s5_cost_arr("false",false,false,
-                  control_name, control_revenue, 1, $("#c_main_cur select").val(), '회',
-                  0, $("#c_main_cur select").val(), cost_ins_n[0], cost_ins_n[1], false)
-}
 
 //비용 항목
 var real_cost=$('#step3 .s3_cost_expense input').get().map(function(el) {return el.value});
@@ -106,6 +98,16 @@ for(i=0;i<extra_name.length;i++){
     ul+=extra_arr_li;
   }
 }
+
+//수익 조정
+var control_name=$('#s4_control_cost_input .s4_cost_name input').val();
+var control_revenue=$('#s4_control_revenue').val();
+if(control_name!==''&&control_revenue!==''){
+  ul+=s5_cost_arr("false",false,false,
+                  control_name, control_revenue, 1, $("#c_main_cur select").val(), '회',
+                  0, $("#c_main_cur select").val(), cost_ins_n[0], cost_ins_n[1], false)
+}
+
 
 $('#s5_cost_arr ul').html(ul);
 
