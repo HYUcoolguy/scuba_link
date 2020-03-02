@@ -550,17 +550,33 @@ document.getElementById('s2_cost_arrange').innerHTML=s_div;
 
 //누락된 입력값 체크
 $('#step1 .next-step').click(function(event){
-var error_count;
+var error_count=0;
 var c_cur=$('#step1 #check_currency .cost_checkbox_container').children('input').get().map(function(el) { 
     if(el.checked==true){ return el.value;}});
+
+//참여자 수 누락
+ var cost_ins_n=$('#step1 #cost_member input').get().map(function(el) {return el.value});
+ if(cost_ins_n[0]==""||cost_ins_n[1]==""){
+    $('#step1 #cost_member .participate_empty_error').css("display","block");
+    event.stopImmediatePropagation();
+    $('html, body').animate({scrollTop : $('#cost_member').offset().top-300}, 400);
+    error_count=1;
+ }else{
+    $('#step1 #cost_member .participate_empty_error').css("display","none");
+ }
+
+
 //환율 누락
 for(i=1;i<c_cur.length;i++){
   if(c_cur[i]){
     if($('#check_currency .custom input').eq(i-1).val()==""){
       $('#check_currency div.custom').eq(i-1).children('div:first-of-type').css("display","block");
-      $('html, body').animate({scrollTop : $('#check_currency .custom input').eq(i-1).offset().top-300}, 400);
-      error_count=1;
       event.stopImmediatePropagation();
+      if(error_count!=1){
+       $('html, body').animate({scrollTop : $('#check_currency .custom input').eq(i-1).offset().top-300}, 400); 
+      }
+      error_count=1;
+      
     }
     else{
        $('#check_currency div.custom').eq(i-1).children('div:first-of-type').css("display","none");

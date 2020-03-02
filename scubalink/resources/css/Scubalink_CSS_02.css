@@ -4990,3 +4990,10 @@ div.custom div{
   line-height:2;
   display:none;
 }
+#step1 .participate_empty_error{
+  width:100%;
+  font-size:12px;
+  color:#e02020;
+  margin-top:-10px;
+  display:none;
+}
