@@ -114,34 +114,13 @@
 
 <!--콘텐츠가 있을 때-->
 <!--class의 hidden on/off로 조정 --> 
-<div id="CONTENT_ON" class="">
+<div id="CONTENT_ON" class="col-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 col-xl-4 col-xl-offset-4">
 <!--home main-->
   <div class="tour">
-    <!--
-    <div class="tour_head">
-
-     <span>
-          <img src="../resources/img/my_profile.jpg" alt="..." class="img-circle">
-      </span>
-
-
-         <span class="INS_badge">
-              <img src='../resources/img/ic.png'>
-            </span>
-
-      <span>
-
-          <h5>김스쿠</h5>
-
-          <p class="explain_text">SDI/TDI 강사</p>
-      </span>
-      
-    </div>
-  -->
 
     <div class="tour_image">
-      <!--썸네일 이미지-->
-      <img src="../resources/img/sea.png" alt="...">
+      <img class="tour_thumbnail" src="../resources/img/sea.png" alt="...">
+      <img class="tour_background" src="../resources/img/sea.png" alt="...">
     </div>
 
     <div class="tour_bar tour_uncomplete">
@@ -186,9 +165,9 @@
 
 
 
-<div class="tour_image">
-      <!--썸네일 이미지-->
-      <img src="../resources/img/sea.png" alt="...">
+    <div class="tour_image">
+      <img class="tour_thumbnail" src="../resources/img/test_sero.jpg" alt="...">
+      <img class="tour_background" src="../resources/img/test_sero.jpg" alt="...">
     </div>
 
     <div class="tour_bar tour_complete">
@@ -240,16 +219,23 @@
 
 
 
+<script>
+
+
+$(document).ready(function(e){
+  $('.tour_image .tour_background').each(function(){
+
+
+  var minus_height = "-"+$(this)[0].height+"px";
+  var plus_height= $(this)[0].height+"px";
+  $(this).css('top',minus_height);
+  $(this).parent('.tour_image').css('height',plus_height );
+  })
+});
 
 
 
-
-
-
-
-
-
-
+</script>
 
 
 
