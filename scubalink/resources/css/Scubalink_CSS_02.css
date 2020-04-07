@@ -4524,7 +4524,9 @@ div.custom div{
 #step3 #plus_cost{
   margin-top:16px;
 }
-
+#CONTENT_ON{
+  padding:0px;
+}
 #CONTENT_ON .tour_division{
   height:16px;
 }
