@@ -371,7 +371,6 @@ if (!$('.burger_img').hasClass('menu')) {
 
 
 
-
 // $("#show_title").click(function() {
 //   $('#home_student_content_01').toggleClass('hidden');
 //   $('#home_student_content_02').toggleClass('hidden');

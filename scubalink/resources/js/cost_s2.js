@@ -317,7 +317,7 @@ function s2_to_s3(){
         <div class="s3_cost_expense">
           <span>
             <text>지출</text>
-            <input type="number" value="0">
+            <input type="number" value="0" onkeypress="this.style.width = ((this.value.length + 1) * 8) + 'px';">
             <text class="s3_cost_currency"></text>
             <text>x</text>
             <text class="s3_cost_p2">0</text>
